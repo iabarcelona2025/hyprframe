@@ -59,11 +59,17 @@ body {
     width: 100%;
 }
 
-.logo img {
-    height: 42px; /* ajusta el tamaño a tu gusto */
-    width: auto; /* mantiene proporción */
+.logo-video {
+    width: 181px; /* ajusta al tamaño de tu logo */
+    height: auto;
     display: block;
 }
+
+/*.logo img {
+    height: 42px; /* ajusta el tamaño a tu gusto 
+    width: auto;  mantiene proporción 
+    display: block;
+}*/
 
 .top-nav nav ul {
     font-size: 14px;
