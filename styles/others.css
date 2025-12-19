@@ -513,6 +513,15 @@ html {
     line-height: 1.6;
 }
 
+/* === MOBILE MENU OVERLAY === */
+body.menu-open::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 900;
+    }
+
 /* ---.close {
     position: absolute;
     top: 335px;
