@@ -1,13 +1,10 @@
-<!doctype html>
+    <!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>HYPRFRAME - AI Prompting / Generative Works</title>
-        <meta
-            name="description"
-            content="Other Works"
-        />
+        <meta name="description" content="Other Works" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -22,11 +19,16 @@
         <header class="top-nav">
             <div class="container header-content">
                 <a href="index.html" class="logo">
-                    <img src="assets/logo_HYPRFRAME_03.png" alt="Synapse Logo" />
+                    <img
+                        src="assets/logo_HYPRFRAME_03.png"
+                        alt="Synapse Logo"
+                    />
                 </a>
                 <nav>
                     <ul>
-                        <li><a href="index.html#AI%20Generated">AI Generated</a></li>
+                        <li>
+                            <a href="index.html#AI%20Generated">AI Generated</a>
+                        </li>
                         <li><a href="index.html#shot">Captured</a></li>
                         <li><a href="index.html#about">About</a></li>
                         <li><a href="index.html#services">Services</a></li>
@@ -182,30 +184,6 @@
                 }
             });
 
-            // Burger menu
-            const burgerMenu = document.getElementById("burgerMenu");
-            const mobileNav = document.getElementById("mobileNav");
-            burgerMenu.addEventListener("click", () => {
-                burgerMenu.classList.toggle("active");
-                mobileNav.classList.toggle("active");
-            });
-            const mobileNavLinks = mobileNav.querySelectorAll("a");
-            mobileNavLinks.forEach((link) => {
-                link.addEventListener("click", () => {
-                    burgerMenu.classList.remove("active");
-                    mobileNav.classList.remove("active");
-                });
-            });
-            document.addEventListener("click", (e) => {
-                if (
-                    !burgerMenu.contains(e.target) &&
-                    !mobileNav.contains(e.target)
-                ) {
-                    burgerMenu.classList.remove("active");
-                    mobileNav.classList.remove("active");
-                }
-            });
-
             // 🎬 Modal con sinopsis
             document.addEventListener("DOMContentLoaded", function () {
                 const modal = document.getElementById("videoModal");
@@ -261,6 +239,38 @@
                         iframe.src = "";
                     }
                 });
+            });
+        </script>
+
+        <script>
+            const burger = document.querySelector(".burger-menu");
+            const mobileNav = document.querySelector(".mobile-nav");
+
+            burger.addEventListener("click", () => {
+                burger.classList.toggle("active");
+                mobileNav.classList.toggle("active");
+                document.body.classList.toggle("menu-open");
+            });
+
+            // Cerrar al clicar un link
+            mobileNav.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", () => {
+                    burger.classList.remove("active");
+                    mobileNav.classList.remove("active");
+                    document.body.classList.remove("menu-open");
+                });
+            });
+
+            // Cerrar al clicar fuera
+            document.addEventListener("click", (e) => {
+                if (
+                    !burger.contains(e.target) &&
+                    !mobileNav.contains(e.target)
+                ) {
+                    burger.classList.remove("active");
+                    mobileNav.classList.remove("active");
+                    document.body.classList.remove("menu-open");
+                }
             });
         </script>
     </body>
