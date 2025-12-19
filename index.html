@@ -345,6 +345,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Links de Captured
+  const links = document.querySelectorAll('a[href="Legacy.html"]');
+
+  if (window.location.pathname.includes('Legacy.html')) {
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+      });
+      link.style.cursor = 'default';
+      link.style.opacity = 0.6;
+    });
+  }
+});
+</script>
+</body>
+</html>
+
 </body>
 </html>
 
