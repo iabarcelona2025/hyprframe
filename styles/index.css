@@ -301,11 +301,11 @@ footer {
 .mobile-nav {
     display: none;
     position: fixed;
-    top: 0;
+    top: 7.9vh;
     right: -100%;
-    width: 40vw;
+    width: 60vw;
     height: 100vh;
-    right: -40vw;
+    right: -60vw;
     background: linear-gradient(
         135deg,
         rgba(10, 10, 10, 0.8) 0%,
