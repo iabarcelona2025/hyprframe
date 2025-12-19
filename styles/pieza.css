@@ -560,3 +560,12 @@ footer {
     color: #444;
     letter-spacing: 1px;
 }
+
+        /* === MOBILE MENU OVERLAY === */
+    body.menu-open::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 900;
+    }
