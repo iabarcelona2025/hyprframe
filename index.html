@@ -316,34 +316,6 @@ document.addEventListener("DOMContentLoaded", () => {
     fadeText.style.transform = `translateY(${translateY}px)`;
   });
 });
-
-
-
-  // Burger menu functionality
-  const burgerMenu = document.getElementById('burgerMenu');
-  const mobileNav = document.getElementById('mobileNav');
-
-  burgerMenu.addEventListener('click', () => {
-    burgerMenu.classList.toggle('active');
-    mobileNav.classList.toggle('active');
-  });
-
-  // Close mobile nav when clicking on a link
-  const mobileNavLinks = mobileNav.querySelectorAll('a');
-  mobileNavLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      burgerMenu.classList.remove('active');
-      mobileNav.classList.remove('active');
-    });
-  });
-
-  // Close mobile nav when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!burgerMenu.contains(e.target) && !mobileNav.contains(e.target)) {
-      burgerMenu.classList.remove('active');
-      mobileNav.classList.remove('active');
-    }
-  });
 </script>
 
 <script>
@@ -362,9 +334,38 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 </script>
-</body>
-</html>
+
+<script>
+  const burger = document.querySelector('.burger-menu');
+  const mobileNav = document.querySelector('.mobile-nav');
+
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    mobileNav.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
+  });
+
+  // Cerrar al clicar un link
+  mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('active');
+      mobileNav.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    });
+  });
+
+  // Cerrar al clicar fuera
+  document.addEventListener('click', (e) => {
+    if (!burger.contains(e.target) && !mobileNav.contains(e.target)) {
+      burger.classList.remove('active');
+      mobileNav.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    }
+  });
+</script>
 
 </body>
 </html>
 
+</body>
+</html>
