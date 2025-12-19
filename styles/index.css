@@ -303,9 +303,9 @@ footer {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 60vw;
+    width: 40vw;
     height: 100vh;
-    right: -60vw;
+    right: -40vw;
     background: linear-gradient(
         135deg,
         rgba(10, 10, 10, 0.8) 0%,
