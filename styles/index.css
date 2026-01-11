@@ -855,4 +855,22 @@ html {
         background: rgba(0, 0, 0, 0.4);
         z-index: 900;
     }
+    
+@media (max-width: 768px) {
+
+  .services-grid {
+    flex-direction: column;
+    gap: 0; /* evita sumar espacios fantasma */
+  }
+
+  .services-column {
+    margin-bottom: 0;
+  }
+
+  .services-column:first-child .service-item:last-child {
+    margin-bottom: 80px; /* ajusta aquí si quieres más o menos aire */
+  }
+
+}
+    
 }
