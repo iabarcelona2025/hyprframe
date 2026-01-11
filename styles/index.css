@@ -616,8 +616,8 @@ html {
     color: #b3b3b3; /* mismo gris que la letra pequeña */
     font-family: inherit; /* usa la tipografía de la página */
     text-align: left;
-    padding-top: 40px; /* <-- separa el contenido del título */
-    padding-bottom: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
 }
 
 .services-column {
