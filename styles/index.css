@@ -646,6 +646,7 @@ html {
 
 #services {
     scroll-margin-top: 81px; /* ajusta según la altura de tu barra */
+    margin-bottom: 80px; /* ← AQUÍ controlas el negro */
 }
 
 /* Responsivo */
