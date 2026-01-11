@@ -308,7 +308,7 @@ footer {
 .mobile-nav {
     display: none;
     position: fixed;
-    top: 7.9vh;
+    top: 8.0vh;
     right: -100%;
     width: 60vw;
     height: 100vh;
