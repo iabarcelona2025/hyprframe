@@ -884,5 +884,10 @@ html {
    border: 0;
  }
     
+img.logo {
+  width: 150px;        /* tamaño visual */
+  height: auto;
+  image-rendering: auto; /* asegura suavizado correcto */
+}    
 }
     
