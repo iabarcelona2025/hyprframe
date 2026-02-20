@@ -64,6 +64,7 @@ body {
     height: auto;
     display: block;
     pointer-events: none;
+    image-rendering: auto; /* suavizado */
 }
 
 /*.logo img {
