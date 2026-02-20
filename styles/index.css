@@ -883,11 +883,5 @@ html {
    white-space: nowrap;
    border: 0;
  }
-    
-.logo-video {
-  width: 200px;       /* tamaño visual */
-  height: auto;
-  image-rendering: auto; /* suavizado */
-} 
 }
     
