@@ -3,14 +3,14 @@
 <head>
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6MW201KGC9"></script>
+<!--<script async src="https://www.googletagmanager.com/gtag/js?id=G-6MW201KGC9"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'G-6MW201KGC9');
-</script>
+</script> -->
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,11 +27,63 @@
 
   <link href="styles/index.css" rel="stylesheet">
 </head>
+<div id="cookie-banner">
+  <p>
+    This site uses analytics cookies to improve experience.
+  </p>
+  <div class="cookie-actions">
+    <button id="acceptCookies">Accept</button>
+    <button id="rejectCookies">Reject</button>
+  </div>
+</div>
+  
+<script>
+  const banner = document.getElementById('cookie-banner');
 
+  function loadAnalytics() {
+    const script = document.createElement('script');
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-6MW201KGC9";
+    script.async = true;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+
+    gtag('js', new Date());
+    gtag('config', 'G-6MW201KGC9');
+  }
+
+  // Mostrar banner si no hay decisión previa
+  if (!localStorage.getItem('cookieConsent')) {
+    setTimeout(() => {
+      banner.classList.add('show');
+    }, 600);
+  }
+
+  // ACEPTAR
+  document.getElementById('acceptCookies').onclick = () => {
+    localStorage.setItem('cookieConsent', 'accepted');
+    banner.classList.remove('show');
+    loadAnalytics();
+  };
+
+  // RECHAZAR
+  document.getElementById('rejectCookies').onclick = () => {
+    localStorage.setItem('cookieConsent', 'rejected');
+    banner.classList.remove('show');
+  };
+
+  // Si ya aceptó antes
+  if (localStorage.getItem('cookieConsent') === 'accepted') {
+    loadAnalytics();
+  }
+</script>
+  
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVD2KDCZ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!--<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVD2KDCZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
 <!-- End Google Tag Manager (noscript) -->  
 
 <!-- Menú fijo negro -->
