@@ -21,20 +21,25 @@ body {
 }
 
 /* ===== MENÚ NEGRO FIJO ===== */
+/* Modifica el .top-nav para quitarle el padding fijo lateral */
 .top-nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 80px;
-    background: #000; /* Fondo negro sólido */
-    padding: 0 40px;
+    background: #000;
+    padding: 0; /* Quitamos el padding de 40px */
     z-index: 1000;
     display: flex;
     align-items: center;
 }
 
-.header-content {
+/* Añade esta regla para que el contenido del menú use el límite de 1600px */
+.top-nav .header-content {
+    max-width: 1600px; /* Igual que tu .container */
+    margin: 0 auto;    /* Lo centra */
+    padding: 0 20px;   /* Margen de seguridad para pantallas pequeñas */
     display: flex;
     justify-content: space-between;
     align-items: center;
