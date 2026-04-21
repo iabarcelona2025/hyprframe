@@ -192,9 +192,25 @@ main {
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 7px;
     margin-bottom: 80px;
+}
+
+/* Forzamos el estado inicial: un poco más oscuro y desaturado */
+body #AI-Generated .portfolio-item img,
+body .grid-item img {
+  filter: saturate(0.5) brightness(0.7) !important;
+  transition: filter 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s ease !important;
+  transform: scale(1) !important;
+}
+
+/* Efecto al pasar el ratón: recupera color, luz y un zoom muy sutil */
+body #AI-Generated .portfolio-item:hover img,
+body .grid-item:hover img {
+  filter: saturate(1.2) brightness(1) !important;
+  transform: scale(1.03) !important; /* Un zoom mucho más elegante que el actual */
+  cursor: pointer;
 }
 
 .portfolio-item {
@@ -224,6 +240,7 @@ main {
 .portfolio-item:hover img {
     transform: scale(1.05);
 }
+
 
 /* === FOOTER === */
 footer {
