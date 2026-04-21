@@ -68,8 +68,8 @@ body {
 }
 
 /*.logo img {
-    height: 42px; /* ajusta el tamaño a tu gusto 
-    width: auto;  mantiene proporción 
+    height: 42px; /* ajusta el tamaño a tu gusto
+    width: auto;  mantiene proporción
     display: block;
 }*/
 
@@ -175,72 +175,69 @@ main {
     text-transform: uppercase;
 }
 
-/* === GRID PORTFOLIO === */
+/* === GRID PORTFOLIO CON TONO LILA === */
 .portfolio-section {
     padding: 80px 0;
-}
-
-.section-title {
-    font-size: 24px;
-    font-weight: 300;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 60px;
-    text-align: center;
-    color: #888;
 }
 
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 7px;
+    gap: 15px;
     margin-bottom: 80px;
 }
 
-/* Forzamos el estado inicial: un poco más oscuro y desaturado */
-body #AI-Generated .portfolio-item img,
-body .grid-item img {
-  filter: saturate(0.5) brightness(0.7) !important;
-  transition: filter 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s ease !important;
-  transform: scale(1) !important;
-}
-
-/* Efecto al pasar el ratón: recupera color, luz y un zoom muy sutil */
-body #AI-Generated .portfolio-item:hover img,
-body .grid-item:hover img {
-  filter: saturate(1.2) brightness(1) !important;
-  transform: scale(1.03) !important; /* Un zoom mucho más elegante que el actual */
-  cursor: pointer;
-}
-
 .portfolio-item {
-    background-color: #111;
+    position: relative;
+    background-color: #050505;
     border: 1px solid #1a1a1a;
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: border-color 0.5s ease, transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
     aspect-ratio: 16/10;
     text-decoration: none;
-    color: inherit;
     display: block;
 }
 
-.portfolio-item:hover {
-    border-color: #333;
-    transform: translateY(-5px);
+/* Capa Lila (Overlay) */
+.portfolio-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #362961; /* El lila de tu marca */
+    mix-blend-mode: screen; /* Mezcla el color con la imagen */
+    opacity: 0.6; /* Intensidad del lila inicial */
+    z-index: 2;
+    transition: opacity 0.6s ease;
 }
 
 .portfolio-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    filter: saturate(0.1) brightness(0.7); /* Imagen casi B/N bajo el lila */
+    transition: filter 0.7s cubic-bezier(0.2, 1, 0.3, 1), transform 0.7s cubic-bezier(0.2, 1, 0.3, 1);
+    will-change: filter, transform;
+}
+
+/* HOVER: Quitamos el lila y revelamos color real */
+.portfolio-item:hover::before {
+    opacity: 0; /* Desaparece el tinte lila */
+}
+
+.portfolio-item:hover {
+    border-color: #4b3a8a; /* Borde lila más brillante al activar */
+    transform: translateY(-8px);
+    z-index: 10;
 }
 
 .portfolio-item:hover img {
-    transform: scale(1.05);
+    filter: saturate(1.1) brightness(1.1);
+    transform: scale(1.04);
 }
-
 
 /* === FOOTER === */
 footer {
@@ -874,7 +871,7 @@ html {
         background: rgba(0, 0, 0, 0.4);
         z-index: 900;
     }
-    
+
 @media (max-width: 768px) {
 
   .services-grid {
@@ -889,7 +886,7 @@ html {
   .services-column:first-child .service-item:last-child {
     margin-bottom: 80px; /* ajusta aquí si quieres más o menos aire */
   }
-    
+
  .sr-only {
    position: absolute;
    width: 1px;
@@ -945,4 +942,3 @@ html {
   background: #fff;
   color: #000;
 }
-
