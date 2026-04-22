@@ -624,53 +624,91 @@ html {
 
 /* ===== Services layout ===== */
 
-.services-grid {
-    display: flex;
-    justify-content: flex-start;
-    gap: 80px; /* espacio entre columnas */
-    color: #b3b3b3; /* mismo gris que la letra pequeña */
-    font-family: inherit; /* usa la tipografía de la página */
-    text-align: left;
-    padding-left: 100px;
-    padding-right: 100px;
+/* Contenedor principal (el rectángulo redondeado) */
+.services-container {
+    /* Degradado lineal: empieza en un tono púrpura oscuro y termina en uno casi negro */
+    background: linear-gradient(145deg, #1a1625 0%, #0d0d12 100%);
+
+    /* Borde sutil para dar relieve, como en la imagen */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    /* El resto de tus propiedades se mantienen */
+    border-radius: 40px;
+    max-width: 1550px;
+    padding: 80px 80px;
+    margin: 0 auto;
+    width: 95%;
+
+    /* Añade un ligero brillo (glow) exterior para separar el rectángulo del fondo negro */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
-.services-column {
-    flex: 1;
-    min-width: 300px;
+.services-main-title {
+    font-family: "Inter", sans-serif;
+    /* 1. Grosor: Cambiamos 300 por 700 o 800 para que tenga ese cuerpo */
+    font-weight: 700;
+
+    /* 2. Tamaño: Ajustamos para que sea idéntico al About */
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+
+    /* 3. Espaciado: Ponemos 0 o un valor muy pequeño para que las letras no estén separadas */
+    letter-spacing: 0px;
+
+    /* 4. Estética */
+    text-align: center;
+    color: #fff;
+    margin-bottom: 60px;
+    text-transform: none; /* Asegura que respete mayúsculas/minúsculas del About */
 }
 
+/* Ajuste de espacio entre servicios de la misma columna */
 .service-item {
-    margin-bottom: 79px;
+    margin-bottom: 0; /* Quitamos el margen inferior si lo tenías */
+    padding-top: 40px; /* Añadimos espacio arriba de cada título gris */
+}
+
+/* Opcional: para que el primer servicio de cada columna no tenga ese hueco arriba */
+.services-column .service-item:first-of-type {
+    padding-top: 0;
+}
+
+/* Rejilla de 3 columnas */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas exactas */
+    gap: 60px;
+    text-align: left;
+}
+
+/* Títulos de las columnas (BRANDING, etc) */
+.services-column h2 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: 40px;
+    font-weight: 600;
 }
 
 .service-item h3 {
-    font-weight: 600; /* negrita */
-    font-size: calc(1rem + 2px); /* 2 puntos más grande que el texto */
+    font-weight: 600;
+    font-size: calc(1rem + 2px);
     margin-bottom: 10px;
-    color: #b3b3b3;
+    /* CAMBIA ESTO: */
+    color: #fff; /* Este es un gris medio puro. Si quieres que sea más claro usa #aaa */
 }
 
-.service-item p {
-    font-weight: 300;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0;
-    color: #b3b3b3;
-}
-
-#services {
-    scroll-margin-top: 81px; /* ajusta según la altura de tu barra */
-    margin-bottom: 80px; /* ← AQUÍ controlas el negro */
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
+/* Ajuste para móvil */
+@media (max-width: 900px) {
     .services-grid {
-        flex-direction: column;
-        gap: 40px;
+        grid-template-columns: 1fr; /* 1 columna en móvil */
+    }
+    .services-container {
+        padding: 40px 20px;
+        border-radius: 20px;
     }
 }
+
 #scrollFade {
     opacity: 0;
     transform: translateY(20px);
