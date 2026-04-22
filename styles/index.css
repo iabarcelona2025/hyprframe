@@ -209,7 +209,7 @@ main {
     height: 100%;
     background-color: #362961; /* El lila de tu marca */
     mix-blend-mode: screen; /* Mezcla el color con la imagen */
-    opacity: 0.6; /* Intensidad del lila inicial */
+    opacity: 0.4; /* Intensidad del lila inicial */
     z-index: 2;
     transition: opacity 0.6s ease;
 }
