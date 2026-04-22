@@ -633,7 +633,7 @@ html {
     border: 1px solid rgba(255, 255, 255, 0.05);
 
     /* El resto de tus propiedades se mantienen */
-    border-radius: 40px;
+    border-radius: 20px;
     max-width: 1550px;
     padding: 80px 80px;
     margin: 0 auto;
