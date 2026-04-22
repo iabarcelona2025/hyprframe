@@ -63,8 +63,6 @@ body {
     width: 192px; /* ajusta al tamaño de tu logo */
     height: auto;
     display: block;
-    max-width: 40% !important; /* IMPORTANTE: Así el logo nunca ocupará demasiado espacio en móvil */
-    flex-shrink: 0; /* Evita que el logo se deforme o empuje a otros */
     pointer-events: none;
     image-rendering: auto; /* suavizado */
 }
