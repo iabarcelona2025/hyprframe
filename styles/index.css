@@ -504,6 +504,10 @@ html {
 #about {
     padding-top: 0px; /* espacio arriba */
     padding-bottom: 260px; /* espacio abajo */
+    background: linear-gradient(135deg, #ffffff 0%, #888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 #about {
@@ -659,6 +663,10 @@ html {
     color: #fff;
     margin-bottom: 60px;
     text-transform: none; /* Asegura que respete mayúsculas/minúsculas del About */
+    background: linear-gradient(135deg, #ffffff 0%, #888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Ajuste de espacio entre servicios de la misma columna */
