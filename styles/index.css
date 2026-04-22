@@ -323,11 +323,11 @@ footer {
 .mobile-nav {
     display: none;
     position: fixed;
-    top: 8.0vh;
+    top: 7.9vh;
     right: -100%;
-    width: 70vw;
+    width: 60vw;
     height: 100vh;
-    right: -70vw;
+    right: -60vw;
     background: linear-gradient(
         135deg,
         rgba(10, 10, 10, 0.8) 0%,
