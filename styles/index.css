@@ -271,7 +271,7 @@ main {
 }
 
 .portfolio-item:hover {
-    border-color: #4b3a8a; /* Borde lila más brillante al activar */
+    border-color: #A3DF02; /* Borde lila más brillante al activar */
     transform: translateY(-8px);
     z-index: 10;
 }
