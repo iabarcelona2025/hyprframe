@@ -867,8 +867,8 @@ html {
 
 /* Este es el bloque que mantiene la distancia con el grid de abajo */
 .intro-subtitle {
-    margin-top: 180px; /* Ajusta este valor para separar el texto del grid */
-    margin-bottom: 120px !important; /* <--- AÑADE ESTO. Sube el 120 si quieres más espacio */
+    margin-top: 120px; /* Ajusta este valor para separar el texto del grid */
+    margin-bottom: 80px !important; /* <--- AÑADE ESTO. Sube el 120 si quieres más espacio */
     text-align: center;
     display: block;
 }
