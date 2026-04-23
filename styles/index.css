@@ -421,7 +421,7 @@ footer {
     top: 80px;
     right: -100%; /* Estado cerrado */
     width: 60vw;  /* Dale un poco más de ancho para que el efecto luzca */
-    height: 50vh;
+    height: 65vh;
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(20px);
     z-index: 1000;
