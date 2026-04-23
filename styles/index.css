@@ -46,6 +46,7 @@ html, body {
 
 body {
     background-color: transparent !important; /* Quitamos el negro de aquí */
+    transition: background-color 0.5s ease;
     color: #fff;
     font-family: "Inter", sans-serif;
     overflow-x: hidden;
@@ -60,13 +61,25 @@ body {
 }
 
 /* === HERO CON VIDEO === */
+
+/* 1. EL CONTENEDOR (Hero) */
 .hero-section {
     position: relative;
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    height: calc(85vh - 20px);
+    margin-top: 80px;
+    z-index: 10;
+
+    /* El truco maestro:
+       Permite que el contenido (la sombra) se "asome" hasta 150px por debajo
+       pero mantiene el recorte lateral para el video. */
+    clip-path: inset(0px 0px -150px 0px);
+
+    /* Importante: el overflow debe ser visible para que el clip-path mande */
+    overflow: visible !important;
 }
 
+/* 2. EL VIDEO (Aislamos el recorte aquí) */
 .background-video {
     position: absolute;
     top: 0;
@@ -75,6 +88,36 @@ body {
     height: 100%;
     object-fit: cover;
     z-index: 0;
+    /* Si el video se sale por los lados, lo cortamos aquí */
+    clip-path: inset(0 0 0 0);
+}
+
+/* 3. LA SOMBRA EXTERIOR (Cero sombra dentro) */
+.hero-section::after {
+    content: "";
+    position: absolute;
+    /* Empieza exactamente donde termina el video */
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 25px;
+
+    /* Degradado agresivo de negro a transparente */
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 14) 0%,
+        rgba(1, 1, 1, 0.6) 10%,
+        transparent 98%
+    );
+
+    z-index: 11;
+    pointer-events: none;
+}
+
+/* 4. SECCIÓN SIGUIENTE (Asegura que no tape la sombra) */
+.quote-section {
+    position: relative;
+    z-index: 1; /* Por debajo de la sombra (que es 11) */
+    background: transparent !important;
 }
 
 /* ===== MENÚ NEGRO FIJO ===== */
@@ -808,7 +851,7 @@ html {
     /* AJUSTE AQUÍ: */
     /* Este valor empuja la frase hacia abajo. */
     /* Súbelo si quieres que baje más (ej. 350px) */
-    padding-top: 300px;
+    padding-top: 372px;
 
     margin: 0;
     text-align: center;
@@ -832,6 +875,7 @@ html {
 /* Este es el bloque que mantiene la distancia con el grid de abajo */
 .intro-subtitle {
     margin-top: 180px; /* Ajusta este valor para separar el texto del grid */
+    margin-bottom: 120px !important; /* <--- AÑADE ESTO. Sube el 120 si quieres más espacio */
     text-align: center;
     display: block;
 }
@@ -1072,11 +1116,11 @@ html {
   .services-column:first-child {
     margin-bottom: 80px; /* ajusta aquí si quieres más o menos aire */
   }
-    
+
   .services-column:last-child {
     margin-top: 80px !important;
   }
-    
+
  .sr-only {
    position: absolute;
    width: 1px;
@@ -1210,4 +1254,29 @@ main, section, .full-section, .hero-section {
 
 main, section, .full-section, .container {
     background: transparent !important;
+}
+
+/* Clase que aplicaremos al fondo cuando hagamos hover en el grid */
+.desaturate-strips .strip {
+    filter: grayscale(100%) !important;
+    opacity: 0.2 !important; /* Las hacemos más tenues para que no distraigan */
+    transition: filter 0.5s ease, opacity 0.5s ease; /* Transición suave */
+}
+
+/* Asegúrate de que tus bandas originales tengan transición para que no sea brusco */
+.strip {
+    transition: filter 0.5s ease, opacity 0.5s ease, transform 0.2s ease-out;
+}
+
+/* Estado normal de la banda */
+.strip {
+    /* Mantenemos tus estilos de posición y z-index */
+    transition: border-color 0.6s ease, opacity 0.6s ease !important;
+}
+
+/* Cuando el ratón entra en el portfolio */
+body.desaturate-strips .strip {
+    /* Cambiamos el color lila/verde por un gris muy oscuro y transparente */
+    border-color: rgba(100, 100, 100, 0.2) !important;
+    opacity: 0.1 !important;
 }
