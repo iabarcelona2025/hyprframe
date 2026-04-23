@@ -284,55 +284,75 @@
             window.addEventListener("resize", resize);
             resize();
 
+            // 1. Variables nuevas para el suavizado (ponlas fuera de la función draw)
+            let colorLerp = 0; // 0 es lila total, 1 es gris total
+            const lerpSpeed = 0.08; // Ajusta esto: más bajo = más lento y suave
+
             function draw() {
                 const scrollVal = window.pageYOffset;
+                const body = document.body;
+
+                // 2. Determinamos el objetivo
+                const targetLerp = body.classList.contains("desaturate-strips")
+                    ? 1
+                    : 0;
+
+                // 3. Suavizado matemático (Linear Interpolation)
+                colorLerp += (targetLerp - colorLerp) * lerpSpeed;
+
                 ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+                // 4. Calculamos el color actual basado en el progreso (colorLerp)
+                // De Lila (160, 100, 255) a Gris (100, 100, 100)
+                const r = 160 + (140 - 160) * colorLerp;
+                const g = 100 + (140 - 100) * colorLerp;
+                const b = 255 + (140 - 255) * colorLerp;
+
+                // La opacidad también se suaviza
+                const alphaMult = 1 - colorLerp * 0; // Baja un 70% cuando es gris
 
                 const lines = [
                     {
                         y: 0.15,
-                        angle: 12, // Ángulo inicial
-                        rotateSpeed: 0.02, // <--- Cuánto cambia al hacer scroll
+                        angle: 40,
+                        rotateSpeed: -0.02,
                         speed: 0.42,
-                        weight: 200,
+                        weight: 700,
                         alpha: 0.04,
-                        blur: 50,
+                        blur: 200,
                     },
                     {
                         y: 0.4,
                         angle: -8,
                         rotateSpeed: -0.05,
                         speed: 0.45,
-                        weight: 350,
+                        weight: 550,
                         alpha: 0.06,
                         blur: 800,
                     },
                     {
-                        y: 0.65,
-                        angle: 4,
-                        rotateSpeed: 0.025,
-                        speed: 0.48,
-                        weight: 230,
-                        alpha: 0.07,
+                        y: 1.15,
+                        angle: -113,
+                        rotateSpeed: -0.025,
+                        speed: 0.08,
+                        weight: 400,
+                        alpha: 0.06,
                         blur: 400,
                     },
                     {
                         y: 0.88,
-                        angle: -15,
+                        angle: -5,
                         rotateSpeed: -0.031,
                         speed: 0.35,
                         weight: 430,
                         alpha: 0.05,
-                        blur: 100,
+                        blur: 200,
                     },
                 ];
 
                 lines.forEach((line, i) => {
                     const xOffset =
                         (i % 2 === 0 ? scrollVal : -scrollVal) * line.speed;
-
-                    // CALCULAMOS EL NUEVO ÁNGULO DINÁMICO
-                    // Ángulo base + (scroll * velocidad de rotación)
                     const currentAngle =
                         line.angle + scrollVal * line.rotateSpeed;
 
@@ -341,18 +361,17 @@
                         window.innerWidth / 2 + xOffset,
                         window.innerHeight * line.y,
                     );
-
-                    // APLICAMOS LA ROTACIÓN DINÁMICA
                     ctx.rotate((currentAngle * Math.PI) / 180);
 
+                    const finalAlpha = line.alpha * alphaMult;
                     ctx.shadowBlur = line.blur;
-                    ctx.shadowColor = `rgba(160, 100, 255, ${line.alpha})`;
+                    ctx.shadowColor = `rgba(${r}, ${g}, ${b}, ${finalAlpha})`;
 
                     ctx.beginPath();
                     ctx.moveTo(-window.innerWidth * 2, 0);
                     ctx.lineTo(window.innerWidth * 2, 0);
 
-                    ctx.strokeStyle = `rgba(160, 100, 255, ${line.alpha})`;
+                    ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${finalAlpha})`;
                     ctx.lineWidth = line.weight;
                     ctx.lineCap = "butt";
 
@@ -451,6 +470,27 @@
                     mobileNav.classList.remove("active");
                 }
             });
+        </script>
+
+        <script>
+            window.onload = function () {
+                const grid = document.querySelector(".portfolio-grid");
+                const body = document.body;
+
+                if (grid) {
+                    grid.addEventListener("mouseenter", () => {
+                        body.classList.add("desaturate-strips");
+                    });
+
+                    grid.addEventListener("mouseleave", () => {
+                        body.classList.remove("desaturate-strips");
+                    });
+                } else {
+                    console.error(
+                        "No se ha encontrado .portfolio-grid en el HTML",
+                    );
+                }
+            };
         </script>
     </body>
 </html>
