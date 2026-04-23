@@ -1,495 +1,456 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AI Visual Storytelling Studio | HYPRFRAME</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        />
+        <link href="styles/index.css" rel="stylesheet" />
+    </head>
 
-  <!-- Google tag (gtag.js) -->
-<!--<script async src="https://www.googletagmanager.com/gtag/js?id=G-6MW201KGC9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <body>
+        <canvas id="bgCanvas" class="abstract-bg"></canvas>
 
-  gtag('config', 'G-6MW201KGC9');
-</script> -->
+        <header class="top-nav">
+            <div class="container header-content">
+                <a href="#" class="logo">
+                    <video class="logo-video" autoplay muted playsinline>
+                        <source
+                            src="assets/videos/logo_hyprframe543x125.webm"
+                            type="video/webm"
+                        />
+                    </video>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#AI-Generated">AI Generated</a></li>
+                        <li><a href="Legacy.html">Captured</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Visual Storytelling Studio – Generative Image & Video | HYPRFRAME</title>
-  <meta name="description" content="HYPRFRAME is a creative AI studio crafting cinematic videos, visual storytelling, and generative content for brands.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-      <!-- Font Awesome (versión segura sin atributo integrity) -->
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-      />
-
-  <link href="styles/index.css" rel="stylesheet">
-</head>
-<body>
-
-<div id="cookie-banner">
-  <p>
-    This site uses analytics cookies to improve experience.
-  </p>
-  <div class="cookie-actions">
-    <button id="acceptCookies">Accept</button>
-    <button id="rejectCookies">Reject</button>
-  </div>
-</div>
-
-<script>
-  const banner = document.getElementById('cookie-banner');
-
-  function loadAnalytics() {
-    const script = document.createElement('script');
-    script.src = "https://www.googletagmanager.com/gtag/js?id=G-6MW201KGC9";
-    script.async = true;
-    document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    window.gtag = gtag;
-
-    gtag('js', new Date());
-    gtag('config', 'G-6MW201KGC9');
-  }
-
-  // Mostrar banner si no hay decisión previa
-  if (!localStorage.getItem('cookieConsent')) {
-    setTimeout(() => {
-      banner.classList.add('show');
-    }, 600);
-  }
-
-  // ACEPTAR
-  document.getElementById('acceptCookies').onclick = () => {
-    localStorage.setItem('cookieConsent', 'accepted');
-    banner.classList.remove('show');
-    loadAnalytics();
-  };
-
-  // RECHAZAR
-  document.getElementById('rejectCookies').onclick = () => {
-    localStorage.setItem('cookieConsent', 'rejected');
-    banner.classList.remove('show');
-  };
-
-  // Si ya aceptó antes
-  if (localStorage.getItem('cookieConsent') === 'accepted') {
-    loadAnalytics();
-  }
-</script>
-
-<!-- Google Tag Manager (noscript) -->
-<!--<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVD2KDCZ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
-<!-- End Google Tag Manager (noscript) -->
-
-<!-- Menú fijo negro -->
-    <header class="top-nav">
-      <div class="container header-content">
-        <a href="#" class="logo">
-<video class="logo-video" autoplay muted playsinline>
-  <source src="assets/videos/logo_hyprframe543x125.webm" type="video/webm">
-  <!--<source src="assets/logo_hyprframe.mp4" type="video/mp4">-->
-</video>
-</a>
-<!--<header class="top-nav">
-  <div class="container header-content">
-    <a href="#" class="logo">
-  <img src="assets/logo_HYPRFRAME_03.png" alt="hyprframe Logo" />
-</a>-->
-
-
-    <nav>
-      <ul>
-        <li><a href="#AI Generated">AI Generated</a></li>
-        <li><a href="Legacy.html" class="plus">Captured</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<!-- Sección del hero con video -->
-<section class="hero-section">
-  <video autoplay muted loop playsinline class="background-video">
-    <source src="assets/videos/header-video_06.mp4" type="video/mp4">
-    Tu navegador no soporta video en HTML5.
-  </video>
-
-  <div class="video-overlay"></div>
-
-  <div class="hero-content">
-    <h1>AI VISUAL STORYTELLING</h1>
-    <!-- H1 “oculto” para SEO -->
-    <h1 class="sr-only">AI-Powered Cinematic Storytelling & Generative Visual Content</h1>
-    <p>su titulo aqui</p>
-    <!-- Scroll indicator -->
-<div class="scroll-indicator"></div>
-  </div>
-</section>
-
-
-
-<!-- Burger menu -->
-<div class="burger-menu" id="burgerMenu">
-  <div class="burger-line"></div>
-  <div class="burger-line"></div>
-  <div class="burger-line"></div>
-</div>
-
-<!-- Mobile Navigation -->
-<div class="mobile-nav" id="mobileNav">
-  <ul>
-    <li><a href="#AI Generated">AI Generated</a></li>
-    <li><a href="Legacy.html" class="plus">Captured</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</div>
-
-<main>
-    <!-- Sección de frase -->
-    <section class="quote-section">
-      <div class="container">
-        <p id="scrollFade">
-          When ideas meet the machine, the impossible takes form
-        </p>
-      </div>
-    </section>
-
-    <!-- Sección AI GENERATED -->
-    <section class="intro-section fade-in">
-      <div class="container">
-        <p class="intro-subtitle">AI GENERATED</p>
-      </div>
-    </section>
-
-  </section>
-
-  <section class="portfolio-section" id="AI Generated">
-    <div class="container">
-      <!--<h2 class="section-title">Featured Work</h2>-->
-      <div class="portfolio-grid">
-
-                  <!-- 🔹 NUEVO RECUADRO AÑADIDO AQUÍ -->
-        <a href="project-deep.html" class="portfolio-item fade-in">
-          <img src="assets/images/deep.jpg" alt="New AI Project">
-          <div class="portfolio-item-info">
-            <h3 class="portfolio-item-title">New AI Project</h3>
-            <p class="portfolio-item-category">AI Generated</p>
-          </div>
-        </a>
-                  <!-- 🔹 NUEVO RECUADRO AÑADIDO AQUÍ -->
-        <a href="project-polestar5.html" class="portfolio-item fade-in">
-          <img src="assets/images/polestar5.jpg" alt="New AI Project">
-          <div class="portfolio-item-info">
-            <h3 class="portfolio-item-title">New AI Project</h3>
-            <p class="portfolio-item-category">AI Generated</p>
-          </div>
-        </a>
-                          <!-- 🔹 NUEVO RECUADRO AÑADIDO AQUÍ -->
-        <a href="project-distant.html" class="portfolio-item fade-in">
-          <img src="assets/images/distant.jpg" alt="New AI Project">
-          <div class="portfolio-item-info">
-            <h3 class="portfolio-item-title">New AI Project</h3>
-            <p class="portfolio-item-category">AI Generated</p>
-          </div>
-        </a>
-        <a href="project-exit.html" class="portfolio-item fade-in">
-          <img src="assets/images/Hsbc.jpg" alt="Information Design">
-          <div class="portfolio-item-info">
-            <h3 class="portfolio-item-title">Info Graphics</h3>
-            <p class="portfolio-item-category">AI Generated</p>
-          </div>
-        </a>
-        <a href="project-stained.html" class="portfolio-item fade-in">
-          <img src="assets/images/Stained.jpg" alt="3D Creature Design">
-          <div class="portfolio-item-info">
-            <h3 class="portfolio-item-title">Creature Design</h3>
-            <p class="portfolio-item-category">AI Generated</p>
-          </div>
-        </a>
-        <a href="project-asics.html" class="portfolio-item fade-in">
-          <img src="assets/images/Asics.jpg" alt="Architectural Visualization">
-          <div class="portfolio-item-info">
-            <h3 class="portfolio-item-title">Modern Architecture</h3>
-            <p class="portfolio-item-category">AI Generated</p>
-          </div>
-        </a>
-          <!-- 🔹 NUEVO RECUADRO AÑADIDO AQUÍ -->
-        <a href="project-farewell.html" class="portfolio-item fade-in">
-          <img src="assets/images/farewell.jpg" alt="New AI Project">
-          <div class="portfolio-item-info">
-            <h3 class="portfolio-item-title">New AI Project</h3>
-            <p class="portfolio-item-category">AI Generated</p>
-          </div>
-        </a>
-        <a href="project-iad.html" class="portfolio-item fade-in">
-          <img src="assets/images/iad.jpg" alt="Portrait Art">
-          <div class="portfolio-item-info">
-            <h3 class="portfolio-item-title">Digital Portrait</h3>
-            <p class="portfolio-item-category">AI Generated</p>
-          </div>
-        </a>
-
-        <!-- 🔹 NUEVO RECUADRO AÑADIDO AQUÍ -->
-        <a href="project-ryuu.html" class="portfolio-item fade-in">
-          <img src="assets/images/Ryuu.jpg" alt="New AI Project">
-          <div class="portfolio-item-info">
-            <h3 class="portfolio-item-title">New AI Project</h3>
-            <p class="portfolio-item-category">AI Generated</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!--<section class="categories-section" id="categories">
-    <div class="container">
-      <h2 class="section-title">Explore Categories</h2>
-      <div class="categories-grid">
-        <a href="#" class="category-item fade-in" id="motion">Motion Graphics</a>
-        <a href="#" class="category-item fade-in" id="static">Static Design</a>
-        <a href="#" class="category-item fade-in">3D Modeling</a>
-        <a href="#" class="category-item fade-in">Visualization</a>
-        <a href="#" class="category-item fade-in">Branding</a>
-        <a href="#" class="category-item fade-in">Experiential</a>
-      </div>
-    </div>
-  </section>-->
-</main>
-
-<section id="about" class="full-section">
-  <h2>About</h2>
-<p>
-  <span>Exploring the intersection of human intuition and machine synthesis.</span>
-  <span>Specialized in AI-generated video and motion design, creating visual narratives that shape new perspectives and storytelling.</span>
-</p>
-</section>
-
-<section id="services" class="full-section">
-  <div class="services-container">
-    <h2 class="services-main-title">Services</h2>
-
-    <div class="services-grid">
-      <div class="services-column">
-        <h2 class="column-header">Branding & Consulting</h2>
-
-        <div class="service-item">
-          <h3>Brand Concept & Identity</h3>
-          <p>Building visual and conceptual frameworks that define how a brand feels, speaks, and moves.</p>
+        <div class="burger-menu" id="burgerMenu">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
         </div>
 
-        <div class="service-item">
-          <h3>Creative Consulting</h3>
-          <p>Guiding clients through the process of turning loose ideas into coherent, powerful visual statements.</p>
-        </div>
-      </div>
-
-      <div class="services-column">
-        <h2 class="column-header">Narrative & Creative</h2>
-
-        <div class="service-item">
-          <h3>Creative Concept Development</h3>
-          <p>Transforming abstract ideas into strong, original creative concepts that connect with audiences.</p>
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#AI-Generated">AI Generated</a></li>
+                <li><a href="Legacy.html">Captured</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
 
-        <div class="service-item">
-          <h3>Narrative Design</h3>
-          <p>Crafting stories that merge human emotion with visual innovation.</p>
-        </div>
+        <main>
+            <section class="hero-section">
+                <video autoplay muted loop playsinline class="background-video">
+                    <source
+                        src="assets/videos/header-video_06.mp4"
+                        type="video/mp4"
+                    />
+                </video>
+                <div class="video-overlay"></div>
+                <div class="hero-content">
+                    <h1>AI VISUAL STORYTELLING</h1>
+                    <p>su titulo aqui</p>
+                    <div class="scroll-indicator"></div>
+                </div>
+            </section>
 
-        <div class="service-item">
-          <h3>Art Direction & Visual Storytelling</h3>
-          <p>Designing the aesthetic and narrative core of each project through image, rhythm, and emotion.</p>
-        </div>
-      </div>
+            <section class="quote-section">
+                <div class="container">
+                    <p id="scrollFade">
+                        When ideas meet the machine, the impossible takes form
+                    </p>
+                </div>
+            </section>
 
-      <div class="services-column">
-        <h2 class="column-header">Production & AI</h2>
+            <section class="portfolio-section" id="AI-Generated">
+                <div class="container">
+                    <p
+                        class="intro-subtitle"
+                        style="text-align: center; margin-bottom: 40px"
+                    >
+                        AI GENERATED
+                    </p>
+                    <div class="portfolio-grid">
+                        <a href="project-deep.html" class="portfolio-item"
+                            ><img src="assets/images/deep.jpg" alt=""
+                        /></a>
+                        <a href="project-polestar5.html" class="portfolio-item"
+                            ><img src="assets/images/polestar5.jpg" alt=""
+                        /></a>
+                        <a href="project-distant.html" class="portfolio-item"
+                            ><img src="assets/images/distant.jpg" alt=""
+                        /></a>
+                        <a href="project-exit.html" class="portfolio-item"
+                            ><img src="assets/images/Hsbc.jpg" alt=""
+                        /></a>
+                        <a href="project-stained.html" class="portfolio-item"
+                            ><img src="assets/images/Stained.jpg" alt=""
+                        /></a>
+                        <a href="project-asics.html" class="portfolio-item"
+                            ><img src="assets/images/Asics.jpg" alt=""
+                        /></a>
+                        <a href="project-farewell.html" class="portfolio-item"
+                            ><img src="assets/images/farewell.jpg" alt=""
+                        /></a>
+                        <a href="project-iad.html" class="portfolio-item"
+                            ><img src="assets/images/iad.jpg" alt=""
+                        /></a>
+                        <a href="project-ryuu.html" class="portfolio-item"
+                            ><img src="assets/images/Ryuu.jpg" alt=""
+                        /></a>
+                    </div>
+                </div>
+            </section>
 
-        <div class="service-item">
-          <h3>Video Direction & Production</h3>
-          <p>From ideation to final cut — directing, shooting, and crafting visual pieces with cinematic precision.</p>
-        </div>
+            <section id="about" class="full-section">
+                <div class="container">
+                    <h2>About</h2>
+                    <p>
+                        Exploring the intersection of human intuition and
+                        machine synthesis. Specialized in AI-generated video and
+                        motion design, creating visual narratives that shape new
+                        perspectives and storytelling.
+                    </p>
+                </div>
+            </section>
 
-        <div class="service-item">
-          <h3>AI-Driven Image & Video Generation</h3>
-          <p>Exploring new visual territories through artificial intelligence — merging technology and creative intuition.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+            <section id="services" class="full-section">
+                <div class="services-container">
+                    <h2 class="services-main-title">Services</h2>
 
+                    <div class="services-grid">
+                        <div class="services-column">
+                            <h2 class="column-header">Branding & Consulting</h2>
 
-</section>
-<form id="contact-form" action="https://formspree.io/f/mzzkreow" method="POST">
-  <!-- aquí tu HTML con estilos y clases existentes -->
-</form>
+                            <div class="service-item">
+                                <h3>Brand Concept & Identity</h3>
+                                <p>
+                                    Building visual and conceptual frameworks
+                                    that define how a brand feels, speaks, and
+                                    moves.
+                                </p>
+                            </div>
 
-<section id="contact">
-  <div class="contact-wrapper">
-    <div class="contact-left">
-      <h2>Contact</h2>
+                            <div class="service-item">
+                                <h3>Creative Consulting</h3>
+                                <p>
+                                    Guiding clients through the process of
+                                    turning loose ideas into coherent, powerful
+                                    visual statements.
+                                </p>
+                            </div>
+                        </div>
 
-      <form id="contact-form" class="contact-form" action="https://formspree.io/f/mzzkreow" method="POST">
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="Your email" required>
-        <textarea name="message" placeholder="Your message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
+                        <div class="services-column">
+                            <h2 class="column-header">Narrative & Creative</h2>
 
-      <p id="form-status" style="color:#999; margin-top:10px;"></p>
-    </div>
+                            <div class="service-item">
+                                <h3>Creative Concept Development</h3>
+                                <p>
+                                    Transforming abstract ideas into strong,
+                                    original creative concepts that connect with
+                                    audiences.
+                                </p>
+                            </div>
 
-    <div class="contact-right">
-      <p class="contact-text"></p>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/company/hyprframe/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.instagram.com/dommanuel/?hl=es" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/34645795080" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      </div>
-    </div>
-  </div>
-</section>
+                            <div class="service-item">
+                                <h3>Narrative Design</h3>
+                                <p>
+                                    Crafting stories that merge human emotion
+                                    with visual innovation.
+                                </p>
+                            </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const form = document.getElementById("contact-form");
-  const status = document.getElementById("form-status");
+                            <div class="service-item">
+                                <h3>Art Direction & Visual Storytelling</h3>
+                                <p>
+                                    Designing the aesthetic and narrative core
+                                    of each project through image, rhythm, and
+                                    emotion.
+                                </p>
+                            </div>
+                        </div>
 
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
+                        <div class="services-column">
+                            <h2 class="column-header">Production & AI</h2>
 
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      message: form.message.value,
-    };
+                            <div class="service-item">
+                                <h3>Video Direction & Production</h3>
+                                <p>
+                                    From ideation to final cut — directing,
+                                    shooting, and crafting visual pieces with
+                                    cinematic precision.
+                                </p>
+                            </div>
 
-    try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+                            <div class="service-item">
+                                <h3>AI-Driven Image & Video Generation</h3>
+                                <p>
+                                    Exploring new visual territories through
+                                    artificial intelligence — merging technology
+                                    and creative intuition.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-      if (response.ok) {
-        status.textContent = "Message sent successfully!";
-        form.reset();
-      } else {
-        status.textContent = "There was an error sending your message.";
-      }
-    } catch (error) {
-      status.textContent = "Network error. Please try again.";
-    }
-  });
-});
-</script>
+            <section id="contact" class="contact-section">
+                <div class="contact-wrapper">
+                    <div class="contact-left">
+                        <h2>Contact</h2>
+                        <form
+                            class="contact-form"
+                            action="https://formspree.io/f/mzzkreow"
+                            method="POST"
+                        >
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Name"
+                                required
+                            />
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                                required
+                            />
+                            <textarea
+                                name="message"
+                                placeholder="Message"
+                                required
+                            ></textarea>
+                            <button type="submit">Send</button>
+                        </form>
+                    </div>
+                    <div class="contact-right">
+                        <div class="social-links">
+                            <a
+                                href="https://www.linkedin.com/company/hyprframe/"
+                                target="_blank"
+                                ><i class="fab fa-linkedin-in"></i
+                            ></a>
+                            <a
+                                href="https://www.instagram.com/dommanuel/?hl=es"
+                                target="_blank"
+                                ><i class="fab fa-instagram"></i
+                            ></a>
+                            <a href="https://wa.me/34645795080" target="_blank"
+                                ><i class="fab fa-whatsapp"></i
+                            ></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
 
+        <footer class="footer-bottom">
+            <p>&copy; 2025, All rights reserved to Hyprframe.</p>
+        </footer>
 
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025, All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+        <script>
+            const canvas = document.getElementById("bgCanvas");
+            const ctx = canvas.getContext("2d");
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const fadeText = document.getElementById("scrollFade");
+            function resize() {
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = window.innerWidth * dpr;
+                canvas.height = window.innerHeight * dpr;
+                ctx.scale(dpr, dpr);
+            }
 
-  const fadeInStart = 200;   // empieza a aparecer
-  const fadeInEnd = 600;     // completamente visible
-  const fadeOutStart = 800;  // empieza a desaparecer
-  const fadeOutEnd = 1000;   // totalmente invisible
+            window.addEventListener("resize", resize);
+            resize();
 
-  window.addEventListener("scroll", () => {
-    const y = window.scrollY;
-    let opacity = 0;
-    let translateY = 0; // desplazamiento vertical
+            function draw() {
+                const scrollVal = window.pageYOffset;
+                ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-    if (y <= fadeInStart) {
-      opacity = 0;
-      translateY = 20; // empieza ligeramente más abajo
-    } else if (y > fadeInStart && y < fadeInEnd) {
-      const progress = (y - fadeInStart) / (fadeInEnd - fadeInStart);
-      opacity = progress;
-      translateY = 20 - progress * 20; // sube hasta posición original
-    } else if (y >= fadeInEnd && y <= fadeOutStart) {
-      opacity = 1;
-      translateY = 0;
-    } else if (y > fadeOutStart && y < fadeOutEnd) {
-      const progress = (y - fadeOutStart) / (fadeOutEnd - fadeOutStart);
-      opacity = 1 - progress;
-      translateY = -progress * 20; // se eleva un poco al desaparecer
-    } else {
-      opacity = 0;
-      translateY = -20;
-    }
+                const lines = [
+                    {
+                        y: 0.15,
+                        angle: 12, // Ángulo inicial
+                        rotateSpeed: 0.02, // <--- Cuánto cambia al hacer scroll
+                        speed: 0.42,
+                        weight: 200,
+                        alpha: 0.04,
+                        blur: 50,
+                    },
+                    {
+                        y: 0.4,
+                        angle: -8,
+                        rotateSpeed: -0.05,
+                        speed: 0.45,
+                        weight: 350,
+                        alpha: 0.06,
+                        blur: 800,
+                    },
+                    {
+                        y: 0.65,
+                        angle: 4,
+                        rotateSpeed: 0.025,
+                        speed: 0.48,
+                        weight: 230,
+                        alpha: 0.07,
+                        blur: 400,
+                    },
+                    {
+                        y: 0.88,
+                        angle: -15,
+                        rotateSpeed: -0.031,
+                        speed: 0.35,
+                        weight: 430,
+                        alpha: 0.05,
+                        blur: 100,
+                    },
+                ];
 
-    fadeText.style.opacity = opacity;
-    fadeText.style.transform = `translateY(${translateY}px)`;
-  });
-});
-</script>
+                lines.forEach((line, i) => {
+                    const xOffset =
+                        (i % 2 === 0 ? scrollVal : -scrollVal) * line.speed;
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Links de Captured
-  const links = document.querySelectorAll('a[href="Legacy.html"]');
+                    // CALCULAMOS EL NUEVO ÁNGULO DINÁMICO
+                    // Ángulo base + (scroll * velocidad de rotación)
+                    const currentAngle =
+                        line.angle + scrollVal * line.rotateSpeed;
 
-  if (window.location.pathname.includes('Legacy.html')) {
-    links.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-      });
-      link.style.cursor = 'default';
-      link.style.opacity = 0.6;
-    });
-  }
-});
-</script>
+                    ctx.save();
+                    ctx.translate(
+                        window.innerWidth / 2 + xOffset,
+                        window.innerHeight * line.y,
+                    );
 
-<script>
-  const burger = document.querySelector('.burger-menu');
-  const mobileNav = document.querySelector('.mobile-nav');
+                    // APLICAMOS LA ROTACIÓN DINÁMICA
+                    ctx.rotate((currentAngle * Math.PI) / 180);
 
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('active');
-    mobileNav.classList.toggle('active');
-    document.body.classList.toggle('menu-open');
-  });
+                    ctx.shadowBlur = line.blur;
+                    ctx.shadowColor = `rgba(160, 100, 255, ${line.alpha})`;
 
-  // Cerrar al clicar un link
-  mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      burger.classList.remove('active');
-      mobileNav.classList.remove('active');
-      document.body.classList.remove('menu-open');
-    });
-  });
+                    ctx.beginPath();
+                    ctx.moveTo(-window.innerWidth * 2, 0);
+                    ctx.lineTo(window.innerWidth * 2, 0);
 
-  // Cerrar al clicar fuera
-  document.addEventListener('click', (e) => {
-    if (!burger.contains(e.target) && !mobileNav.contains(e.target)) {
-      burger.classList.remove('active');
-      mobileNav.classList.remove('active');
-      document.body.classList.remove('menu-open');
-    }
-  });
-</script>
+                    ctx.strokeStyle = `rgba(160, 100, 255, ${line.alpha})`;
+                    ctx.lineWidth = line.weight;
+                    ctx.lineCap = "butt";
 
-</body>
-</html>
+                    ctx.stroke();
+                    ctx.restore();
+                });
 
-</body>
+                requestAnimationFrame(draw);
+            }
+            window.addEventListener("scroll", () => {
+                const el = document.getElementById("scrollFade");
+                if (!el) return;
+
+                const rect = el.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // Calculamos la posición del texto respecto al centro de la pantalla
+                // 0.5 significa que está exactamente en el centro del viewport
+                const elementCenter = rect.top + rect.height / 2;
+                const scrollPercent = elementCenter / windowHeight;
+
+                // 1. EFECTO FADE (Opacidad)
+                // Aparece al acercarse al centro y desaparece al alejarse
+                let opacity = 1 - Math.abs(0.5 - scrollPercent) * 3;
+                el.style.opacity = Math.max(0, Math.min(1, opacity));
+
+                // 2. EFECTO MOVIMIENTO (El sutil desplazamiento)
+                // El texto subirá 40px mientras cruza la pantalla
+                // Si quieres que se mueva más, cambia el 40 por un 60
+                const yMove = (0.5 - scrollPercent) * 40;
+                el.style.transform = `translate3d(0, ${yMove}px, 0)`;
+            });
+            draw();
+        </script>
+        <script>
+            // Variables para el suavizado
+            let currentY = 0;
+            let targetY = 0;
+            let currentOpacity = 0;
+            let targetOpacity = 0;
+            const ease = 0.05; // Cuanto más bajo, más suave y "pesado" es el movimiento (0.01 a 0.1)
+
+            const updateScrollEffects = () => {
+                const el = document.getElementById("scrollFade");
+                if (!el) return;
+
+                const rect = el.parentElement.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // Calculamos dónde DEBERÍA estar (el objetivo)
+                const progress =
+                    (windowHeight - rect.top) / (windowHeight + rect.height);
+                const clampedProgress = Math.max(0, Math.min(1, progress));
+
+                // Objetivo de opacidad (campana)
+                let baseOpacity = Math.sin(clampedProgress * Math.PI * 1.2);
+                targetOpacity = Math.sin(clampedProgress * Math.PI * 1.2) * 0.5;
+
+                // Objetivo de movimiento (puedes subir el 120 para más recorrido)
+                targetY = 60 - clampedProgress * 120;
+
+                // --- LA MAGIA DEL EASE ---
+                // Aplicamos la fórmula: posición = posición + (objetivo - posición) * suavizado
+                currentY += (targetY - currentY) * ease;
+                currentOpacity += (targetOpacity - currentOpacity) * ease;
+
+                // Aplicamos los valores suavizados
+                el.style.opacity = Math.max(0, Math.min(1, currentOpacity));
+                el.style.transform = `translate3d(0, ${currentY}px, 0)`;
+
+                requestAnimationFrame(updateScrollEffects);
+            };
+
+            requestAnimationFrame(updateScrollEffects);
+
+            // Burger menu
+            const burgerMenu = document.getElementById("burgerMenu");
+            const mobileNav = document.getElementById("mobileNav");
+            burgerMenu.addEventListener("click", () => {
+                burgerMenu.classList.toggle("active");
+                mobileNav.classList.toggle("active");
+            });
+            const mobileNavLinks = mobileNav.querySelectorAll("a");
+            mobileNavLinks.forEach((link) => {
+                link.addEventListener("click", () => {
+                    burgerMenu.classList.remove("active");
+                    mobileNav.classList.remove("active");
+                });
+            });
+            document.addEventListener("click", (e) => {
+                if (
+                    !burgerMenu.contains(e.target) &&
+                    !mobileNav.contains(e.target)
+                ) {
+                    burgerMenu.classList.remove("active");
+                    mobileNav.classList.remove("active");
+                }
+            });
+        </script>
+    </body>
 </html>
