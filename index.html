@@ -448,28 +448,27 @@
             requestAnimationFrame(updateScrollEffects);
 
             // Burger menu
-            const burgerMenu = document.getElementById("burgerMenu");
-            const mobileNav = document.getElementById("mobileNav");
-            burgerMenu.addEventListener("click", () => {
-                burgerMenu.classList.toggle("active");
-                mobileNav.classList.toggle("active");
-            });
-            const mobileNavLinks = mobileNav.querySelectorAll("a");
-            mobileNavLinks.forEach((link) => {
-                link.addEventListener("click", () => {
-                    burgerMenu.classList.remove("active");
-                    mobileNav.classList.remove("active");
-                });
-            });
-            document.addEventListener("click", (e) => {
-                if (
-                    !burgerMenu.contains(e.target) &&
-                    !mobileNav.contains(e.target)
-                ) {
-                    burgerMenu.classList.remove("active");
-                    mobileNav.classList.remove("active");
-                }
-            });
+const burgerMenu = document.getElementById("burgerMenu");
+const mobileNav = document.getElementById("mobileNav");
+const body = document.body;
+
+burgerMenu.addEventListener("click", () => {
+    burgerMenu.classList.toggle("active");
+    mobileNav.classList.toggle("active");
+    
+    // ESTA ES LA LÍNEA QUE ACTIVA EL DESVANECIMIENTO
+    body.classList.toggle("menu-open");
+});
+
+// También para cuando hagas clic en un enlace del menú
+const mobileNavLinks = mobileNav.querySelectorAll("a");
+mobileNavLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+        burgerMenu.classList.remove("active");
+        mobileNav.classList.remove("active");
+        body.classList.remove("menu-open"); // Quitamos el oscurecimiento
+    });
+});
         </script>
 
         <script>
