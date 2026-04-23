@@ -281,6 +281,17 @@ main {
     transform: scale(1.04);
 }
 
+.portfolio-item:hover {
+    /* 0.5 es el 50% de opacidad.
+       Acércate a 1 para que sea más sólido o a 0.1 para que sea casi invisible. */
+    border: 1px solid rgba(163, 223, 2, 0.4) !important;
+
+    /* Un truco estético: añade un resplandor muy suave con el mismo color */
+    box-shadow: 0 0 10px rgba(163, 223, 2, 0.2);
+
+    transition: all 0.3s ease;
+}
+
 /* === FOOTER === */
 footer {
     padding: 80px 0;
