@@ -95,7 +95,7 @@ main {
 
 .intro-section {
     text-align: center;
-    padding: 40px 0 120px;
+    padding: 118px 0 120px;
     border-bottom: 0px solid #1a1a1a;
 }
 
@@ -122,54 +122,75 @@ main {
     text-transform: uppercase;
 }
 
-/* === GRID PORTFOLIO === */
-.portfolio-section {
-    padding: 80px 0;
-}
-
-.section-title {
-    font-size: 24px;
-    font-weight: 300;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 60px;
-    text-align: center;
-    color: #888;
-}
-
+/* === GRID PORTFOLIO UNIFICADO === */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
     gap: 7px;
+    margin-top: -6px !important;
     margin-bottom: 80px;
 }
 
+/* === REEMPLAZA TU BLOQUE COMPLETO POR ESTE === */
 .portfolio-item {
-    background-color: #111;
+    position: relative;
+    background-color: #000;
     border: 1px solid #1a1a1a;
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.3s ease;
     aspect-ratio: 16/10;
     text-decoration: none;
-    color: inherit;
     display: block;
+    z-index: 1;
+
+    /* CURVA MEJORADA: Más lenta (0.6s) y con frenada elástica técnica */
+    transition:
+        transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+        border-color 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+        box-shadow 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
 }
 
-.portfolio-item:hover {
-    border-color: #333;
-    transform: translateY(-5px);
+.portfolio-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #6e0f23; /* Tu granate */
+    mix-blend-mode: screen;
+    opacity: 0.4;
+    z-index: 2;
+    transition: opacity 0.6s ease-out !important;
 }
 
 .portfolio-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    filter: saturate(0.8) brightness(0.6);
+    /* La imagen debe ser un poco más lenta para no "chocar" visualmente */
+    transition:
+        transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1),
+        filter 0.8s ease-out !important;
+}
+
+/* === EL HOVER === */
+.portfolio-item:hover {
+    border: 1px solid rgba(163, 223, 2, 0.4) !important;
+    box-shadow: 0 0 20px rgba(163, 223, 2, 0.15);
+    transform: translateY(
+        -10px
+    ) !important; /* Un poco más de recorrido para que se note la suavidad */
+    z-index: 10;
+}
+
+.portfolio-item:hover::before {
+    opacity: 0;
 }
 
 .portfolio-item:hover img {
-    transform: scale(1.05);
+    filter: saturate(1.1) brightness(1.1);
+    transform: scale(
+        1.035
+    ) !important; /* Zoom muy sutil para evitar saltos de píxel */
 }
 
 /* === FOOTER === */
@@ -515,24 +536,9 @@ html {
 
 /* === MOBILE MENU OVERLAY === */
 body.menu-open::after {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 900;
-    }
-
-/* ---.close {
-    position: absolute;
-    top: 335px;
-    right: 165px;
-    color: #5e5e5e;
-    font-size: 22px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: opacity 0.2s;
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 900;
 }
-
-.close:hover {
-    opacity: 0.6;
-}--- */
