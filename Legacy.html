@@ -229,6 +229,21 @@
                         iframe.src = "";
                     }
                 };
+
+                // --- 3. SENSOR DE HOVER PARA DESATURAR LAS BANDAS ---
+                const portfolioGrid = document.querySelector(".portfolio-grid");
+
+                if (portfolioGrid) {
+                    // Cuando el ratón ENTRA en la caja del grid, encendemos el modo gris
+                    portfolioGrid.addEventListener("mouseenter", () => {
+                        document.body.classList.add("desaturate-strips");
+                    });
+
+                    // Cuando el ratón SALE del grid, apagamos el modo gris
+                    portfolioGrid.addEventListener("mouseleave", () => {
+                        document.body.classList.remove("desaturate-strips");
+                    });
+                }
             }); // Y AQUÍ CERRAMOS TODO CORRECTAMENTE
         </script>
     </body>
