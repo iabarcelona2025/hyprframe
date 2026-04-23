@@ -446,3 +446,12 @@ body.menu-open::after {
         display: none !important;
     }
 }
+
+/* === EFECTO DESATURACIÓN AL HACER HOVER EN EL GRID === */
+body.desaturate-strips .strip {
+    /* Forzamos el gris total y machacamos cualquier otro filtro */
+    filter: grayscale(100%) !important;
+
+    /* Las apagamos para que las fotos sean las protagonistas */
+    opacity: 0.2 !important;
+}
