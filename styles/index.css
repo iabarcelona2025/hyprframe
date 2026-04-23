@@ -1280,3 +1280,30 @@ body.desaturate-strips .strip {
     border-color: rgba(100, 100, 100, 0.2) !important;
     opacity: 0.1 !important;
 }
+
+/* Capa de oscurecimiento */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Oscuridad del 70% */
+    z-index: 999; /* Justo debajo del menú móvil (1000) */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+/* Cuando el menú está abierto, la capa aparece */
+body.menu-open::after {
+    opacity: 1;
+    pointer-events: auto; /* Bloquea clics en el fondo */
+}
+
+/* Opcional: Desenfocar el fondo para un toque más premium */
+body.menu-open main {
+    filter: blur(5px);
+    transition: filter 0.5s ease;
+}
