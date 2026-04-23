@@ -417,34 +417,38 @@ footer {
 
 /* === MOBILE NAV === */
 .mobile-nav {
-    display: none;
     position: fixed;
     top: 80px;
-    right: -100%;
-    width: 60vw;
-    height: 100vh;
-    right: -60vw;
-    background: linear-gradient(
-        135deg,
-        rgba(10, 10, 10, 0.8) 0%,
-        rgba(17, 17, 17, 0.8) 100%
-    );
+    right: -100%; /* Estado cerrado */
+    width: 60vw;  /* Dale un poco más de ancho para que el efecto luzca */
+    height: 50vh;
+    background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(20px);
     z-index: 1000;
     transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    padding-top: 100px;
-}
 
+    /* === LA FORMA TRAPEZOIDAL === */
+    /* Creamos los 4 puntos:
+       Top-Left (0% 0%), Top-Right (100% 0%),
+       Bottom-Right (80% 100%), Bottom-Left (20% 100%) */
+       clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
+
+    /* Centramos el contenido para que no se corte con la forma */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .mobile-nav.active {
     right: 0;
 }
 
 .mobile-nav ul {
     list-style: none;
-    gap: 24px; /* <-- ajusta este valor para más o menos espacio */
-    padding: 0 40px;
+    gap: 40px; /* <-- ajusta este valor para más o menos espacio */
+    padding: 0 70px;
     display: flex;
     flex-direction: column;
+    margin-top: 70px; /* Sube este número (ej. 120px) si quieres que bajen más */
 }
 
 .mobile-nav a {
