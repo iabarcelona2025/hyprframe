@@ -1,4 +1,4 @@
-/* === RESETEO === */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -7,49 +7,132 @@
 
 body {
     background-color: #000;
-    color: #000;
+    color: #fff;
     font-family: "Inter", sans-serif;
-    font-weight: 300;
-    line-height: 1.6;
     overflow-x: hidden;
 }
 
+/* === EL CONTENEDOR PRINCIPAL QUE FALTABA === */
 .container {
     max-width: 1600px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* === HERO CON VIDEO === */
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.background-video {
-    position: absolute;
+/* EL FONDO (BANDAS) */
+.abstract-bg {
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Detrás de todo */
+    background-color: #000;
+    overflow: hidden;
+    pointer-events: none; /* Importante: que no bloquee el mouse */
 }
 
-/* ===== MENÚ NEGRO FIJO ===== */
+/* === EL FONDO Y LAS BANDAS === */
+.abstract-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-color: #000;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.strip {
+    position: absolute;
+    width: 250vw;
+    left: -75vw;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(110, 15, 35, 0.7),
+        transparent
+    );
+    transition:
+        filter 0.5s ease,
+        opacity 0.5s ease;
+    will-change: transform;
+}
+
+/* === TU PANEL DE CONTROL INDIVIDUAL === */
+.strip:nth-child(1) {
+    top: 10%;
+    height: 350px;
+    filter: blur(0.5px);
+    opacity: 0.2;
+
+    /* EL JS LEERÁ ESTAS DOS LÍNEAS: */
+    --angle: 45deg;
+    --speed: 1.25;
+
+    /* Posición estática de seguridad inicial */
+    transform: translate3d(0, 0, 0) rotate(15deg);
+}
+
+.strip:nth-child(2) {
+    top: 15%;
+    height: 300px;
+    filter: blur(0.6px);
+    opacity: 0.2;
+
+    --angle: -10deg;
+    --speed: 0.5;
+    transform: translate3d(0, 0, 0) rotate(-60deg);
+}
+
+.strip:nth-child(3) {
+    top: 25%;
+    height: 300px;
+    filter: blur(0.8px);
+    opacity: 0.1;
+
+    --angle: 25deg;
+    --speed: 3.75;
+    transform: translate3d(0, 0, 0) rotate(25deg);
+}
+
+.strip:nth-child(4) {
+    top: 85%;
+    height: 500px;
+    filter: blur(0.1px);
+    opacity: 0.2;
+
+    --angle: -20deg;
+    --speed: 1;
+    transform: translate3d(0, 0, 0) rotate(-20deg);
+}
+
+/* HEADER */
+/* === MENÚ NEGRO FIJO (POSICIÓN WEB 1) === */
 .top-nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 80px;
-    background: #000; /* Fondo negro sólido */
-    padding: 0 40px;
+    background: #000;
+    padding: 0 40px; /* Margen exterior original */
     z-index: 1000;
     display: flex;
     align-items: center;
+}
+
+.top-nav::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px; /* La línea superior decorativa */
+    background-color: #6e0f23;
+    z-index: 2000;
 }
 
 .header-content {
@@ -57,12 +140,11 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    /* Al usar la clase .container en el HTML, ya no hace falta forzar los márgenes aquí */
 }
 
 .logo img {
-    height: 44px; /* ajusta el tamaño a tu gusto */
-    width: auto; /* mantiene proporción */
-    display: block;
+    height: 40px;
 }
 
 .top-nav nav ul {
@@ -80,6 +162,7 @@ body {
     font-family: "Inter", sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
+    text-transform: none; /* Quitamos las mayúsculas forzadas */
     transition: color 0.4s;
 }
 
@@ -87,78 +170,59 @@ body {
     color: #ffff;
 }
 
-/* === MAIN CONTENT === */
+/* GRID (EL HOVER DE LA WEB 1) */
 main {
     margin-top: 100px;
-    padding: 40px 0;
+    position: relative;
+    z-index: 1;
 }
-
+/* === ESPACIADO DEL TÍTULO CAPTURED WORKS === */
 .intro-section {
     text-align: center;
-    padding: 118px 0 120px;
-    border-bottom: 0px solid #1a1a1a;
-}
-
-.intro-title {
-    display: none;
-}
-
-.intro-title {
-    font-size: clamp(2.5rem, 8vw, 6rem);
-    font-weight: 300;
-    letter-spacing: -2px;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, #ffffff 0%, #888 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    /* padding-top: lo separa del menú de arriba */
+    padding-top: 100px;
+    /* padding-bottom: lo separa de los cuadros del grid */
+    padding-bottom: 80px;
 }
 
 .intro-subtitle {
+    font-family: "Inter", sans-serif;
     font-size: 18px;
     color: #666;
     font-weight: 300;
     letter-spacing: 2px;
     text-transform: uppercase;
+    margin: 0;
 }
 
-/* === GRID PORTFOLIO UNIFICADO === */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-    gap: 7px;
-    margin-top: -6px !important;
-    margin-bottom: 80px;
+    gap: 10px;
+    padding: 0 20px 80px;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
-/* === REEMPLAZA TU BLOQUE COMPLETO POR ESTE === */
 .portfolio-item {
     position: relative;
-    background-color: #000;
+    background: #000;
     border: 1px solid #1a1a1a;
-    overflow: hidden;
-    cursor: pointer;
     aspect-ratio: 16/10;
-    text-decoration: none;
+    overflow: hidden;
     display: block;
-    z-index: 1;
-
-    /* CURVA MEJORADA: Más lenta (0.6s) y con frenada elástica técnica */
-    transition:
-        transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
-        border-color 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
-        box-shadow 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .portfolio-item::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-color: #6e0f23; /* Tu granate */
+    background: #6e0f23;
     mix-blend-mode: screen;
     opacity: 0.4;
     z-index: 2;
-    transition: opacity 0.6s ease-out !important;
+    transition: 0.5s;
 }
 
 .portfolio-item img {
@@ -166,19 +230,14 @@ main {
     height: 100%;
     object-fit: cover;
     filter: saturate(0.8) brightness(0.6);
-    /* La imagen debe ser un poco más lenta para no "chocar" visualmente */
-    transition:
-        transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1),
-        filter 0.8s ease-out !important;
+    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* === EL HOVER === */
+/* EFECTO HOVER WEB 1 */
 .portfolio-item:hover {
-    border: 1px solid rgba(163, 223, 2, 0.4) !important;
-    box-shadow: 0 0 20px rgba(163, 223, 2, 0.15);
-    transform: translateY(
-        -10px
-    ) !important; /* Un poco más de recorrido para que se note la suavidad */
+    transform: translateY(-10px);
+    border: 1px solid rgba(163, 223, 2, 0.5) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     z-index: 10;
 }
 
@@ -188,59 +247,56 @@ main {
 
 .portfolio-item:hover img {
     filter: saturate(1.1) brightness(1.1);
-    transform: scale(
-        1.035
-    ) !important; /* Zoom muy sutil para evitar saltos de píxel */
+    transform: scale(1.04);
 }
 
-/* === FOOTER === */
-footer {
-    padding: 80px 0;
-    border-top: 1px solid #1a1a1a;
-    text-align: center;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.footer-section h3 {
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    color: #ffffff;
-}
-
-.footer-section p,
-.footer-section a {
-    font-size: 14px;
-    color: #666;
-    text-decoration: none;
-    line-height: 1.8;
-    transition: color 0.3s ease;
-}
-
-.footer-section a:hover {
-    color: #ffffff;
-}
-
-.footer-bottom {
-    text-align: center;
+/* MODAL */
+.video-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
     justify-content: center;
-    display: flex;
-    padding-top: 40px;
-    border-top: 1px solid #1a1a1a;
-    font-size: 12px;
-    color: #444;
-    letter-spacing: 1px;
+    align-items: center;
 }
 
-/* === BURGER MENU === */
+.video-modal-content {
+    width: 90%;
+    max-width: 1000px;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-description {
+    color: #888;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* === BURGER MENU Y MOBILE NAV === */
 .burger-menu {
     display: none;
     flex-direction: column;
@@ -264,33 +320,32 @@ footer {
 .burger-menu.active .burger-line:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px);
 }
-
 .burger-menu.active .burger-line:nth-child(2) {
     opacity: 0;
 }
-
 .burger-menu.active .burger-line:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* === MOBILE NAV === */
+/* === MOBILE NAV (DISEÑO ORIGINAL WEB 1: TRAPEZOIDE) === */
 .mobile-nav {
-    display: none;
     position: fixed;
-    top: 7.9vh;
-    right: -100%;
-    width: 60vw;
-    height: 100vh;
-    right: -60vw;
-    background: linear-gradient(
-        135deg,
-        rgba(10, 10, 10, 0.8) 0%,
-        rgba(17, 17, 17, 0.8) 100%
-    );
+    top: 80px;
+    right: -100%; /* Estado cerrado */
+    width: 60vw; /* Un poco más de ancho para que el efecto luzca */
+    height: 80vh;
+    background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(20px);
     z-index: 1000;
     transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    padding-top: 100px;
+
+    /* === LA FORMA TRAPEZOIDAL ORIGINAL === */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
+
+    /* Centramos el contenido para que no se corte con la forma */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .mobile-nav.active {
@@ -299,12 +354,14 @@ footer {
 
 .mobile-nav ul {
     list-style: none;
-    gap: 24px; /* <-- ajusta este valor para más o menos espacio */
-    padding: 0 40px;
+    gap: 40px;
+    padding: 0 70px;
     display: flex;
     flex-direction: column;
+    margin-top: 70px;
 }
 
+/* === TIPOGRAFÍA ORIGINAL DE LOS ENLACES === */
 .mobile-nav a {
     color: #888;
     text-decoration: none;
@@ -322,6 +379,7 @@ footer {
     padding-left: 20px;
 }
 
+/* El famoso puntito decorativo */
 .mobile-nav a::before {
     content: "· ";
     opacity: 0.8;
@@ -332,213 +390,59 @@ footer {
     opacity: 0.8;
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 768px) {
-    nav {
-        display: none;
-    }
-
-    .burger-menu {
-        display: flex;
-    }
-
-    .mobile-nav {
-        display: block;
-    }
-
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .categories-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .intro-section {
-        padding: 60px 0 80px;
-    }
-
-    .intro-title {
-        font-size: clamp(2rem, 10vw, 4rem);
-    }
-
-    .container {
-        padding: 0 15px;
-    }
-}
-
-@media (min-width: 769px) {
-    .mobile-nav {
-        display: none !important;
-    }
-
-    .burger-menu {
-        display: none !important;
-    }
-}
-
-/* === ANIMACIONES === */
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 0.8s ease forwards;
-    pointer-events: auto;
-    transition: none;
-}
-
-.fade-in.show {
-    opacity: 1;
-    pointer-events: auto; /* <- permite clicks */
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
-/* Línea decorativa encima del menú fijo */
-.top-nav::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background-color: #6e0f23; /* color cálido */
-    z-index: 2000; /* encima del menú */
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-#scrollFade {
-    opacity: 0;
-    transition: opacity 1s ease-out;
-}
-#scrollFade.visible {
-    opacity: 1;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .contact-container {
-        padding: 40px 30px;
-    }
-}
-
-.modal {
-    display: none; /* oculto por defecto */
-    position: fixed;
-    z-index: 2000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    display: flex; /* flexbox */
-    justify-content: center; /* centra horizontal */
-    align-items: center; /* centra vertical */
-}
-.video-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-}
-
-.video-modal-content {
-    background-color: #0f0f0f;
-    border-radius: 0px;
-    max-width: 900px;
-    width: 120%;
-    padding: 1px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-}
-
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    border-radius: 0px;
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.video-description {
-    margin-top: 5px;
-    color: #5e5e5e;
-    font-family: "Inter", sans-serif;
-    font-size: 0.85rem;
-    line-height: 1.9;
-    text-align: center;
-}
-
-.close {
-    color: rgba(0, 0, 0, 0.85);
-    float: right;
-    font-size: 0px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-bottom: 0px;
-}
-/* --- POP-UP VIDEO CON SINOPSIS --- */
-
-.modal-content {
-    background-color: #111;
-    padding: 3px;
-    border-radius: 8px;
-    max-width: auto;
-    width: auto;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* relación 16:9 */
-    height: 0;
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-.video-container iframe {
-    position: absolute;
-    width: 100%;
-    height: 450px; /* o lo que necesites */
-    border: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.video-synopsis {
-    color: #ccc;
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-/* === MOBILE MENU OVERLAY === */
 body.menu-open::after {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 900;
+}
+
+@media (max-width: 768px) {
+    .top-nav nav {
+        display: none;
+    }
+    .burger-menu {
+        display: flex;
+    }
+    .mobile-nav {
+        display: block;
+    }
+}
+
+/* === RESPONSIVE: INTERCAMBIO DE MENÚS === */
+
+/* Para pantallas de MÓVIL y TABLET (hasta 768px) */
+@media (max-width: 768px) {
+    /* Ocultamos el menú de texto de arriba */
+    .top-nav nav {
+        display: none;
+    }
+
+    /* Mostramos el botón de la hamburguesa */
+    .burger-menu {
+        display: flex;
+    }
+
+    /* Preparamos el menú móvil (aunque esté oculto a la derecha) */
+    .mobile-nav {
+        display: flex;
+    }
+}
+
+/* Para pantallas de ESCRITORIO (769px en adelante) */
+@media (min-width: 769px) {
+    /* Forzamos la desaparición total del menú móvil y el botón, incluso si estaban abiertos */
+    .mobile-nav {
+        display: none !important;
+    }
+
+    .burger-menu {
+        display: none !important;
+    }
+
+    /* Si estiras la ventana con el menú abierto, esto quita el fondo oscuro */
+    body::after {
+        display: none !important;
+    }
 }
