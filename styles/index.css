@@ -273,28 +273,26 @@ main {
     margin-bottom: 80px;
 }
 
+/* === PORTFOLIO UNIFICADO CON OPACIDAD 0.4 === */
 .portfolio-item {
     position: relative;
     border: 1px solid #1a1a1a;
     overflow: hidden;
     cursor: pointer;
-    transition: border-color 0.5s ease, transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
     aspect-ratio: 16/10;
     text-decoration: none;
     display: block;
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    z-index: 1;
 }
 
-/* Capa Lila (Overlay) */
 .portfolio-item::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #362961; /* El lila de tu marca */
-    mix-blend-mode: screen; /* Mezcla el color con la imagen */
-    opacity: 0.4; /* Intensidad del lila inicial */
+    inset: 0;
+    background-color: #362961;
+    mix-blend-mode: screen;
+    opacity: 0.4;
     z-index: 2;
     transition: opacity 0.6s ease;
 }
@@ -303,36 +301,27 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: saturate(0.8) brightness(0.6); /* Imagen casi B/N bajo el lila */
-    transition: filter 0.7s cubic-bezier(0.2, 1, 0.3, 1), transform 0.7s cubic-bezier(0.2, 1, 0.3, 1);
-    will-change: filter, transform;
+    filter: saturate(0.8) brightness(0.6);
+    transition: all 0.7s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-/* HOVER: Quitamos el lila y revelamos color real */
-.portfolio-item:hover::before {
-    opacity: 0; /* Desaparece el tinte lila */
-}
-
+/* AQUÍ ESTÁ TU AJUSTE DE 0.4 */
 .portfolio-item:hover {
-    border-color: #A3DF02; /* Borde lila más brillante al activar */
+    /* Usamos el verde neón pero con la transparencia que te gusta */
+    border: 1px solid rgba(163, 223, 2, 0.4) !important;
     transform: translateY(-8px);
+    /* El resplandor también lo bajamos para que sea coherente */
+    box-shadow: 0 0 10px rgba(163, 223, 2, 0.2);
     z-index: 10;
+}
+
+.portfolio-item:hover::before {
+    opacity: 0;
 }
 
 .portfolio-item:hover img {
     filter: saturate(1.1) brightness(1.1);
     transform: scale(1.04);
-}
-
-.portfolio-item:hover {
-    /* 0.5 es el 50% de opacidad.
-       Acércate a 1 para que sea más sólido o a 0.1 para que sea casi invisible. */
-    border: 1px solid rgba(163, 223, 2, 0.4) !important;
-
-    /* Un truco estético: añade un resplandor muy suave con el mismo color */
-    box-shadow: 0 0 10px rgba(163, 223, 2, 0.2);
-
-    transition: all 0.3s ease;
 }
 
 /* === FOOTER === */
@@ -421,7 +410,7 @@ footer {
     top: 80px;
     right: -100%; /* Estado cerrado */
     width: 60vw;  /* Dale un poco más de ancho para que el efecto luzca */
-    height: 65vh;
+    height: 80vh;
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(20px);
     z-index: 1000;
@@ -814,7 +803,7 @@ html {
     font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #cccccc;
+    color: #fff;
     margin-bottom: 40px;
     font-weight: 600;
 }
@@ -824,7 +813,7 @@ html {
     font-size: calc(1rem + 2px);
     margin-bottom: 10px;
     /* CAMBIA ESTO: */
-    color: #eeeeee; /* Este es un gris medio puro. Si quieres que sea más claro usa #aaa */
+    color: #fff; /* Este es un gris medio puro. Si quieres que sea más claro usa #aaa */
 }
 
 /* Ajuste para móvil */
@@ -1311,3 +1300,4 @@ body.menu-open main {
     filter: blur(5px);
     transition: filter 0.5s ease;
 }
+
