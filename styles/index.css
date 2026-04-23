@@ -1081,7 +1081,7 @@ html {
             ),
             linear-gradient(to left, rgba(34, 30, 77, 0.9) 10%, #362961 100%) !important;
 
-        background-color: #362961 !important; /* Color de respaldo para que no sea negro */
+        background-color: #000000 !important; /* Color de respaldo para que no sea negro */
         background-blend-mode: overlay !important; /* 'normal' es más estable en móviles que 'overlay' */
 
         padding: 60px 0 !important;
