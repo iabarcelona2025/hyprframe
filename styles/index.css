@@ -1,4 +1,43 @@
 /* === RESETEO === */
+/* === ESTO ES LO QUE TE FALTA === */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    background-color: #000000 !important; /* Fuerza el negro */
+    color: #ffffff;
+}
+
+/* === EL CONTENEDOR DE LAS BANDAS === */
+.abstract-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    background-color: #000000;
+    pointer-events: none;
+}
+
+.strip {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, rgba(160, 100, 255, 0.8), transparent);
+    width: 300vw;
+    height: 250px;
+    left: -100vw;
+    filter: blur(80px);
+    will-change: transform;
+}
+
+/* Posiciones fijas para que se vean sí o sí */
+.strip:nth-child(1) { top: 10%; transform: rotate(15deg); }
+.strip:nth-child(2) { top: 40%; transform: rotate(-10deg); }
+.strip:nth-child(3) { top: 70%; transform: rotate(5deg); }
+.strip:nth-child(4) { top: 85%; transform: rotate(-20deg); }
+
 * {
     margin: 0;
     padding: 0;
@@ -6,12 +45,12 @@
 }
 
 body {
-    background-color: #000;
-    color: #000;
+    background-color: transparent !important; /* Quitamos el negro de aquí */
+    color: #fff;
     font-family: "Inter", sans-serif;
-    font-weight: 300;
-    line-height: 1.6;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -146,8 +185,9 @@ body {
 
 /* === MAIN CONTENT === */
 main {
-    margin-top: 100px;
-    padding: 40px 0;
+    background-color: transparent !important;
+    position: relative;
+    z-index: 1; /* El contenido flota sobre el fondo */
 }
 
 .intro-section {
@@ -177,6 +217,9 @@ main {
 
 /* === GRID PORTFOLIO CON TONO LILA === */
 .portfolio-section {
+    background-color: transparent !important;
+    position: relative;
+    z-index: 1; /* El contenido siempre por encima del fondo (z-index: 0) */
     padding: 80px 0;
 }
 
@@ -189,7 +232,6 @@ main {
 
 .portfolio-item {
     position: relative;
-    background-color: #050505;
     border: 1px solid #1a1a1a;
     overflow: hidden;
     cursor: pointer;
@@ -279,7 +321,7 @@ footer {
     text-align: center;
     justify-content: center;
     display: flex;
-    padding-top: 200px;
+    padding-top: 170px;
     border-top: 1px solid #1a1a1a;
     font-size: 12px;
     color: #444;
@@ -426,10 +468,12 @@ footer {
 
 /* ===== HERO VIDEO ===== */
 .hero-section {
+    background-color: transparent !important;
     position: relative;
     height: calc(85vh - 20px); /* Pantalla completa menos menú */
     margin-top: 80px; /* Espacio para que no tape menú */
     overflow: hidden;
+    z-index: 1; /* El contenido siempre por encima del fondo (z-index: 0) */
 }
 
 .background-video {
@@ -478,15 +522,17 @@ html {
 
 /* === SECCIONES VERTICALES A PANTALLA COMPLETA === */
 .full-section {
-    min-height: 80vh; /* ocupa toda la altura visible */
+    background: transparent !important;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* centra verticalmente */
-    align-items: center; /* centra horizontalmente */
+    justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 40px;
-    background-color: #000000; /* o el color que prefieras */
-    border-bottom: 1px solid #1a1a1a; /* separador sutil entre secciones */
+    border-bottom: 0px solid #1a1a1a;
+    position: relative;
+    z-index: 1; /* El contenido siempre por encima del fondo (z-index: 0) */
 }
 
 .full-section h2 {
@@ -502,16 +548,26 @@ html {
 }
 
 #about {
-    padding-top: 0px; /* espacio arriba */
-    padding-bottom: 260px; /* espacio abajo */
-    background: linear-gradient(135deg, #ffffff 0%, #888 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background: transparent !important; /* Aseguramos transparencia */
+    -webkit-text-fill-color: initial; /* Corregimos el error del clip-text anterior */
+    scroll-margin-top: 10vh;
 }
 
-#about {
-    scroll-margin-top: 210px; /* ajusta el valor */
+/* Aplicamos el degradado de SERVICES al título de ABOUT */
+#about h2 {
+    background: linear-gradient(to bottom, #ffffff 10%, #c1c1c1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback */
+    display: inline-block; /* Ayuda a que el degradado no se corte */
+}
+
+/* Si quieres que el párrafo sea blanco normal para que se lea mejor: */
+#about p {
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* ===== CONTACT SECTION ===== */
@@ -585,7 +641,11 @@ html {
 }
 
 #contact {
-    scroll-margin-top: 220px; /* ajusta según la altura de tu barra */
+    margin-top: 280px !important; /* <--- AÑADE ESTO AQUÍ */
+    /* Mantén el resto de lo que ya tengas */
+    background: ... ;
+    padding: 100px 0;
+    scroll-margin-top: 271px;
 }
 
 /* Contact info & social icons */
@@ -627,7 +687,10 @@ html {
 }
 
 /* ===== Services layout ===== */
-
+#services {
+    /* Cuanto MENOR sea este número, más ARRIBA aparecerá la sección */
+    scroll-margin-top: -7vh !important;
+}
 /* Contenedor principal (el rectángulo redondeado) */
 .services-container {
     /* Degradado lineal: empieza en un tono púrpura oscuro y termina en uno casi negro */
@@ -642,7 +705,7 @@ html {
     padding: 80px 80px;
     margin: 0 auto;
     width: 95%;
-
+    margin-top: 200px !important; /* Ajusta este número para dar más o menos espacio */
     /* Añade un ligero brillo (glow) exterior para separar el rectángulo del fondo negro */
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
@@ -671,7 +734,7 @@ html {
 
 /* Ajuste de espacio entre servicios de la misma columna */
 .service-item {
-    margin-bottom: 0; /* Quitamos el margen inferior si lo tenías */
+    margin-bottom: 200; /* Quitamos el margen inferior si lo tenías */
     padding-top: 40px; /* Añadimos espacio arriba de cada título gris */
 }
 
@@ -717,30 +780,49 @@ html {
     }
 }
 
-#scrollFade {
-    opacity: 0;
-    transform: translateY(20px);
-    transition:
-        opacity 0.8s ease-out,
-        transform 1.2s ease-out;
-    color: #b3b3b3;
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    font-size: clamp(2rem, 1vw, 2.5rem);
-    text-align: center;
-    margin: 0;
+/* Ajuste del contenedor para dar la distancia de la foto */
+.quote-section {
     position: relative;
-    will-change: opacity, transform;
+    z-index: 5;
+    background: transparent !important;
+
+    /* Mantenemos el hueco total que ya te gusta */
+    height: 500px;
+
+    display: flex;
+    /* Cambiamos el centrado vertical por un ajuste manual */
+    align-items: flex-start;
+    justify-content: center;
+
+    /* AJUSTE AQUÍ: */
+    /* Este valor empuja la frase hacia abajo. */
+    /* Súbelo si quieres que baje más (ej. 350px) */
+    padding-top: 300px;
+
+    margin: 0;
+    text-align: center;
 }
 
-.intro-subtitle {
-    margin-top: 200px; /* opcional, si quieres más espacio desde #scrollFade */
+/* Estilo del texto con preparación para el movimiento */
+#scrollFade {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-family: 'Inter', sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    display: block;
+
+    /* Estado base para el JS */
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: none !important; /* Vital para que el movimiento sea fluido */
 }
-.quote-section {
-    width: 100%;
-    padding: 120px 20px 60px 20px; /* espacio arriba y abajo */
+
+/* Este es el bloque que mantiene la distancia con el grid de abajo */
+.intro-subtitle {
+    margin-top: 180px; /* Ajusta este valor para separar el texto del grid */
     text-align: center;
-    background-color: #000; /* mismo fondo que tu web */
+    display: block;
 }
 
 /* --- CONTACT SECTION (Two-Column Minimalist Style) --- */
@@ -790,6 +872,8 @@ html {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    width: 140% !important;
+    padding: 0 !important; /* Quitamos paddings laterales para ganar ancho */
 }
 
 .contact-form input,
@@ -853,8 +937,9 @@ html {
     display: flex;
     justify-content: center; /* centrados horizontalmente */
     align-items: center; /* centrados verticalmente */
-    margin-top: 80px; /* separa del formulario */
+    margin-top: 130px; /* separa del formulario */
     gap: 80px; /* espacio entre iconos */
+    width: 200% !important;
 }
 
 .social-links a {
@@ -891,13 +976,37 @@ html {
     }
 
     .contact-right {
-        align-items: center;
-        text-align: center;
-    }
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important; /* Centro horizontal */
+            align-items: center !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* 2. Forzamos el centrado de los links y eliminamos márgenes raros */
+            .social-links {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 100% !important;
+                margin-left: 0 !important;   /* Crucial: elimina desplazamientos */
+                margin-right: 0 !important;  /* Crucial: elimina desplazamientos */
+                padding: 0 !important;
+                gap: 40px !important;        /* Espacio entre iconos */
+                margin-top: 60px !important; /* La distancia con el formulario */
+            }
 
     .contact-text {
         max-width: none;
     }
+    /* 3. El texto "Contact" y el formulario también al centro */
+        .contact-left {
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+        }
 
     .contact-left,
     .contact-right {
@@ -905,8 +1014,28 @@ html {
         text-align: center;
     }
 
-        #contact {
-        scroll-margin-top: 81px; /* ajusta según la altura de tu barra */
+    #contact {
+        /* Copiamos el fondo lila y las líneas directamente aquí */
+        background:
+            repeating-linear-gradient(
+                45deg,
+                rgba(128, 128, 128, 0.45) 0,
+                rgba(128, 128, 128, 0.15) 20px,
+                rgba(34, 30, 77, 0.01) 20px,
+                rgba(34, 30, 77, 0.01) 40px
+            ),
+            linear-gradient(to left, rgba(34, 30, 77, 0.9) 10%, #362961 100%) !important;
+
+        background-color: #362961 !important; /* Color de respaldo para que no sea negro */
+        background-blend-mode: overlay !important; /* 'normal' es más estable en móviles que 'overlay' */
+
+        padding: 60px 0 !important;
+        scroll-margin-top: 281px !important; /* Ajustado para que no quede tan abajo */
+    }
+
+    /* Forzamos que los hijos no tengan fondo negro */
+    .contact-wrapper, .contact-left, .contact-right {
+        background: transparent !important;
     }
 
         /* === MOBILE MENU OVERLAY === */
@@ -987,4 +1116,83 @@ html {
 #cookie-banner button:hover {
   background: #fff;
   color: #000;
+}
+
+#bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: #000;
+}
+
+.strip {
+    position: absolute;
+    width: 400vw;
+    left: -150vw;
+    height: 0; /* Altura cero para que solo pinte el borde */
+
+    /* 1. BORDE SÓLIDO (Crea la línea nítida) */
+    border-top: 2px solid rgba(160, 100, 255, 1);
+
+    /* 2. ELIMINAR SUAVIZADO */
+    filter: none !important;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+
+    /* 3. ESTABILIZACIÓN PARA ESCRITORIO */
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+
+    opacity: 0.8;
+}
+
+/* Variación para que no sean todas iguales */
+.strip:nth-child(2) {
+    border-top: 1px solid rgba(160, 100, 255, 0.6);
+}
+
+/* Si quieres una banda más ancha, hazlo así para que no pierda foco: */
+.strip:nth-child(2) {
+    height: 2px;
+    opacity: 0.4;
+}
+
+/* Si quieres que una sea un poco más ancha para dar variedad */
+.strip:nth-child(2) {
+    height: 4px;
+    opacity: 0.5;
+}
+
+/* Si quieres que una sea un poco más gruesa pero siga nítida */
+.strip:nth-child(2) {
+    height: 4px;
+    opacity: 0.4;
+}
+
+.strip:nth-child(1) { top: 20%; }
+.strip:nth-child(2) { top: 40%; border-top-width: 1px; opacity: 0.5; }
+.strip:nth-child(3) { top: 60%; }
+.strip:nth-child(4) { top: 80%; border-top-width: 3px; }
+
+main, section, .full-section {
+    background-color: transparent !important;
+}
+
+/* El rectángulo de servicios sí debe mantener su fondo */
+.services-container {
+    background: linear-gradient(145deg, #1a1625 0%, #0d0d12 100%) !important;
+}
+
+/* ELIMINAMOS CUALQUIER BLUR HEREDADO DE SECCIONES */
+main, section, .full-section, .hero-section {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+main, section, .full-section, .container {
+    background: transparent !important;
 }
