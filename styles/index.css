@@ -820,7 +820,7 @@ html {
     font-size: calc(1rem + 2px);
     margin-bottom: 10px;
     /* CAMBIA ESTO: */
-    color: #fff; /* Este es un gris medio puro. Si quieres que sea más claro usa #aaa */
+    color: #eeeeee; /* Este es un gris medio puro. Si quieres que sea más claro usa #aaa */
 }
 
 /* Ajuste para móvil */
