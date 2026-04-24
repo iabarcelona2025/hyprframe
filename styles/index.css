@@ -180,14 +180,21 @@ body {
 /* ===== TEXTO SOBRE VIDEO ===== */
 
 .hero-content {
-    position: relative;
+    position: absolute; /* Cambiamos a absolute para control total sobre el video */
     z-index: 10;
     color: #C9D1AE;
     mix-blend-mode: luminosity;
     opacity: 0.7;
     text-align: center;
+    width: 100%;
+
+    /* AJUSTE DE ALTURA */
+    /* Estaba en 50%. Prueba con 40% para subirlo un poco
+       o 30% si lo quieres mucho más arriba. */
     top: 50%;
-   /* transform: translateY(-50%); */
+
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrado matemático perfecto */
 }
 
 .hero-content h1 {
