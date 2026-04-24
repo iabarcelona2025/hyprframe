@@ -434,7 +434,7 @@ footer {
 .mobile-nav ul {
     list-style: none;
     gap: 40px; /* <-- ajusta este valor para más o menos espacio */
-    padding: 0 70px;
+    padding: 0 40px;
     display: flex;
     flex-direction: column;
     margin-top: 70px; /* Sube este número (ej. 120px) si quieres que bajen más */
