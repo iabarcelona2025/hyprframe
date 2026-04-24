@@ -38,8 +38,8 @@ body {
 /* Añade esta regla para que el contenido del menú use el límite de 1600px */
 .top-nav .header-content {
     max-width: 1600px; /* Igual que tu .container */
-    margin: 0 auto;    /* Lo centra */
-    padding: 0 20px;   /* Margen de seguridad para pantallas pequeñas */
+    margin: 0 auto; /* Lo centra */
+    padding: 0 20px; /* Margen de seguridad para pantallas pequeñas */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -343,35 +343,42 @@ main {
 }
 
 /* === MOBILE NAV === */
+/* === EL CONTENEDOR (La caja con el corte trapezoidal) === */
 .mobile-nav {
-    display: none;
     position: fixed;
-    top: 7.9vh;
-    right: -100%;
-    width: 60vw;
-    height: 100vh;
-    right: -60vw;
-    background: linear-gradient(
-        135deg,
-        rgba(10, 10, 10, 0.8) 0%,
-        rgba(17, 17, 17, 0.8) 100%
-    );
-    backdrop-filter: blur(20px);
+    top: 80px; /* Se despliega justo debajo del header negro */
+    right: -100%; /* Empieza escondido a la derecha */
+    width: 70vw; /* Ajusta el ancho a tu gusto */
+    height: 80vh;
+    background: rgba(10, 10, 10, 0.95); /* Negro casi opaco */
+    backdrop-filter: blur(20px); /* Efecto cristal esmerilado */
     z-index: 1000;
     transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    padding-top: 100px;
+
+    /* ESTA ES LA MAGIA TRAPEZOIDAL */
+    /* Corta la esquina inferior izquierda hacia arriba (85%) */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 85%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Cuando el menú tiene la clase active (vía JS) */
 .mobile-nav.active {
     right: 0;
 }
 
+/* === LA LEYENDA (Los enlaces dentro del menú) === */
 .mobile-nav ul {
     list-style: none;
-    gap: 24px; /* <-- ajusta este valor para más o menos espacio */
-    padding: 0 40px;
     display: flex;
     flex-direction: column;
+    padding: 0 40px;
+
+    /* POSICIÓN DE LA LEYENDA */
+    margin-top: 70px; /* Cambia este número para subir o bajar todo el grupo de textos */
+    gap: 40px; /* Espacio entre cada enlace */
 }
 
 .mobile-nav a {
@@ -381,22 +388,42 @@ main {
     font-weight: 300;
     letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 20px 0;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el ratón o clicar */
+.mobile-nav a:hover {
+    color: #ffffff;
+    padding-left: 10px; /* Pequeño desplazamiento a la derecha */
+}
+
+/* === LOS ENLACES CON EL PUNTO DELANTE === */
+.mobile-nav a {
+    color: #888;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 20px 0; /* Espacio para que el área de clic sea cómoda */
     transition: all 0.3s ease;
     position: relative;
 }
 
-.mobile-nav a:hover {
-    color: #ffffff;
-    padding-left: 20px;
-}
-
+/* El punto decorativo */
 .mobile-nav a::before {
     content: "· ";
     opacity: 0.8;
     transition: opacity 0.3s ease;
 }
 
+/* Efecto Hover: el texto se ilumina y se mueve a la derecha */
+.mobile-nav a:hover {
+    color: #ffffff;
+    padding-left: 20px;
+}
+
+/* Mantenemos el punto visible en el hover */
 .mobile-nav a:hover::before {
     opacity: 0.8;
 }
@@ -566,12 +593,11 @@ footer {
     letter-spacing: 1px;
 }
 
-        
 /* === MOBILE MENU OVERLAY === */
 body.menu-open::after {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 900;
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 900;
 }
