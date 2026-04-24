@@ -144,7 +144,8 @@ body {
 }
 
 .logo img {
-    height: 40px;
+    height: 44px;
+    transform: translateY(2px); /* Sube este número para bajarlo más */
 }
 
 .top-nav nav ul {
