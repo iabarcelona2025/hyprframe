@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6MW201KGC9"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MW201KGC9"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -304,11 +303,38 @@
                 opacity: 1;
             }
         }
+
+        /* === CORRECCIÓN FINAL OSCURECIMIENTO Y DESENFOQUE === */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7) !important;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        body.menu-open::after {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+
+        /* Aplicamos el desenfoque a los contenedores principales cuando el menú está abierto */
+        body.menu-open section, 
+        body.menu-open nav.projects-navigation, 
+        body.menu-open main {
+            filter: blur(8px) !important;
+            transition: filter 0.5s ease;
+        }
     </style>
 </head>
 
 <body>
-    <!-- Menú fijo negro -->
     <header class="top-nav">
       <div class="container header-content">
         <a href="index.html" class="logo">
@@ -328,14 +354,12 @@
       </div>
     </header>
 
-    <!-- Burger menu -->
     <div class="burger-menu" id="burgerMenu">
         <div class="burger-line"></div>
         <div class="burger-line"></div>
         <div class="burger-line"></div>
     </div>
 
-    <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
         <ul>
             <li><a href="index.html#AI">AI Generated</a></li>
@@ -346,18 +370,6 @@
         </ul>
     </div>
 
-    <!--<main>
-        <section class="project-header fade-in">
-            <div class="container">
-                <h1 class="project-title">Modern Architecture</h1>
-                <p class="project-subtitle">Architectural Visualization</p>
-                <p class="project-description">
-                    Contemporary residential design showcasing clean lines, natural lighting,
-                    and sustainable materials. This project demonstrates advanced architectural
-                    visualization techniques and photorealistic rendering workflows.
-                </p>
-            </div>
-        </section>-->
         <nav class="projects-navigation">
             <div class="buttons">
                 <a href="project-farewell.html">&lt;</a>
@@ -365,59 +377,29 @@
                 <a href="project-polestar5.html">&gt;</a>
             </div>
         </nav>
+
         <section class="project-gallery">
             <div class="container">
                 <div class="main-image fade-in">
-                    <!--<img src="assets/images/Asics.jpg" alt="Modern Architecture - Exterior View">-->
                 </div>
-<section id="video">
-  <div class="video-container">
-    <iframe
-      src="https://player.vimeo.com/video/1185276367"
-      title="AI Generated Video"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
-</section>
+                <section id="video">
+                  <div class="video-container">
+                    <iframe
+                      src="https://player.vimeo.com/video/1185276367"
+                      title="AI Generated Video"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen>
+                    </iframe>
+                  </div>
+                </section>
                 <div class="project-details">
                     <div class="detail-section fade-in">
                         <div class="video-text">
                         <h2>Deep in the Forest [Teaser]</h2>
                         <p>February 2013, Kiruna. A Volvo 240 is found abandoned in the middle of a snowy road. The driver's door remains wide open, and from within, the murmur of the radio is the only sound breaking the silence of the ice. Elena has vanished without a trace. Supported by local testimonies, the investigation focuses on a set of footprints leading into the woods, suggesting a voluntary encounter with someone she knew. However, a non-human trail discovered in the snow turns the case into a disturbing mystery. A visual reconstruction exercise that explores isolation and fear in the heart of the Swedish winter.</p>
-
-                        <!--<h3 style="margin-top: 30px;">Key Features</h3>
-                        <ul>
-                            <li>Photorealistic Materials</li>
-                            <li>HDRI Lighting</li>
-                            <li>Landscape Integration</li>
-                            <li>Atmospheric Effects</li>
-                            <li>Post-Production Enhancement</li>
-                            <li>Multiple Camera Angles</li>
-                        </ul>
-                    </div>
-
-                    <div class="detail-section fade-in">
-                        <h3>Technical Approach</h3>
-                        <p>Utilizing industry-standard architectural visualization tools and
-                            techniques to achieve photorealistic results suitable for client
-                            presentations and marketing materials.</p>
-
-                        <h3 style="margin-top: 30px;">Software Stack</h3>
-                        <div class="tech-stack">
-                            <span class="tech-tag">3ds Max</span>
-                            <span class="tech-tag">V-Ray</span>
-                            <span class="tech-tag">Corona Renderer</span>
-                            <span class="tech-tag">Photoshop</span>
                         </div>
-
-                        <h3 style="margin-top: 30px;">Project Stats</h3>
-                        <p>Render Resolution: 4K</p>
-                        <p>Lighting: HDRI + Sun System</p>
-                        <p>Render Time: 2-4 hours per image</p>
-                        <p>Total Deliverables: 8 views</p>
-                    </div>-->
+                    </div>
                 </div>
             </div>
         </section>
@@ -430,32 +412,60 @@
                         <img src="assets/images/Ryuu.jpg" alt="Short Film">
                         <div class="related-item-info">
                             <h3 class="related-item-title">Ryuu, the Dragon's course</h3>
-                            <!--<p class="related-item-category">Data Visualization</p>-->
                         </div>
                     </a>
                     <a href="project-polestar5.html" class="related-item fade-in">
                         <img src="assets/images/polestar5.jpg" alt="Commercial for Polestar 5">
                         <div class="related-item-info">
                             <h3 class="related-item-title">Polestar 5</h3>
-                            <!--<p class="related-item-category">3D Modeling</p>-->
                         </div>
                     </a>
                 </div>
             </div>
         </section>
+
         <main>
             <div class="footer-bottom">
                 <p>&copy; 2025 Hyprframe. All rights reserved.</p>
             </div>
-    </main>
+        </main>
 
     <script>
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // 1. SELECTORES
+        const burgerMenu = document.getElementById("burgerMenu");
+        const mobileNav = document.getElementById("mobileNav");
+        const body = document.body;
 
+        // 2. FUNCIÓN UNIFICADA ABRIR/CERRAR
+        burgerMenu.addEventListener("click", function(e) {
+            e.stopPropagation(); 
+            this.classList.toggle("active");
+            mobileNav.classList.toggle("active");
+            body.classList.toggle("menu-open");
+        });
+
+        // 3. CERRAR AL TOCAR FUERA (EN EL DESVANECIMIENTO)
+        document.addEventListener("click", function(e) {
+            if (body.classList.contains("menu-open")) {
+                if (!mobileNav.contains(e.target) && !burgerMenu.contains(e.target)) {
+                    burgerMenu.classList.remove("active");
+                    mobileNav.classList.remove("active");
+                    body.classList.remove("menu-open");
+                }
+            }
+        });
+
+        // 4. CERRAR AL TOCAR UN ENLACE
+        document.querySelectorAll(".mobile-nav a").forEach(link => {
+            link.addEventListener("click", () => {
+                burgerMenu.classList.remove("active");
+                mobileNav.classList.remove("active");
+                body.classList.remove("menu-open");
+            });
+        });
+
+        // 5. ANIMACIÓN FADE-IN (Scroll Observer)
+        const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -465,36 +475,7 @@
             });
         }, observerOptions);
 
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach((item) => {
-            observer.observe(item);
-        });
-
-        // Burger menu
-        const burgerMenu = document.getElementById("burgerMenu");
-        const mobileNav = document.getElementById("mobileNav");
-        burgerMenu.addEventListener("click", () => {
-            burgerMenu.classList.toggle("active");
-            mobileNav.classList.toggle("active");
-        });
-        const mobileNavLinks = mobileNav.querySelectorAll("a");
-        mobileNavLinks.forEach((link) => {
-            link.addEventListener("click", () => {
-                burgerMenu.classList.remove("active");
-                mobileNav.classList.remove("active");
-            });
-        });
-        document.addEventListener("click", (e) => {
-            if (
-                !burgerMenu.contains(e.target) &&
-                !mobileNav.contains(e.target)
-            ) {
-                burgerMenu.classList.remove("active");
-                mobileNav.classList.remove("active");
-            }
-        });
-
+        document.querySelectorAll('.fade-in').forEach((item) => observer.observe(item));
     </script>
 </body>
-
 </html>
