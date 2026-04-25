@@ -1012,6 +1012,7 @@ html {
     .contact-form {
         width: 100%; /* o 100%, según tu diseño */
         padding: 20px; /* reduce espacio interior */
+        scroll-margin-top: 30px !important;
     }
 
     .contact-form input,
