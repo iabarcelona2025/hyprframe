@@ -491,5 +491,24 @@ mobileNavLinks.forEach((link) => {
                 }
             };
         </script>
-    </body>
+
+        <script>
+        // Aquí pegas el código que te di antes
+        const burgerMenu = document.querySelector('.burger-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const body = document.body;
+
+        document.addEventListener('click', function(event) {
+            if (mobileNav.classList.contains('active') && 
+                !mobileNav.contains(event.target) && 
+                !burgerMenu.contains(event.target)) {
+                
+                burgerMenu.classList.remove('active');
+                mobileNav.classList.remove('active');
+                body.classList.remove('menu-open');
+            }
+        });
+    </script>
+    </body
+    
 </html>
