@@ -373,9 +373,9 @@ footer {
     display: flex;
     padding-top: 170px;
     border-top: 1px solid #1a1a1a;
-    font-size: 12px;
+    font-size: 11px;
     color: #444;
-    letter-spacing: 1px;
+    letter-spacing: 0px;
 }
 
 /* === BURGER MENU === */
