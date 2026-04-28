@@ -492,6 +492,24 @@ main {
 
 /* Responsive */
 @media (max-width: 768px) {
+    /* 1. Quitamos el margen superior del cuerpo principal */
+    main {
+        margin-top: 0px !important;
+        padding-top: 0px !important;
+    }
+
+    /* 2. Eliminamos el aire que tiene la galería de video arriba */
+    .project-gallery {
+        padding-top: 100px !important; /* Un mínimo de seguridad para que no toque el borde */
+    }
+
+    /* 3. Ajustamos el contenedor del video para que no tenga margen extra */
+    .video-container {
+        margin-top: 0px !important;
+    }
+}
+
+@media (max-width: 768px) {
     nav {
         display: none;
     }
