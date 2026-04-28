@@ -166,9 +166,18 @@ nav.projects-navigation a:hover {
     transform: scale(1.1); /* Un pequeño crecimiento al parar */
 }
 
-/* Asegurar que el central (::) no se mueva */
+/* 1. Preparamos el símbolo central para que pueda rotar sobre su eje */
 nav.projects-navigation a[href*="index.html"] {
-    animation: none !important;
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: center; /* Asegura que gire sobre sí mismo */
+}
+
+/* 2. Efecto al pasar el ratón (Hover) */
+nav.projects-navigation a[href*="index.html"]:hover {
+    color: #ffffff;
+    /* Giramos 90 grados y escalamos un poco para dar profundidad */
+    transform: rotate(90deg) scale(1.2);
 }
 
 /* Main Content */
