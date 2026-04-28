@@ -113,12 +113,18 @@ nav.projects-navigation .buttons::after {
 nav.projects-navigation a {
     color: #666;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 24px;
     transition: color 0.3s ease;
 }
 
 nav.projects-navigation a:hover {
     color: #ffffff;
+}
+
+/* 3. Toque premium: que crezcan un poco al pasar el ratón */
+nav.projects-navigation a:hover {
+    color: #ffffff;
+    transform: scale(1.2);
 }
 
 /* Main Content */
