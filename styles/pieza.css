@@ -132,13 +132,13 @@ nav.projects-navigation a:hover {
 /* Define el movimiento para la flecha izquierda */
 @keyframes loopLeftConstant {
     0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(-6px); } /* Un movimiento más corto para que no distraiga tanto */
+    50% { transform: translateX(-3px); } /* Un movimiento más corto para que no distraiga tanto */
 }
 
 /* Define el movimiento para la flecha derecha */
 @keyframes loopRightConstant {
     0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(6px); } /* Un movimiento más corto para que no distraiga tanto */
+    50% { transform: translateX(3px); } /* Un movimiento más corto para que no distraiga tanto */
 }
 
 /* Preparamos los enlaces */
