@@ -559,6 +559,19 @@ footer {
     }
 }
 
+@media (max-width: 768px) {
+    /* Atacamos al contenedor del logo para eliminar aire a la izquierda */
+    .header-content {
+        padding-left: 5px !important; /* Reduce este número al mínimo (o 0) para pegarlo al borde */
+    }
+
+    /* Si aún quieres pegarlo más, aplicamos un margen negativo al logo */
+    .logo-video {
+        margin-left: -25px !important; /* Ajusta este valor según necesites */
+        display: block;
+    }
+}
+
 /* ===== HERO VIDEO ===== */
 .hero-section {
     background-color: transparent !important;
