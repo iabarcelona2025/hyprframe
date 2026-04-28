@@ -92,7 +92,7 @@ nav.projects-navigation .buttons {
 }
 
 nav.projects-navigation .buttons::before {
-    width: 100%;
+    width: 75%;
     content: "\00a0";
     flex-grow: 1;
     background-image: linear-gradient(to right, #333, #333);
