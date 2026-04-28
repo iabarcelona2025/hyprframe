@@ -33,6 +33,7 @@ body {
     z-index: 1000;
     display: flex;
     align-items: center;
+    border-bottom: none !important;
 }
 
 /* Añade esta regla para que el contenido del menú use el límite de 1600px */
