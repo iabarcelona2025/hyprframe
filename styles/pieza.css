@@ -229,7 +229,9 @@ main {
 
 /* Project Gallery */
 .project-gallery {
-    padding: 80px 0;
+    /* Cambia esto de 80px a 0 o 10px */
+    padding-top: 10px !important; 
+    padding-bottom: 40px;
 }
 
 .main-image {
