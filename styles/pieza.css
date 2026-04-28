@@ -97,7 +97,7 @@ nav.projects-navigation .buttons::before {
     content: "\00a0";
     flex-grow: 1;
     background-image: linear-gradient(to right, #333, #333);
-    background-size: 100% 1px;
+    background-size: 100% 0px;
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
@@ -107,7 +107,7 @@ nav.projects-navigation .buttons::after {
     content: "\00a0";
     flex-grow: 1;
     background-image: linear-gradient(to right, #333, #333);
-    background-size: 100% 1px;
+    background-size: 100% 0px;
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
