@@ -469,6 +469,14 @@ body.menu-open::after {
         padding-top: 100px !important;
         text-align: center;
     }
+        /* === PEGA ESTO AQUÍ === */
+    .header-content {
+        padding-left: 0px !important; /* Ajusta este número: menor = más a la izquierda */
+    }
+
+    .logo img {
+        margin-left: -20px !important; /* El empujón final a la izquierda */
+    }
 }
 
 /* === EFECTO DESATURACIÓN AL HACER HOVER EN EL GRID === */
