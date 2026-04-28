@@ -78,7 +78,8 @@ body {
 /* Navigation */
 nav.projects-navigation .buttons {
     display: flex;
-    margin-top: 80px;
+    margin-top: 150px;
+    margin-bottom: -50px !important;
     padding: 10px 0;
     gap: 20px;
     width: 100%;
