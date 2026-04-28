@@ -127,6 +127,50 @@ nav.projects-navigation a:hover {
     transform: scale(1.2);
 }
 
+/* === ANIMACIÓN DE LOOP CONTINUO (Siempre activa) === */
+
+/* Define el movimiento para la flecha izquierda */
+@keyframes loopLeftConstant {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-6px); } /* Un movimiento más corto para que no distraiga tanto */
+}
+
+/* Define el movimiento para la flecha derecha */
+@keyframes loopRightConstant {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(6px); } /* Un movimiento más corto para que no distraiga tanto */
+}
+
+/* Preparamos los enlaces */
+nav.projects-navigation a {
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+/* Aplicamos el loop siempre */
+
+/* Flecha Izquierda (<) - Siempre moviéndose */
+nav.projects-navigation a:first-child {
+    animation: loopLeftConstant 2s ease-in-out infinite;
+}
+
+/* Flecha Derecha (>) - Siempre moviéndose */
+nav.projects-navigation a:last-child {
+    animation: loopRightConstant 2s ease-in-out infinite;
+}
+
+/* Parar la animación en Hover (para que el usuario sepa que está encima) */
+nav.projects-navigation a:hover {
+    animation-play-state: paused;
+    color: #ffffff;
+    transform: scale(1.1); /* Un pequeño crecimiento al parar */
+}
+
+/* Asegurar que el central (::) no se mueva */
+nav.projects-navigation a[href*="index.html"] {
+    animation: none !important;
+}
+
 /* Main Content */
 main {
     margin-top: 100px;
