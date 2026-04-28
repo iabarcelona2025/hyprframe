@@ -509,6 +509,18 @@ mobileNavLinks.forEach((link) => {
             }
         });
     </script>
+        <script>
+window.addEventListener('DOMContentLoaded', () => {
+    // Añadimos la clase 'loaded' al header para que empiece la fiesta
+    const header = document.querySelector('.top-nav');
+    if (header) {
+        // Un pequeño delay de 300ms para que el ojo se prepare tras el primer render
+        setTimeout(() => {
+            header.classList.add('loaded');
+        }, 300);
+    }
+});
+</script>
     </body
     
 </html>
