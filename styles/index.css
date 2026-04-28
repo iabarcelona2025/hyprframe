@@ -1,3 +1,42 @@
+/* === EFECTO DE CARGA CINEMÁTICO PARA EL MENÚ === */
+
+/* Estado inicial: escondido y ligeramente desplazado */
+.top-nav nav ul li {
+    opacity: 0;
+    transform: translateY(-10px);
+    filter: blur(5px);
+    /* Transición de salida suave para cuando el hover termine */
+    transition: all 0.4s ease; 
+}
+
+/* Animación de entrada */
+@keyframes menuEntry {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px);
+        filter: blur(10px);
+        letter-spacing: 10px; /* Las letras se juntan mientras caen */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+        letter-spacing: 1px;
+    }
+}
+
+/* Aplicamos la animación solo cuando la página cargue */
+.top-nav.loaded nav ul li {
+    animation: menuEntry 1s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+}
+
+/* Retrasos secuenciales: cada botón sale un poco después que el anterior */
+.top-nav.loaded nav ul li:nth-child(1) { animation-delay: 0.1s; }
+.top-nav.loaded nav ul li:nth-child(2) { animation-delay: 0.2s; }
+.top-nav.loaded nav ul li:nth-child(3) { animation-delay: 0.3s; }
+.top-nav.loaded nav ul li:nth-child(4) { animation-delay: 0.4s; }
+.top-nav.loaded nav ul li:nth-child(5) { animation-delay: 0.5s; }
+
 /* === RESETEO === */
 /* === ESTO ES LO QUE TE FALTA === */
 html, body {
