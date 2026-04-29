@@ -1,1 +1,506 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+        <link rel="manifest" href="/assets/favicons/site.webmanifest">
+        <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AI Visual Storytelling Studio | HYPRFRAME</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        />
+        <link href="styles/index.css" rel="stylesheet" />
+    </head>
 
+    <body>
+        <canvas id="bgCanvas" class="abstract-bg"></canvas>
+
+        <header class="top-nav">
+            <div class="container header-content">
+                <a href="#" class="logo">
+                    <video class="logo-video" autoplay muted playsinline>
+                        <source
+                            src="assets/videos/logo_hyprframe543x125.webm"
+                            type="video/webm"
+                        />
+                    </video>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#AI">Generado por IA</a></li>
+                        <li><a href="legacy.html">Capturado</a></li>
+                        <li><a href="#about">Bio</a></li>
+                        <li><a href="#services">Servicios</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="burger-menu" id="burgerMenu">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </div>
+
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#AI">Generado por IA</a></li>
+                <li><a href="legacy.html">Capturado</a></li>
+                <li><a href="#about">Bio</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </div>
+
+        <main>
+            <section class="hero-section">
+                <video autoplay muted loop playsinline class="background-video">
+                    <source
+                        src="assets/videos/header-video_06.mp4"
+                        type="video/mp4"
+                    />
+                </video>
+                <div class="video-overlay"></div>
+                <div class="hero-content">
+                    <h1>AI VISUAL STORYTELLING</h1>
+                    <p>Visualizando lo extraordinario</p>
+                    <div class="scroll-indicator"></div>
+                </div>
+            </section>
+
+            <section class="quote-section">
+                <div class="container">
+                    <p id="scrollFade">
+                        Cuando las ideas se encuentran con la máquina, lo imposible toma forma
+                    </p>
+                </div>
+            </section>
+
+            <section class="portfolio-section" id="AI">
+                <div class="container">
+                    <p
+                        class="intro-subtitle"
+                        style="text-align: center; margin-bottom: 40px"
+                    >
+                        GENERADO POR IA
+                    </p>
+                    <div class="portfolio-grid">
+                        <a href="project-deep.html" class="portfolio-item"
+                            ><img src="assets/images/deep.jpg" alt=""
+                        /></a>
+                        <a href="project-polestar5.html" class="portfolio-item"
+                            ><img src="assets/images/polestar5.jpg" alt=""
+                        /></a>
+                        <a href="project-distant.html" class="portfolio-item"
+                            ><img src="assets/images/distant.jpg" alt=""
+                        /></a>
+                        <a href="project-exit.html" class="portfolio-item"
+                            ><img src="assets/images/Hsbc.jpg" alt=""
+                        /></a>
+                        <a href="project-stained.html" class="portfolio-item"
+                            ><img src="assets/images/Stained.jpg" alt=""
+                        /></a>
+                        <a href="project-asics.html" class="portfolio-item"
+                            ><img src="assets/images/Asics.jpg" alt=""
+                        /></a>
+                        <a href="project-farewell.html" class="portfolio-item"
+                            ><img src="assets/images/farewell.jpg" alt=""
+                        /></a>
+                        <a href="project-iad.html" class="portfolio-item"
+                            ><img src="assets/images/iad.jpg" alt=""
+                        /></a>
+                        <a href="project-ryuu.html" class="portfolio-item"
+                            ><img src="assets/images/Ryuu.jpg" alt=""
+                        /></a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="full-section">
+                <div class="container">
+                    <h2>Bio</h2>
+                    <p>
+                        Explorando la intersección entre la intuición humana y la síntesis tecnológica. Especializados en video generado por IA y motion design, creamos narrativas visuales que definen nuevas perspectivas y formas de contar historias.
+                    </p>
+                </div>
+            </section>
+
+            <section id="services" class="full-section">
+                <div class="services-container">
+                    <h2 class="services-main-title">Servicios</h2>
+
+                    <div class="services-grid">
+                        <div class="services-column">
+                            <h2 class="column-header">Branding & Consultoría</h2>
+
+                            <div class="service-item">
+                                <h3>Concepto de Marca e Identidad</h3>
+                                <p>
+                                    Construcción de marcos visuales y conceptuales que definen cómo se siente, habla y se mueve una marca.
+                                </p>
+                            </div>
+
+                            <div class="service-item">
+                                <h3>Consultoría Creativa</h3>
+                                <p>
+                                    Guía estratégica para transformar ideas abstractas en declaraciones visuales coherentes y potentes.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="services-column">
+                            <h2 class="column-header">Narrativa & Creatividad</h2>
+
+                            <div class="service-item">
+                                <h3>Desarrollo de Conceptos Creativos</h3>
+                                <p>
+                                    Transformación de ideas en conceptos creativos originales y sólidos que conectan con la audiencia.
+                                </p>
+                            </div>
+
+                            <div class="service-item">
+                                <h3>Diseño Narrativo</h3>
+                                <p>
+                                    Creación de historias que fusionan la emoción humana con la innovación visual.
+                                </p>
+                            </div>
+
+                            <div class="service-item">
+                                <h3>Dirección de Arte y Storytelling Visual</h3>
+                                <p>
+                                    Diseño del núcleo estético y narrativo de cada proyecto a través de la imagen, el ritmo y la emoción.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="services-column">
+                            <h2 class="column-header">Producción & IA</h2>
+
+                            <div class="service-item">
+                                <h3>Dirección y Producción de Video</h3>
+                                <p>
+                                    Desde la ideación hasta el montaje final: dirección, rodaje y creación de piezas visuales con precisión cinematográfica.
+                                </p>
+                            </div>
+
+                            <div class="service-item">
+                                <h3>Generación de Imagen y Video por IA</h3>
+                                <p>
+                                    Exploración de nuevos territorios visuales mediante inteligencia artificial, fusionando tecnología e intuición creativa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="contact-section">
+                <div class="contact-wrapper">
+                    <div class="contact-left">
+                        <h2>Contacto</h2>
+                        <form
+                            class="contact-form"
+                            action="https://formspree.io/f/mzzkreow"
+                            method="POST"
+                        >
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Nombre"
+                                required
+                            />
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                                required
+                            />
+                            <textarea
+                                name="message"
+                                placeholder="Mensaje"
+                                required
+                            ></textarea>
+                            <button type="submit">Enviar</button>
+                        </form>
+                    </div>
+                    <div class="contact-right">
+                        <div class="social-links">
+                            <a
+                                href="https://www.linkedin.com/company/hyprframe/"
+                                target="_blank"
+                                ><i class="fab fa-linkedin-in"></i
+                            ></a>
+                            <a
+                                href="https://www.instagram.com/dommanuel/?hl=es"
+                                target="_blank"
+                                ><i class="fab fa-instagram"></i
+                            ></a>
+                            <a href="https://wa.me/34645795080" target="_blank"
+                                ><i class="fab fa-whatsapp"></i
+                            ></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer-bottom">
+            <p>&copy; 2025 Hyprframe. Todos los derechos reservados.</p>
+        </footer>
+
+        <script>
+            const canvas = document.getElementById("bgCanvas");
+            const ctx = canvas.getContext("2d");
+
+            function resize() {
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = window.innerWidth * dpr;
+                canvas.height = window.innerHeight * dpr;
+                ctx.scale(dpr, dpr);
+            }
+
+            window.addEventListener("resize", resize);
+            resize();
+
+            let colorLerp = 0; 
+            const lerpSpeed = 0.08; 
+
+            function draw() {
+                const scrollVal = window.pageYOffset;
+                const body = document.body;
+
+                const targetLerp = body.classList.contains("desaturate-strips")
+                    ? 1
+                    : 0;
+
+                colorLerp += (targetLerp - colorLerp) * lerpSpeed;
+
+                ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+                const r = 160 + (140 - 160) * colorLerp;
+                const g = 100 + (140 - 100) * colorLerp;
+                const b = 255 + (140 - 255) * colorLerp;
+
+                const alphaMult = 1 - colorLerp * 0; 
+
+                const lines = [
+                    {
+                        y: 0.15,
+                        angle: 40,
+                        rotateSpeed: -0.02,
+                        speed: 0.42,
+                        weight: 700,
+                        alpha: 0.04,
+                        blur: 200,
+                    },
+                    {
+                        y: 0.4,
+                        angle: -8,
+                        rotateSpeed: -0.05,
+                        speed: 0.45,
+                        weight: 550,
+                        alpha: 0.06,
+                        blur: 800,
+                    },
+                    {
+                        y: 1.15,
+                        angle: -113,
+                        rotateSpeed: -0.025,
+                        speed: 0.08,
+                        weight: 400,
+                        alpha: 0.06,
+                        blur: 400,
+                    },
+                    {
+                        y: 0.88,
+                        angle: -5,
+                        rotateSpeed: -0.031,
+                        speed: 0.35,
+                        weight: 430,
+                        alpha: 0.05,
+                        blur: 200,
+                    },
+                ];
+
+                lines.forEach((line, i) => {
+                    const xOffset =
+                        (i % 2 === 0 ? scrollVal : -scrollVal) * line.speed;
+                    const currentAngle =
+                        line.angle + scrollVal * line.rotateSpeed;
+
+                    ctx.save();
+                    ctx.translate(
+                        window.innerWidth / 2 + xOffset,
+                        window.innerHeight * line.y,
+                    );
+                    ctx.rotate((currentAngle * Math.PI) / 180);
+
+                    const finalAlpha = line.alpha * alphaMult;
+                    ctx.shadowBlur = line.blur;
+                    ctx.shadowColor = `rgba(${r}, ${g}, ${b}, ${finalAlpha})`;
+
+                    ctx.beginPath();
+                    ctx.moveTo(-window.innerWidth * 2, 0);
+                    ctx.lineTo(window.innerWidth * 2, 0);
+
+                    ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${finalAlpha})`;
+                    ctx.lineWidth = line.weight;
+                    ctx.lineCap = "butt";
+
+                    ctx.stroke();
+                    ctx.restore();
+                });
+
+                requestAnimationFrame(draw);
+            }
+            window.addEventListener("scroll", () => {
+                const el = document.getElementById("scrollFade");
+                if (!el) return;
+
+                const rect = el.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                const elementCenter = rect.top + rect.height / 2;
+                const scrollPercent = elementCenter / windowHeight;
+
+                let opacity = 1 - Math.abs(0.5 - scrollPercent) * 3;
+                el.style.opacity = Math.max(0, Math.min(1, opacity));
+
+                const yMove = (0.5 - scrollPercent) * 40;
+                el.style.transform = `translate3d(0, ${yMove}px, 0)`;
+            });
+            draw();
+        </script>
+        <script>
+            let currentY = 0;
+            let targetY = 0;
+            let currentOpacity = 0;
+            let targetOpacity = 0;
+            const ease = 0.05; 
+
+            const updateScrollEffects = () => {
+                const el = document.getElementById("scrollFade");
+                if (!el) return;
+
+                const rect = el.parentElement.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                const progress =
+                    (windowHeight - rect.top) / (windowHeight + rect.height);
+                const clampedProgress = Math.max(0, Math.min(1, progress));
+
+                targetOpacity = Math.sin(clampedProgress * Math.PI * 1.2) * 0.5;
+                targetY = 60 - clampedProgress * 120;
+
+                currentY += (targetY - currentY) * ease;
+                currentOpacity += (targetOpacity - currentOpacity) * ease;
+
+                el.style.opacity = Math.max(0, Math.min(1, currentOpacity));
+                el.style.transform = `translate3d(0, ${currentY}px, 0)`;
+
+                requestAnimationFrame(updateScrollEffects);
+            };
+
+            requestAnimationFrame(updateScrollEffects);
+
+            const burgerMenu = document.getElementById("burgerMenu");
+            const mobileNav = document.getElementById("mobileNav");
+            const body = document.body;
+
+            burgerMenu.addEventListener("click", () => {
+                burgerMenu.classList.toggle("active");
+                mobileNav.classList.toggle("active");
+                body.classList.toggle("menu-open");
+            });
+
+            const mobileNavLinks = mobileNav.querySelectorAll("a");
+            mobileNavLinks.forEach((link) => {
+                link.addEventListener("click", () => {
+                    burgerMenu.classList.remove("active");
+                    mobileNav.classList.remove("active");
+                    body.classList.remove("menu-open");
+                });
+            });
+        </script>
+
+        <script>
+            window.onload = function () {
+                const grid = document.querySelector(".portfolio-grid");
+                const body = document.body;
+
+                if (grid) {
+                    grid.addEventListener("mouseenter", () => {
+                        body.classList.add("desaturate-strips");
+                    });
+
+                    grid.addEventListener("mouseleave", () => {
+                        body.classList.remove("desaturate-strips");
+                    });
+                } else {
+                    console.error(
+                        "No se ha encontrado .portfolio-grid en el HTML",
+                    );
+                }
+            };
+        </script>
+
+        <script>
+            const burgerBtn = document.querySelector('.burger-menu');
+            const navMobile = document.querySelector('.mobile-nav');
+            const pageBody = document.body;
+
+            document.addEventListener('click', function(event) {
+                if (navMobile.classList.contains('active') && 
+                    !navMobile.contains(event.target) && 
+                    !burgerBtn.contains(event.target)) {
+                    
+                    burgerBtn.classList.remove('active');
+                    navMobile.classList.remove('active');
+                    pageBody.classList.remove('menu-open');
+                }
+            });
+        </script>
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                const header = document.querySelector('.top-nav');
+                if (header) {
+                    setTimeout(() => {
+                        header.classList.add('loaded');
+                    }, 300);
+                }
+            });
+        </script>
+        <script>
+            document.querySelectorAll('a[href^="#contact"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - 90;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
