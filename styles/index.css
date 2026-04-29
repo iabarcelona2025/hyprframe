@@ -9,6 +9,11 @@
     transition: all 0.4s ease;
 }
 
+.top-nav nav ul li a.active {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
 /* Animación de entrada */
 @keyframes menuEntry {
     0% {
