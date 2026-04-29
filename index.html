@@ -551,6 +551,31 @@ document.querySelectorAll('a[href^="#contact"]').forEach(anchor => {
     });
 });
 </script>
+        <script>
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id], div[id]'); // Detecta secciones con ID
+    const langLinks = document.querySelectorAll('a[href*="es/index.html"]'); // Detecta tus botones de "ES"
+    
+    let currentSectionId = "";
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        // Si el scroll está dentro de la sección (con un margen de 200px para mayor sensibilidad)
+        if (pageYOffset >= (sectionTop - 200)) {
+            currentSectionId = section.getAttribute('id');
+        }
+    });
+
+    langLinks.forEach(link => {
+        if (currentSectionId) {
+            link.href = "es/index.html#" + currentSectionId;
+        } else {
+            link.href = "es/index.html"; // Si está arriba del todo
+        }
+    });
+});
+</script>
     </body
     
 </html>
