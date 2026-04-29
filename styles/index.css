@@ -754,12 +754,55 @@ html {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-.contact-container h2 {
-    text-transform: none;
-    font-size: clamp(2rem, 6vw, 4rem);
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    color: #fff;
+/* === ACTUALIZACIÓN TÍTULO CONTACT (TAMAÑO, COLOR Y CENTRADO) === */
+.contact-container h2,
+.contact-left h2 {
+    /* 1. Forzamos que se comporte como un bloque independiente */
+    display: block !important;
+    position: absolute !important;
+
+    /* 2. Lo centramos respecto a la pantalla, no a la columna */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: -100px; /* Ajusta este valor para subirlo o bajarlo respecto al formulario */
+
+    /* 3. Estética unificada con About */
+    width: 100vw !important;
+    text-align: center !important;
+    font-family: "Inter", sans-serif !important;
+    font-weight: 700 !important;
+    font-size: clamp(2.5rem, 8vw, 4.5rem) !important;
+    letter-spacing: 0px !important;
+
+    /* 4. Color degradado */
+    background: linear-gradient(135deg, #ffffff 0%, #888 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* === MANTENEMOS EL RESTO EN SU SITIO ORIGINAL === */
+.contact-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 80px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.contact-left, .contact-right {
+    flex: 1;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 130px;
+    gap: 80px;
+    width: 100% !important; /* Corregido del 200% anterior para estabilidad */
 }
 
 .contact-form {
@@ -801,15 +844,16 @@ html {
 }
 
 .contact-form button:hover {
-    background-color: #ccc;
+    background-color: #A3DF02 !important;
 }
 
 #contact {
-    margin-top: 280px !important; /* <--- AÑADE ESTO AQUÍ */
-    /* Mantén el resto de lo que ya tengas */
-    background: ... ;
-    padding: 100px 0;
+    margin-top: 280px !important;
+    background: repeating-linear-gradient(45deg, rgba(128, 128, 128, 0.45) 0, rgba(128, 128, 128, 0.15) 20px, rgba(34, 30, 77, 0.01) 20px, rgba(34, 30, 77, 0.01) 40px),
+                linear-gradient(to left, rgba(34, 30, 77, 0.9) 10%, #362961 100%);
+    padding: 180px 0 100px 0; /* Aumentamos el padding-top para dejar sitio al título grande */
     scroll-margin-top: 271px;
+    position: relative; /* CRUCIAL para el centrado absoluto del h2 */
 }
 
 /* Contact info & social icons */
@@ -1417,4 +1461,12 @@ body.menu-open::after {
 body.menu-open main {
     filter: blur(5px);
     transition: filter 0.5s ease;
+}
+
+/* --- ESTE ES EL AJUSTE QUE SOLO AFECTA A ESCRITORIO --- */
+@media (min-width: 769px) {
+    #contact {
+        /* Bajamos el número para que en PC el scroll se detenga más abajo */
+        scroll-margin-top: 150px !important;
+    }
 }
