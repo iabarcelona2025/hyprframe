@@ -6,7 +6,7 @@
     transform: translateY(-10px);
     filter: blur(5px);
     /* Transición de salida suave para cuando el hover termine */
-    transition: all 0.4s ease; 
+    transition: all 0.4s ease;
 }
 
 /* Animación de entrada */
@@ -511,6 +511,27 @@ footer {
 
 .mobile-nav a:hover::before {
     opacity: 0.8;
+}
+
+/* === ESTILO SELECTOR DE IDIOMA (Versión /es) === */
+.lang-switch a {
+    font-size: 11px !important;
+    font-style: italic !important;
+    opacity: 0.7;
+    text-transform: lowercase; /* Opcional: para que se vea más minimalista */
+    transition: opacity 0.3s ease;
+}
+
+.lang-switch a:hover {
+    opacity: 1;
+    color: #ffffff !important;
+}
+
+/* Ajuste para que no se pegue al botón anterior en móvil */
+@media (max-width: 768px) {
+    .lang-switch {
+        margin-top: 10px;
+    }
 }
 
 /* === RESPONSIVE === */
@@ -1373,4 +1394,3 @@ body.menu-open main {
     filter: blur(5px);
     transition: filter 0.5s ease;
 }
-
