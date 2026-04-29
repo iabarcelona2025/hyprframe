@@ -75,6 +75,18 @@ body {
     color: #ffff;
 }
 
+/* Estilo para el selector de idioma en las páginas de pieza */
+.lang-switch a {
+    font-size: 11px !important;
+    font-style: italic !important;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.lang-switch a:hover {
+    opacity: 1;
+}
+
 /* Navigation */
 nav.projects-navigation .buttons {
     display: flex;
