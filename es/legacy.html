@@ -1,1 +1,224 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HYPRFRAME | Trabajos Capturados</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap"
+            rel="stylesheet"
+        />
+        <link href="../styles/others.css" rel="stylesheet" />
+        <style>
+            /* Parche para asegurar visibilidad del menú en la subcarpeta */
+            .top-nav nav ul li a, 
+            .mobile-nav ul li a {
+                color: white !important;
+            }
+            .lang-switch a {
+                color: white !important;
+                font-weight: bold;
+                opacity: 0.8;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="abstract-bg">
+            <div class="strip"></div>
+            <div class="strip"></div>
+            <div class="strip"></div>
+            <div class="strip"></div>
+        </div>
 
+        <header class="top-nav">
+            <div class="container header-content">
+                <a href="../index.html" class="logo">
+                    <img src="../assets/logo_HYPRFRAME_03.png" alt="Logo" />
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html#AI">Generado por IA</a></li>
+                        <li><a href="#">Capturado</a></li>
+                        <li><a href="../index.html#about">Bio</a></li>
+                        <li><a href="../index.html#services">Servicios</a></li>
+                        <li><a href="../index.html#contact">Contacto</a></li>
+                        <li class="lang-switch"><a href="../legacy.html">EN</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <div class="burger-menu" id="burgerMenu">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </div>
+
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="../index.html#AI">Generado por IA</a></li>
+                <li><a href="#">Capturado</a></li>
+                <li><a href="../index.html#about">Bio</a></li>
+                <li><a href="../index.html#services">Servicios</a></li>
+                <li><a href="../index.html#contact">Contacto</a></li>
+                <li><a href="../legacy.html">EN</a></li>
+            </ul>
+        </div>
+
+        <main>
+            <section class="intro-section">
+                <p class="intro-subtitle">TRABAJOS CAPTURADOS</p>
+            </section>
+
+            <div class="portfolio-grid">
+                <a href="#" class="portfolio-item" data-video="video1">
+                    <img src="../assets/images/insert05_1.jpg" alt="Trabajo 1" />
+                </a>
+                <a href="#" class="portfolio-item" data-video="video2">
+                    <img src="../assets/images/duelo.jpg" alt="Trabajo 2" />
+                </a>
+                <a href="#" class="portfolio-item" data-video="video3">
+                    <img src="../assets/images/insert03.jpg" alt="Trabajo 3" />
+                </a>
+                <a href="#" class="portfolio-item" data-video="video4">
+                    <img src="../assets/images/spark.jpg" alt="Trabajo 4" />
+                </a>
+                <a href="#" class="portfolio-item" data-video="video5">
+                    <img src="../assets/images/insert02.jpg" alt="Trabajo 5" />
+                </a>
+                <a href="#" class="portfolio-item" data-video="video6">
+                    <img src="../assets/images/groc2.jpg" alt="Trabajo 6" />
+                </a>
+            </div>
+        </main>
+        
+        <footer class="footer-bottom">
+            <p>&copy; 2025 Hyprframe. Todos los derechos reservados.</p>
+        </footer>
+        
+        <div id="videoModal" class="video-modal">
+            <div class="video-modal-content">
+                <span class="close">&times;</span>
+                <div class="video-wrapper">
+                    <iframe
+                        id="vimeoPlayer"
+                        src=""
+                        frameborder="0"
+                        allow="autoplay; fullscreen"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+                <div class="video-description"><p id="videoSynopsis"></p></div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const strips = document.querySelectorAll(".strip");
+
+                if (strips.length > 0) {
+                    const stripsConfig = Array.from(strips).map((strip) => {
+                        const styles = getComputedStyle(strip);
+                        return {
+                            el: strip,
+                            speed: parseFloat(styles.getPropertyValue("--speed")) || 0.25,
+                            angle: styles.getPropertyValue("--angle").trim() || "0deg",
+                        };
+                    });
+
+                    function updateParallax() {
+                        const scrollPos = window.pageYOffset || window.scrollY || 0;
+                        stripsConfig.forEach((strip) => {
+                            const moveY = scrollPos * strip.speed;
+                            strip.el.style.setProperty(
+                                "transform",
+                                `translate3d(0px, -${moveY}px, 0px) rotate(${strip.angle})`,
+                                "important",
+                            );
+                        });
+                    }
+
+                    window.addEventListener("scroll", () => {
+                        requestAnimationFrame(updateParallax);
+                    }, { passive: true });
+
+                    updateParallax();
+                }
+
+                const burger = document.getElementById("burgerMenu");
+                const mobileNav = document.getElementById("mobileNav");
+
+                if (burger && mobileNav) {
+                    burger.addEventListener("click", () => {
+                        burger.classList.toggle("active");
+                        mobileNav.classList.toggle("active");
+                        document.body.classList.toggle("menu-open");
+                    });
+
+                    mobileNav.querySelectorAll("a").forEach((link) => {
+                        link.addEventListener("click", () => {
+                            burger.classList.remove("active");
+                            mobileNav.classList.remove("active");
+                            document.body.classList.remove("menu-open");
+                        });
+                    });
+
+                    document.addEventListener("click", (e) => {
+                        if (!burger.contains(e.target) && !mobileNav.contains(e.target)) {
+                            burger.classList.remove("active");
+                            mobileNav.classList.remove("active");
+                            document.body.classList.remove("menu-open");
+                        }
+                    });
+                }
+
+                const modal = document.getElementById("videoModal");
+                const iframe = document.getElementById("vimeoPlayer");
+                const synopsis = document.getElementById("videoSynopsis");
+
+                const videos = {
+                    video1: { url: "https://player.vimeo.com/video/1131285757", text: "INSERT SEASON 5: Sonidos congelados en el tiempo." },
+                    video2: { url: "https://player.vimeo.com/video/265730118", text: "BRUBAKER CO: Duelo de narices." },
+                    video3: { url: "https://player.vimeo.com/video/1131285727", text: "INSERT SEASON 3: Lo que no puedes ver." },
+                    video4: { url: "https://player.vimeo.com/video/1131285709", text: "Chevrolet Spark: Inspírate." },
+                    video5: { url: "https://player.vimeo.com/video/1131285681", text: "INSERT 2.0: El Domingo." },
+                    video6: { url: "https://player.vimeo.com/video/21087707", text: "Dácil: Videoclip Groc." },
+                };
+
+                document.querySelectorAll(".portfolio-item").forEach((item) => {
+                    item.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        const id = item.getAttribute("data-video");
+                        if (videos[id]) {
+                            iframe.src = videos[id].url + "?autoplay=1";
+                            synopsis.innerText = videos[id].text;
+                            modal.style.display = "flex";
+                        }
+                    });
+                });
+
+                document.querySelector(".close").onclick = () => {
+                    modal.style.display = "none";
+                    iframe.src = "";
+                };
+
+                window.onclick = (e) => {
+                    if (e.target == modal) {
+                        modal.style.display = "none";
+                        iframe.src = "";
+                    }
+                };
+
+                const portfolioGrid = document.querySelector(".portfolio-grid");
+                if (portfolioGrid) {
+                    portfolioGrid.addEventListener("mouseenter", () => {
+                        document.body.classList.add("desaturate-strips");
+                    });
+                    portfolioGrid.addEventListener("mouseleave", () => {
+                        document.body.classList.remove("desaturate-strips");
+                    });
+                }
+            });
+        </script>
+    </body>
+</html>
