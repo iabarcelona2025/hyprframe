@@ -1,1 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MW201KGC9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6MW201KGC9');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Visual Storytelling Studio – Imagen y Vídeo Generativo | HYPRFRAME</title>
+    <meta name="description" content="Un teaser cinemático de IA estilo Nordic Noir que explora la fría verdad del True Crime.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="../styles/pieza.css" rel="stylesheet">
+    <style>
+        /* Parche de visibilidad para el menú */
+        .top-nav nav ul li a, 
+        .mobile-nav ul li a {
+            color: white !important;
+        }
+        .lang-switch a {
+            color: white !important;
+            font-weight: bold;
+            opacity: 0.8;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        main {
+            margin-top: 100px;
+            padding: 40px 0 80px;
+        }
+
+        .project-gallery {
+            padding: 80px 0;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+        }
+
+        .related-projects {
+            padding: 80px 0;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #888;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .related-item {
+            background-color: #111;
+            border: 1px solid #1a1a1a;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            aspect-ratio: 16/10;
+        }
+
+        .related-item-info {
+            padding: 20px;
+            background-color: #0f0f0f;
+            height: 30%;
+        }
+
+        .footer-bottom {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* Efecto de desvanecimiento para el menú abierto */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7) !important;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        body.menu-open::after {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+
+        body.menu-open section, 
+        body.menu-open nav.projects-navigation, 
+        body.menu-open main {
+            filter: blur(8px) !important;
+            transition: filter 0.5s ease;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top-nav">
+      <div class="container header-content">
+        <a href="index.html" class="logo">
+            <img src="../assets/logo_HYPRFRAME_03.png" alt="Hyprframe Logo" />
+        </a>
+        <nav>
+          <ul>
+              <li><a href="index.html#AI">Generado por IA</a></li>
+              <li><a href="legacy.html">Capturado</a></li>
+              <li><a href="index.html#about">Bio</a></li>
+              <li><a href="index.html#services">Servicios</a></li>
+              <li><a href="index.html#contact">Contacto</a></li>
+              <li class="lang-switch"><a href="../project-deep.html">EN</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="burger-menu" id="burgerMenu">
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html#AI">Generado por IA</a></li>
+            <li><a href="legacy.html">Capturado</a></li>
+            <li><a href="index.html#about">Bio</a></li>
+            <li><a href="index.html#services">Servicios</a></li>
+            <li><a href="index.html#contact">Contacto</a></li>
+            <li><a href="../project-deep.html">EN</a></li>
+        </ul>
+    </div>
+
+    <nav class="projects-navigation">
+        <div class="buttons">
+            <a href="project-ryuu.html">&lt;</a>
+            <a href="index.html#AI">::</a>
+            <a href="project-polestar5.html">&gt;</a>
+        </div>
+    </nav>
+
+    <section class="project-gallery">
+        <div class="container">
+            <section id="video">
+              <div class="video-container">
+                <iframe
+                  src="https://player.vimeo.com/video/1185276367"
+                  title="Video Generado por IA"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+              </div>
+            </section>
+            <div class="project-details">
+                <div class="detail-section fade-in">
+                    <div class="video-text">
+                        <h2>Deep in the Forest [Teaser]</h2>
+                        <p>Febrero de 2013, Kiruna. Un Volvo 240 aparece abandonado en mitad de una carretera nevada. La puerta del conductor permanece abierta de par en par y, desde el interior, el murmullo de la radio es el único sonido que rompe el silencio del hielo. Elena ha desaparecido sin dejar rastro. Apoyada en testimonios locales, la investigación se centra en unas huellas que se internan en el bosque, sugiriendo un encuentro voluntario con alguien conocido. Sin embargo, un rastro no humano descubierto en la nieve convierte el caso en un misterio inquietante. Un ejercicio de reconstrucción visual que explora el aislamiento y el miedo en el corazón del invierno sueco.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="related-projects">
+        <div class="container">
+            <h2 class="section-title">Proyectos Relacionados</h2>
+            <div class="related-grid">
+                <a href="project-ryuu.html" class="related-item fade-in">
+                    <img src="../assets/images/Ryuu.jpg" alt="Cortometraje">
+                    <div class="related-item-info">
+                        <h3 class="related-item-title">Ryuu, el camino del dragón</h3>
+                    </div>
+                </a>
+                <a href="project-polestar5.html" class="related-item fade-in">
+                    <img src="../assets/images/polestar5.jpg" alt="Comercial para Polestar 5">
+                    <div class="related-item-info">
+                        <h3 class="related-item-title">Polestar 5</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-bottom">
+        <p>&copy; 2025 Hyprframe. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const burgerMenu = document.getElementById("burgerMenu");
+        const mobileNav = document.getElementById("mobileNav");
+        const body = document.body;
+
+        burgerMenu.addEventListener("click", function(e) {
+            e.stopPropagation(); 
+            this.classList.toggle("active");
+            mobileNav.classList.toggle("active");
+            body.classList.toggle("menu-open");
+        });
+
+        document.addEventListener("click", function(e) {
+            if (body.classList.contains("menu-open")) {
+                if (!mobileNav.contains(e.target) && !burgerMenu.contains(e.target)) {
+                    burgerMenu.classList.remove("active");
+                    mobileNav.classList.remove("active");
+                    body.classList.remove("menu-open");
+                }
+            }
+        });
+
+        document.querySelectorAll(".mobile-nav a").forEach(link => {
+            link.addEventListener("click", () => {
+                burgerMenu.classList.remove("active");
+                mobileNav.classList.remove("active");
+                body.classList.remove("menu-open");
+            });
+        });
+
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = Math.random() * 0.3 + 's';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((item) => observer.observe(item));
+    </script>
+</body>
+</html>
