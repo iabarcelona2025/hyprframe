@@ -542,5 +542,28 @@
                     });
                 });
         </script>
+        <script>
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const langLinks = document.querySelectorAll('a[href*="../index.html"]'); // Apunta al inglés
+    
+    let currentSectionId = "";
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= (sectionTop - 200)) {
+            currentSectionId = section.getAttribute('id');
+        }
+    });
+
+    langLinks.forEach(link => {
+        if (currentSectionId) {
+            link.href = "../index.html#" + currentSectionId;
+        } else {
+            link.href = "../index.html";
+        }
+    });
+});
+</script>
     </body>
 </html>
