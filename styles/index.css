@@ -520,7 +520,7 @@ footer {
     opacity: 0.6;                  /* Más tenue */
     text-transform: lowercase;     /* "es" en minúsculas queda más elegante */
     letter-spacing: 1px;
-    margin-top: 10px;              /* Separa el idioma del bloque principal */
+    padding: 0px 0 !important;    /* Reducimos el padding para que esté más pegado */
     display: inline-block;
 }
 
