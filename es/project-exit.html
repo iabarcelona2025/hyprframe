@@ -1,1 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MW201KGC9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6MW201KGC9');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Visual Storytelling Studio – Exit Plan Campaign | HYPRFRAME</title>
+    <meta name="description" content="La campaña Exit Plan es un video publicitario experimental de IA generativa que explora el humor, la imaginería cinematográfica y la construcción de imágenes artificiales.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="../styles/pieza.css" rel="stylesheet">
+    <style>
+        /* Parche de visibilidad para el menú en subcarpeta */
+        .top-nav nav ul li a, 
+        .mobile-nav ul li a {
+            color: white !important;
+        }
+        .lang-switch a {
+            color: white !important;
+            font-weight: bold;
+            opacity: 0.8;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        main {
+            margin-top: 100px;
+            padding: 40px 0 80px;
+        }
+
+        .project-gallery {
+            padding: 80px 0;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+        }
+
+        .related-projects {
+            padding: 80px 0;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #888;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .related-item {
+            background-color: #111;
+            border: 1px solid #1a1a1a;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            aspect-ratio: 16/10;
+        }
+
+        .related-item-info {
+            padding: 20px;
+            background-color: #0f0f0f;
+            height: 30%;
+        }
+
+        .footer-bottom {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top-nav">
+      <div class="container header-content">
+        <a href="index.html" class="logo">
+          <img src="../assets/logo_HYPRFRAME_03.png" alt="Hyprframe Logo" />
+        </a>
+        <nav>
+          <ul>
+              <li><a href="index.html#AI">Generado por IA</a></li>
+              <li><a href="legacy.html">Capturado</a></li>
+              <li><a href="index.html#about">Bio</a></li>
+              <li><a href="index.html#services">Servicios</a></li>
+              <li><a href="index.html#contact">Contacto</a></li>
+              <li class="lang-switch"><a href="../project-exit.html">EN</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="burger-menu" id="burgerMenu">
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html#AI">Generado por IA</a></li>
+            <li><a href="legacy.html">Capturado</a></li>
+            <li><a href="index.html#about">Bio</a></li>
+            <li><a href="index.html#services">Servicios</a></li>
+            <li><a href="index.html#contact">Contacto</a></li>
+            <li><a href="../project-exit.html">EN</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <nav class="projects-navigation">
+            <div class="buttons">
+                <a href="project-distant.html">&lt;</a>
+                <a href="index.html#AI">::</a>
+                <a href="project-stained.html">&gt;</a>
+            </div>
+        </nav>
+
+        <section class="project-gallery">
+            <div class="container">
+                <section id="video">
+                  <div class="video-container">
+                    <iframe
+                      src="https://player.vimeo.com/video/1141629024"
+                      title="HSBC Planes de Pensiones"
+                      frameborder="0"
+                      allow="autoplay; clipboard-write; encrypted-media; gyroscope"
+                      allowfullscreen>
+                    </iframe>
+                  </div>
+                </section>
+
+                <div class="project-details">
+                    <div class="detail-section fade-in">
+                        <div class="video-text">
+                            <h2>Campaña Plan de Pensiones</h2>
+                            <p>Algunas historias merecen un final digno. Una reflexión sobre el valor de saber cuándo dejar de trabajar y la paz que da haberlo planeado. La vida no es una película. Hasta los monstruos necesitan un plan de salida.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-projects">
+            <div class="container">
+                <h2 class="section-title">Proyectos Relacionados</h2>
+                <div class="related-grid">
+                    <a href="project-distant.html" class="related-item fade-in">
+                        <img src="../assets/images/distant.jpg" alt="Distant - Trailer">
+                        <div class="related-item-info">
+                            <h3 class="related-item-title">Distant - Trailer</h3>
+                        </div>
+                    </a>
+                    <a href="project-asics.html" class="related-item fade-in">
+                        <img src="../assets/images/Asics.jpg" alt="Comercial para Asics">
+                        <div class="related-item-info">
+                            <h3 class="related-item-title">Asics Vulcano</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-bottom">
+            <p>&copy; 2025 Hyprframe. Todos los derechos reservados.</p>
+        </footer>
+    </main>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = Math.random() * 0.3 + 's';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((item) => {
+            observer.observe(item);
+        });
+
+        const burgerMenu = document.getElementById("burgerMenu");
+        const mobileNav = document.getElementById("mobileNav");
+        
+        burgerMenu.addEventListener("click", () => {
+            burgerMenu.classList.toggle("active");
+            mobileNav.classList.toggle("active");
+        });
+
+        const mobileNavLinks = mobileNav.querySelectorAll("a");
+        mobileNavLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                burgerMenu.classList.remove("active");
+                mobileNav.classList.remove("active");
+            });
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!burgerMenu.contains(e.target) && !mobileNav.contains(e.target)) {
+                burgerMenu.classList.remove("active");
+                mobileNav.classList.remove("active");
+            }
+        });
+    </script>
+</body>
+</html>
