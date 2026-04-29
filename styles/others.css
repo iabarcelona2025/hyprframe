@@ -374,6 +374,22 @@ main {
     margin-top: 70px;
 }
 
+/* === ESTILO PARA EL ÚLTIMO ELEMENTO (IDIOMA ES) EN MÓVIL === */
+.mobile-nav ul li:last-child a {
+    font-size: 15px !important; /* Más pequeño que los 18px generales */
+    font-style: italic !important; /* En cursiva */
+    opacity: 0.6; /* Más tenue */
+    text-transform: lowercase; /* "es" en minúsculas queda más elegante */
+    letter-spacing: 1px;
+    padding: 0px 0 !important; /* Reducimos el padding para que esté más pegado */
+    display: inline-block;
+}
+
+/* Quitamos el punto decorativo "·" solo al idioma */
+.mobile-nav ul li:last-child a::before {
+    content: "" !important;
+}
+
 /* === TIPOGRAFÍA ORIGINAL DE LOS ENLACES === */
 .mobile-nav a {
     color: #888;
