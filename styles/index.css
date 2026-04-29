@@ -513,6 +513,30 @@ footer {
     opacity: 0.8;
 }
 
+/* === ESTILO PARA EL ÚLTIMO ELEMENTO (IDIOMA ES) EN MÓVIL === */
+.mobile-nav ul li:last-child a {
+    font-size: 13px !important;    /* Más pequeño que los 18px generales */
+    font-style: italic !important; /* En cursiva */
+    opacity: 0.6;                  /* Más tenue */
+    text-transform: lowercase;     /* "es" en minúsculas queda más elegante */
+    letter-spacing: 1px;
+    margin-top: 10px;              /* Separa el idioma del bloque principal */
+    display: inline-block;
+}
+
+/* Quitamos el punto decorativo "·" solo al idioma */
+.mobile-nav ul li:last-child a::before {
+    content: "" !important;
+}
+
+/* Comportamiento al pasar el ratón */
+.mobile-nav ul li:last-child a:hover {
+    opacity: 1;
+    color: #ffffff;
+    padding-left: 0 !important; /* Que no se desplace a la derecha */
+}
+
+
 /* === ESTILO SELECTOR DE IDIOMA (Versión /es) === */
 .lang-switch a {
     font-size: 11px !important;
