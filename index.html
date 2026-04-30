@@ -578,36 +578,42 @@ window.addEventListener('scroll', () => {
 </script>
         <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('section[id]'); // Detecta secciones con ID
+    // Seleccionamos las secciones de contenido y el Hero
+    const sections = document.querySelectorAll('section[id], .hero-section'); 
     const navLinks = document.querySelectorAll('.top-nav nav ul li a');
 
     const options = {
         root: null,
-        rootMargin: '-40% 0px -40% 0px', // El "sensor" se activa cuando la sección llega al centro
-        threshold: 0
+        rootMargin: '-30% 0px -30% 0px', // Ajustado para que el cambio sea preciso
+        threshold: 0.1
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                
-                // Quitamos 'active' de todos
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    // Comprobamos si el href coincide con el ID de la sección
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.classList.add('active');
-                    }
-                });
+                // Obtenemos el ID o la clase para saber si es el Hero
+                const target = entry.target;
+                const isHero = target.classList.contains('hero-section');
+                const id = target.getAttribute('id');
+
+                // 1. Limpiamos siempre todos los "encendidos"
+                navLinks.forEach(link => link.classList.remove('active'));
+
+                // 2. Si NO es el hero, buscamos qué botón encender
+                if (!isHero && id) {
+                    navLinks.forEach(link => {
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+                // Si es el Hero, el código no entra en el if y el menú se queda gris
             }
         });
     }, options);
 
-    // Ponemos el vigilante en cada sección
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+    // Activamos el observador
+    sections.forEach(section => observer.observe(section));
 });
 </script>
     </body
