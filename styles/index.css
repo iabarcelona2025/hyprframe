@@ -214,7 +214,7 @@ body {
     font-family: "Inter", sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
-    transition: color 0.4s;
+    transition: color 0.9s ease;
 }
 
 .top-nav nav a:hover {
