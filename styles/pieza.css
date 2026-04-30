@@ -75,6 +75,13 @@ body {
     color: #ffff;
 }
 
+/* El que tenga la clase .active siempre estará en blanco */
+.top-nav nav a.active,
+.top-nav nav a:hover {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
 /* Estilo para el selector de idioma en las páginas de pieza */
 .lang-switch a {
     font-size: 11px !important;
