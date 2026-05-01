@@ -1166,6 +1166,33 @@ html {
     color: #888;
 }
 
+/* Reducción del tamaño del icono Cinematic Builder */
+.social-links a.social-icon-img img {
+    width: 32px; /* Modifica este valor si lo quieres aún más pequeño, ej. 20px */
+    height: auto;
+}
+
+/* === ESTILOS PARA EL HOVER DEL NUEVO ICONO === */
+
+.social-links a.social-icon-img {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Mantiene la misma transición que el resto */
+}
+
+.social-links a.social-icon-img img {
+    /* Estado normal: color original y opacidad estándar */
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Efecto Hover: Al igual que los otros iconos se pone gris/tenue */
+.social-links a.social-icon-img:hover img {
+    opacity: 1;
+    filter: grayscale(100%) brightness(0.7);
+}
+
 /* --- RESPONSIVE --- */
 @media (max-width: 800px) {
     .contact-form {
