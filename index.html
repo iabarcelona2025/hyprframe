@@ -8,7 +8,7 @@
         <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#000000">
-        
+
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>AI Visual Storytelling Studio | HYPRFRAME</title>
@@ -99,7 +99,7 @@
                         class="intro-subtitle"
                         style="text-align: center; margin-bottom: 40px"
                     >
-                        
+
                     </p>
                     <div class="portfolio-grid">
                         <a href="project-deep.html" class="portfolio-item"
@@ -271,6 +271,9 @@
                             <a href="https://wa.me/34645795080" target="_blank"
                                 ><i class="fab fa-whatsapp"></i
                             ></a>
+                            <a href="builder.html" target="_blank" class="social-icon-img">
+                             <img src="assets/images/cinematic_builder.png" alt="Cinematic Builder" />
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -466,7 +469,7 @@ const body = document.body;
 burgerMenu.addEventListener("click", () => {
     burgerMenu.classList.toggle("active");
     mobileNav.classList.toggle("active");
-    
+
     // ESTA ES LA LÍNEA QUE ACTIVA EL DESVANECIMIENTO
     body.classList.toggle("menu-open");
 });
@@ -510,10 +513,10 @@ mobileNavLinks.forEach((link) => {
         const body = document.body;
 
         document.addEventListener('click', function(event) {
-            if (mobileNav.classList.contains('active') && 
-                !mobileNav.contains(event.target) && 
+            if (mobileNav.classList.contains('active') &&
+                !mobileNav.contains(event.target) &&
                 !burgerMenu.contains(event.target)) {
-                
+
                 burgerMenu.classList.remove('active');
                 mobileNav.classList.remove('active');
                 body.classList.remove('menu-open');
@@ -555,7 +558,7 @@ document.querySelectorAll('a[href^="#contact"]').forEach(anchor => {
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section[id], div[id]'); // Detecta secciones con ID
     const langLinks = document.querySelectorAll('a[href*="es/index.html"]'); // Detecta tus botones de "ES"
-    
+
     let currentSectionId = "";
 
     sections.forEach(section => {
@@ -579,7 +582,7 @@ window.addEventListener('scroll', () => {
         <script>
 document.addEventListener('DOMContentLoaded', () => {
     // Seleccionamos las secciones de contenido y el Hero
-    const sections = document.querySelectorAll('section[id], .hero-section'); 
+    const sections = document.querySelectorAll('section[id], .hero-section');
     const navLinks = document.querySelectorAll('.top-nav nav ul li a');
 
     const options = {
@@ -617,5 +620,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
     </body
-    
+
 </html>
