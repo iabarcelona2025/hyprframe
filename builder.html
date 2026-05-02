@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPRFRAME - Cinematic Look Builder V2.1.2</title>
+    <title>HYPRFRAME - Cinematic Look Builder V2.2.2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -108,7 +108,7 @@
                         <i data-lucide="clapperboard" class="text-violet-300 w-6 h-6"></i>
                         <h1 class="text-xl font-bold tracking-tight uppercase">
                             Cinematic Look <span class="text-violet-300">Builder</span> 
-                            <span class="text-[10px] text-violet-200 font-medium ml-1 lowercase align-top bg-violet-400/10 px-1.5 py-0.5 rounded border border-violet-400/20">V2.1.2</span>
+                            <span class="text-[10px] text-violet-200 font-medium ml-1 lowercase align-top bg-violet-400/10 px-1.5 py-0.5 rounded border border-violet-400/20">V2.2.2</span>
                         </h1>
                     </div>
                 </div>
@@ -193,18 +193,33 @@
                         </div>
                     </div>
 
+                    <!-- CAMERA PROFILE EMULATION -->
+                    <div class="space-y-2 pt-2 relative">
+                        <label class="text-xs font-bold text-zinc-500 uppercase flex items-center gap-2">
+                            <i data-lucide="cpu" class="w-3.5 h-3.5"></i> CAMERA PROFILE EMULATION
+                        </label>
+                        <div id="custom-profile-wrapper" class="relative">
+                            <button id="profile-button" onclick="toggleProfileDropdown()" class="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2.5 text-sm text-left flex justify-between items-center focus:ring-2 focus:ring-violet-400/50 outline-none transition-all">
+                                <span id="profile-display">None <span class="text-[11px] text-zinc-500 ml-1 font-normal">(No profile mapping)</span></span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-500"></i>
+                            </button>
+                            <div id="profile-dropdown" class="hidden absolute z-50 w-full mt-1 bg-zinc-900 border border-zinc-700 rounded-lg shadow-2xl max-h-60 overflow-y-auto glass-panel border border-white/5">
+                                <!-- Profiles injected via JS -->
+                            </div>
+                        </div>
+                        <input type="hidden" id="camera-profile" value="None">
+                    </div>
+
                     <!-- Custom EMULSION Dropdown -->
                     <div class="space-y-2 pt-2 relative">
                         <label class="text-xs font-bold text-zinc-500 uppercase flex items-center gap-2">
                             <i data-lucide="film" class="w-3.5 h-3.5"></i> FILM STOCK / EMULSION
                         </label>
-                        
                         <div id="custom-stock-wrapper" class="relative">
                             <button id="stock-button" onclick="toggleStockDropdown()" class="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2.5 text-sm text-left flex justify-between items-center focus:ring-2 focus:ring-violet-400/50 outline-none transition-all">
                                 <span id="stock-display">None <span class="text-[11px] text-zinc-500 ml-1 font-normal">(No film emulation / Digital neutral)</span></span>
                                 <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-500"></i>
                             </button>
-                            
                             <div id="stock-dropdown" class="hidden absolute z-50 w-full mt-1 bg-zinc-900 border border-zinc-700 rounded-lg shadow-2xl max-h-80 overflow-y-auto glass-panel border border-white/5">
                                 <!-- Options injected via JS -->
                             </div>
@@ -308,7 +323,7 @@
                 <div class="flex-1 bg-black/40 rounded-xl p-4 border border-white/5 overflow-auto custom-scrollbar">
                     <pre id="resultado" class="code-font text-[#A9D12F] text-xs leading-relaxed whitespace-pre-wrap">{
   "status": "ready",
-  "optimization": "Professional Baseline Active (V2.1.2)"
+  "optimization": "Professional Baseline Active (V2.2.2)"
 }</pre>
                 </div>
 
@@ -320,7 +335,7 @@
             <div class="glass-panel p-4 rounded-2xl border-l-4 border-l-violet-400">
                 <p class="text-[10px] text-zinc-500 uppercase font-bold mb-1 tracking-tighter">Pro Tip:</p>
                 <p class="text-xs text-zinc-400 italic">
-                    "Using 'None' disables film DNA, providing a clean digital base optimized for the selected camera sensor."
+                    "Log profiles now force an ultra-flat, washed-out visual response to preserve 100% of the dynamic range data."
                 </p>
             </div>
         </div>
@@ -328,6 +343,16 @@
     </div>
 
     <script>
+        const profilesData = [
+            { name: "None", desc: "(No profile mapping)" },
+            { name: "ARRI LogC4", desc: "(17 stops DR / Alexa 35 standard)" },
+            { name: "Sony S-Log3", desc: "(Cineon-style / High shadow latitude)" },
+            { name: "RED Log3G10", desc: "(IPP2 mapping / 10-stop mid-gray curve)" },
+            { name: "Blackmagic Film Gen 5", desc: "(Advanced highlight roll-off)" },
+            { name: "Canon C-Log3", desc: "(1600% DR / 34.3 IRE balance)" },
+            { name: "Panasonic V-Log", desc: "(Linear mid-tones / Varicam matching)" }
+        ];
+
         const stocksData = {
             "Neutral / Bypass": [
                 { name: "None", desc: "(No film emulation / Digital neutral)" }
@@ -372,6 +397,36 @@
             ]
         };
 
+        function initProfileDropdown() {
+            const container = document.getElementById('profile-dropdown');
+            let html = '';
+            profilesData.forEach(profile => {
+                html += `
+                    <div class="stock-option px-3 py-2 text-sm cursor-pointer border-b border-white/5 transition-colors" onclick="selectProfile('${profile.name}', '${profile.desc}')">
+                        <span class="font-medium">${profile.name}</span>
+                        <span class="text-[11px] text-zinc-500 ml-1 font-normal">${profile.desc}</span>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function toggleProfileDropdown() {
+            const dropdown = document.getElementById('profile-dropdown');
+            const stockDropdown = document.getElementById('stock-dropdown');
+            stockDropdown.classList.add('hidden');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function selectProfile(name, desc) {
+            document.getElementById('profile-display').innerHTML = `${name} <span class="text-[11px] text-zinc-500 ml-1 font-normal">${desc}</span>`;
+            document.getElementById('camera-profile').value = name;
+            document.getElementById('profile-dropdown').classList.add('hidden');
+            
+            // Neutralize sliders when selecting a profile
+            setSliderValues(5.00, 0.00, 0.00, 0.00, 5600, 32, 65);
+        }
+
         function initStockDropdown() {
             const container = document.getElementById('stock-dropdown');
             let html = '';
@@ -391,6 +446,8 @@
 
         function toggleStockDropdown() {
             const dropdown = document.getElementById('stock-dropdown');
+            const profileDropdown = document.getElementById('profile-dropdown');
+            profileDropdown.classList.add('hidden');
             dropdown.classList.toggle('hidden');
         }
 
@@ -482,12 +539,14 @@
         }
 
         window.onclick = function(event) {
-            if (!event.target.closest('#custom-stock-wrapper')) {
+            if (!event.target.closest('#custom-stock-wrapper') && !event.target.closest('#custom-profile-wrapper')) {
                 document.getElementById('stock-dropdown').classList.add('hidden');
+                document.getElementById('profile-dropdown').classList.add('hidden');
             }
         }
 
         window.onload = function() {
+            initProfileDropdown();
             initStockDropdown();
             lucide.createIcons();
         }
@@ -499,6 +558,7 @@
         function generarJson() {
             const camBody = document.getElementById('camera').value;
             const lensSelected = document.getElementById('lens').value;
+            const profileSelected = document.getElementById('camera-profile').value;
             const stockSelected = document.getElementById('stock').value;
             
             const isFilm = camBody.includes('mm');
@@ -604,17 +664,47 @@
             if (parseFloat(halValue) > 4.5 && !is800T && !isPhoenix && !isNone) semanticHints.push("Dreamy blooming highlights, ethereal glow");
             if (isAnamorphic) semanticHints.push("Cinematic aspect ratio, oval bokeh, horizontal flares");
 
+            // Log profile descriptions with semantic reinforcements
+            let logProfileDesc = "";
+            switch(profileSelected) {
+                case "ARRI LogC4":
+                    logProfileDesc = "Enforce ultra-flat LogC4 profile: milked shadows with high lift, extreme low contrast, desaturated primaries, and compressed highlights for Alexa 35 sensor emulation. RAW flat image look with no internal contrast mapping.";
+                    break;
+                case "Sony S-Log3":
+                    logProfileDesc = "Apply S-Log3 high-latitude flat profile: greyish neutral shadows, zero-contrast mid-tones, and muted Cineon-style tonal distribution. Standardized S-Gamut3 mapping with washed-out visual characteristic.";
+                    break;
+                case "RED Log3G10":
+                    logProfileDesc = "Utilize aggressive Log3G10 encoding for IPP2 pipelines: highly compressed dynamic range mapping 10 stops relative to 18% mid-gray. RAW digital negative look, completely washed out highlights, and flat, information-heavy shadows.";
+                    break;
+                case "Blackmagic Film Gen 5":
+                    logProfileDesc = "Gen 5 Film curve implementation: flat, desaturated tonal distribution with massive shadow retention and extended highlight roll-off. Zero visual punch, optimized for post-color grading flat response.";
+                    break;
+                case "Canon C-Log3":
+                    logProfileDesc = "Apply C-Log3 flat gamma mapping: neutral low-contrast response with lifted blacks and muted color palette. 1600% DR preservation with characteristic flat log response across the spectrum.";
+                    break;
+                case "Panasonic V-Log":
+                    logProfileDesc = "Implement V-Log ultra-flat curve: 14+ stops of neutral latitude preservation. Desaturated, low-contrast visual look with linear mid-tones and characteristic V-Gamut flat mapping.";
+                    break;
+                default:
+                    logProfileDesc = "";
+            }
+
             const data = {
                 "metadata": {
                     "engine": "BY HYPRFRAME",
-                    "version": "2.1.2",
+                    "version": "2.2.2",
                     "timestamp": new Date().toISOString(),
                     "workflow": isAnamorphic ? "Anamorphic De-squeeze 2.0x" : "Spherical",
                     "color_mode": isBW ? "Monochrome" : (isNone ? "Digital Neutral" : "Full Color Emulation")
                 },
                 "camera_profile": {
                     "body": camBody,
-                    "color_science": isAlexa35 ? "ARRI REVEAL" : "Log-C Pipeline"
+                    "color_science": isAlexa35 ? "ARRI REVEAL" : "Standard Pipeline",
+                    "log_profile_emulation": profileSelected !== "None" ? {
+                        "name": profileSelected,
+                        "description": logProfileDesc,
+                        "response_type": "Logarithmic Transfer Function (Ultra-Flat)"
+                    } : "Direct Sensor Mapping"
                 },
                 "film_emulation": {
                     "stock": stockSelected,
