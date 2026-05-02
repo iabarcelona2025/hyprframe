@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,11 +25,11 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Estilo personalizado para los tiradores (thumbs) gris claro y barras largas */
+        /* Technical slider styles with light gray thumbs */
         input[type="range"] {
             appearance: none;
             background: transparent;
-            width: 100%; /* Forzar longitud completa */
+            width: 100%; 
             display: block;
         }
 
@@ -88,7 +88,7 @@
 
         /* Dropdown custom styling */
         .stock-option:hover {
-            background-color: rgba(196, 181, 253, 0.1); /* Soft Lilac hover */
+            background-color: rgba(196, 181, 253, 0.1); 
         }
     </style>
 </head>
@@ -96,14 +96,10 @@
 
     <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8">
         
-        <!-- UI de Configuración -->
+        <!-- Configuration UI -->
         <div class="glass-panel p-6 rounded-2xl shadow-2xl overflow-y-auto max-h-[90vh]">
             <header class="mb-8 border-b border-white/10 pb-4">
-                <div class="flex items-center gap-4 mb-1">
-        <a href="index.html" class="flex items-center justify-center p-2.5 bg-zinc-900 border border-zinc-700 rounded-lg text-zinc-400 hover:text-purple-400 transition-all" title="Volver a la landing page">
-            <i data-lucide="arrow-left" class="w-4 h-4"></i>
-        </a>
-        <div class="flex items-center gap-3">
+                <div class="flex items-center gap-3 mb-1">
                     <i data-lucide="clapperboard" class="text-violet-300 w-6 h-6"></i>
                     <h1 class="text-xl font-bold tracking-tight uppercase">
                         Cinematic Look <span class="text-violet-300">Builder</span> 
@@ -114,14 +110,14 @@
             </header>
 
             <div class="space-y-6">
-                <!-- Cámara y Óptica -->
+                <!-- Camera & Optics -->
                 <div class="grid grid-cols-1 gap-4">
                     <div class="space-y-2">
                         <label class="text-xs font-bold text-zinc-500 uppercase flex items-center gap-2">
-                            <i data-lucide="camera" class="w-3.5 h-3.5"></i> Sensor / Cuerpo de Cámara
+                            <i data-lucide="camera" class="w-3.5 h-3.5"></i> SENSOR / CAMERA BODY
                         </label>
                         <select id="camera" class="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-violet-400/50 outline-none transition-all">
-                            <optgroup label="Celuloide (Analog Film)">
+                            <optgroup label="Analog Film">
                                 <option value="IMAX MSM 9802 (65mm)">IMAX MSM 9802 (15/65mm Large Format)</option>
                                 <option value="Arricam ST (35mm)">Arricam ST (35mm 3-Slat/4-Slat)</option>
                                 <option value="Arriflex 435 (35mm)">Arriflex 435 (35mm High-Speed)</option>
@@ -130,14 +126,14 @@
                                 <option value="Arriflex 416 (Super 16mm)">Arriflex 416 (Super 16mm)</option>
                                 <option value="Bolex H16 (16mm)">Bolex H16 (Classic 16mm Spring-Wound)</option>
                             </optgroup>
-                            <optgroup label="Cine Digital Flagships">
-                                <option value="ARRI Alexa 35">ARRI Alexa 35 (Super 35 4.6K - REVEAL)</option>
+                            <optgroup label="Digital Cinema Flagships">
+                                <option value="ARRI Alexa 35" selected>ARRI Alexa 35 (Super 35 4.6K - REVEAL)</option>
                                 <option value="ARRI Alexa Mini LF">ARRI Alexa Mini LF (Full Frame)</option>
                                 <option value="Sony Venice 2">Sony Venice 2 (8K X-OCN)</option>
                                 <option value="RED V-Raptor XL 8K">RED V-Raptor XL 8K VV</option>
                                 <option value="Panavision Millennium DXL2">Panavision Millennium DXL2 (8K)</option>
                             </optgroup>
-                            <optgroup label="Especializadas & B-Cam">
+                            <optgroup label="Specialized & B-Cam">
                                 <option value="Phantom Flex4K">Phantom Flex4K (Ultra High-Speed)</option>
                                 <option value="Sony FX6">Sony FX6 (Digital Full Frame)</option>
                                 <option value="Blackmagic URSA Mini Pro 12K">Blackmagic URSA 12K</option>
@@ -149,10 +145,10 @@
 
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-2">
-                            <label class="text-xs font-bold text-zinc-500 uppercase">Óptica</label>
+                            <label class="text-xs font-bold text-zinc-500 uppercase">OPTICS</label>
                             <select id="lens" class="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-violet-400/50 outline-none transition-all">
                                 <optgroup label="Modern / Clean">
-                                    <option value="ARRI Signature Prime">ARRI Signature Prime</option>
+                                    <option value="ARRI Signature Prime" selected>ARRI Signature Prime</option>
                                     <option value="Zeiss Master Prime f/1.4">Zeiss Master Prime</option>
                                     <option value="Leitz Summicron-C">Leitz Summicron-C</option>
                                     <option value="Cooke S8/i">Cooke S8/i (Full Frame)</option>
@@ -175,7 +171,7 @@
                             </select>
                         </div>
                         <div class="space-y-2">
-                            <label class="text-xs font-bold text-zinc-500 uppercase">Focal</label>
+                            <label class="text-xs font-bold text-zinc-500 uppercase">FOCAL</label>
                             <select id="distance" class="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-violet-400/50 outline-none transition-all">
                                 <option value="10mm">10mm</option>
                                 <option value="14mm">14mm</option>
@@ -191,71 +187,71 @@
                         </div>
                     </div>
 
-                    <!-- Desplegable STOCK Personalizado -->
+                    <!-- Custom EMULSION Dropdown -->
                     <div class="space-y-2 pt-2 relative">
                         <label class="text-xs font-bold text-zinc-500 uppercase flex items-center gap-2">
-                            <i data-lucide="film" class="w-3.5 h-3.5"></i> Film Stock / Emulación
+                            <i data-lucide="film" class="w-3.5 h-3.5"></i> FILM STOCK / EMULSION
                         </label>
                         
                         <div id="custom-stock-wrapper" class="relative">
                             <button id="stock-button" onclick="toggleStockDropdown()" class="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2.5 text-sm text-left flex justify-between items-center focus:ring-2 focus:ring-violet-400/50 outline-none transition-all">
-                                <span id="stock-display">Kodak Portra 160/400/800 <span class="text-[11px] text-zinc-500 ml-1 font-normal">(tono piel natural/latitud amplia)</span></span>
+                                <span id="stock-display">Kodak Portra 160/400/800 <span class="text-[11px] text-zinc-500 ml-1 font-normal">(natural skin tones/wide latitude)</span></span>
                                 <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-500"></i>
                             </button>
                             
-                            <div id="stock-dropdown" class="hidden absolute z-50 w-full mt-1 bg-zinc-900 border border-zinc-700 rounded-lg shadow-2xl max-h-80 overflow-y-auto glass-panel">
-                                <!-- Las opciones se inyectan via JS -->
+                            <div id="stock-dropdown" class="hidden absolute z-50 w-full mt-1 bg-zinc-900 border border-zinc-700 rounded-lg shadow-2xl max-h-80 overflow-y-auto glass-panel border border-white/5">
+                                <!-- Options injected via JS -->
                             </div>
                         </div>
                         <input type="hidden" id="stock" value="Kodak Portra 160/400/800">
                     </div>
                 </div>
 
-                <!-- Sliders Técnicos -->
+                <!-- Technical Sliders -->
                 <div class="space-y-5 pt-4 border-t border-white/5">
                     <h3 class="text-xs font-bold text-violet-300 uppercase tracking-widest flex items-center gap-2">
-                        <i data-lucide="sliders-horizontal" class="w-4 h-4"></i> Color & Textura (Precisión 0.01)
+                        <i data-lucide="sliders-horizontal" class="w-4 h-4"></i> COLOR & TEXTURE (0.01 PRECISION)
                     </h3>
 
                     <div class="space-y-2">
                         <div class="flex justify-between text-xs font-medium uppercase text-zinc-400">
-                            <span>Saturación Cromática</span>
-                            <span id="satValue" class="text-violet-300 font-bold">6.00</span>
+                            <span>Saturation</span>
+                            <span id="satValue" class="text-violet-300 font-bold">5.00</span>
                         </div>
-                        <input type="range" id="saturation" min="0" max="10" value="6.00" step="0.01" 
+                        <input type="range" id="saturation" min="0" max="10" value="5.00" step="0.01" 
                                oninput="updateVal('satValue', parseFloat(this.value).toFixed(2))">
                     </div>
 
                     <div class="space-y-2">
                         <div class="flex justify-between text-xs font-medium uppercase text-zinc-400">
                             <span>Halation (Red Glow)</span>
-                            <span id="halValue" class="text-violet-300 font-bold">1.50</span>
+                            <span id="halValue" class="text-violet-300 font-bold">1.20</span>
                         </div>
-                        <input type="range" id="halation" min="0" max="10" value="1.50" step="0.01" 
+                        <input type="range" id="halation" min="0" max="10" value="1.20" step="0.01" 
                                oninput="updateVal('halValue', parseFloat(this.value).toFixed(2))">
                     </div>
 
                     <div class="space-y-2">
                         <div class="flex justify-between text-xs font-medium uppercase text-zinc-400">
                             <span>Grain (Organic Texture)</span>
-                            <span id="grnValue" class="text-violet-300 font-bold">2.40</span>
+                            <span id="grnValue" class="text-violet-300 font-bold">2.00</span>
                         </div>
-                        <input type="range" id="grain" min="0" max="10" value="2.40" step="0.01" 
+                        <input type="range" id="grain" min="0" max="10" value="2.00" step="0.01" 
                                oninput="updateVal('grnValue', parseFloat(this.value).toFixed(2))">
                     </div>
 
                     <div class="space-y-2">
                         <div class="flex justify-between text-xs font-medium uppercase text-zinc-400">
                             <span>Vignette (Fall-off)</span>
-                            <span id="vigValue" class="text-violet-300 font-bold">1.20</span>
+                            <span id="vigValue" class="text-violet-300 font-bold">1.00</span>
                         </div>
-                        <input type="range" id="vignette" min="0" max="10" value="1.20" step="0.01" 
+                        <input type="range" id="vignette" min="0" max="10" value="1.00" step="0.01" 
                                oninput="updateVal('vigValue', parseFloat(this.value).toFixed(2))">
                     </div>
 
                     <div class="space-y-2">
                         <div class="flex justify-between text-xs font-medium uppercase text-zinc-400">
-                            <span>White Point (Temperatura Color)</span>
+                            <span>White Point (Color Temperature)</span>
                             <span id="whiteValue" class="text-violet-300 font-bold">5600K</span>
                         </div>
                         <input type="range" id="whitePoint" min="1000" max="10000" value="5600" step="100" 
@@ -266,17 +262,17 @@
                         <div class="space-y-2">
                             <div class="flex justify-between text-xs font-medium uppercase text-zinc-400">
                                 <span>Contrast</span>
-                                <span id="conValue">40:1</span>
+                                <span id="conValue">32:1</span>
                             </div>
-                            <input type="range" id="contrast" min="1" max="100" value="40" 
+                            <input type="range" id="contrast" min="1" max="100" value="32" 
                                    oninput="updateVal('conValue', this.value + ':1')">
                         </div>
                         <div class="space-y-2">
                             <div class="flex justify-between text-xs font-medium uppercase text-zinc-400">
                                 <span>Skin Luma (IRE)</span>
-                                <span id="lumaValue" class="text-violet-300 font-bold">70 IRE</span>
+                                <span id="lumaValue" class="text-violet-300 font-bold">65 IRE</span>
                             </div>
-                            <input type="range" id="skinLuma" min="0" max="100" value="70" 
+                            <input type="range" id="skinLuma" min="0" max="100" value="65" 
                                    oninput="updateVal('lumaValue', this.value + ' IRE')">
                         </div>
                     </div>
@@ -285,37 +281,37 @@
                 <button onclick="generarJson()" 
                         class="w-full bg-violet-500 hover:bg-violet-400 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-violet-900/20 flex items-center justify-center gap-2 group">
                     <i data-lucide="refresh-cw" class="w-5 h-5 group-active:rotate-180 transition-transform"></i>
-                    GENERAR CONFIGURACIÓN
+                    GENERATE CONFIGURATION
                 </button>
             </div>
         </div>
 
-        <!-- Pantalla de Resultados -->
+        <!-- Result Screen -->
         <div class="flex flex-col gap-4">
             <div class="glass-panel p-6 rounded-2xl flex-1 flex flex-col relative overflow-hidden">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-sm font-bold uppercase tracking-widest text-zinc-500">Metadata Output</h3>
-                    <button onclick="copyToClipboard()" class="text-violet-300 hover:text-violet-200 transition-colors flex items-center gap-2 text-xs font-bold">
-                        <i data-lucide="copy" class="w-4 h-4"></i> COPIAR
+                    <button onclick="copyToClipboard()" class="text-violet-300 hover:text-violet-200 transition-colors flex items-center gap-2 text-xs font-bold uppercase">
+                        <i data-lucide="copy" class="w-4 h-4"></i> COPY
                     </button>
                 </div>
                 
                 <div class="flex-1 bg-black/40 rounded-xl p-4 border border-white/5 overflow-auto">
                     <pre id="resultado" class="code-font text-[#A9D12F] text-xs leading-relaxed whitespace-pre-wrap">{
   "status": "ready",
-  "optimization": "Semantic reinforcement active for V1.9.2"
+  "optimization": "Professional Baseline Active (V1.9.2)"
 }</pre>
                 </div>
 
                 <div id="copyToast" class="absolute bottom-10 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-xs py-2 px-4 rounded-full opacity-0 transition-opacity pointer-events-none z-50">
-                    ¡Copiado al portapapeles!
+                    Copied to clipboard!
                 </div>
             </div>
 
             <div class="glass-panel p-4 rounded-2xl border-l-4 border-l-violet-400">
                 <p class="text-[10px] text-zinc-500 uppercase font-bold mb-1 tracking-tighter">Pro Tip:</p>
                 <p class="text-xs text-zinc-400 italic">
-                    "Si buscas un look tenebrista real, baja el IRE a 40. HYPRFRAME ahora añadirá descriptores de clave baja para forzar a la IA."
+                    "Halation above 4.50 creates a vintage dreamlike look. Grain at 2.00 is the standard for contemporary 35mm."
                 </p>
             </div>
         </div>
@@ -324,43 +320,43 @@
 
     <script>
         const stocksData = {
-            "Películas de Color (Negativo)": [
-                { name: "Kodak Portra 160/400/800", desc: "(tono piel natural/latitud amplia)" },
-                { name: "Kodak Ektar 100", desc: "(saturación vibrante/grano inexistente)" },
-                { name: "Kodak Gold 200", desc: "(tonos cálidos/estética vintage)" },
-                { name: "Kodak ColorPlus 200", desc: "(aspecto nostálgico/toque amarillento)" },
-                { name: "Kodak Ultramax 400", desc: "(colores saturados/gran versatilidad)" },
-                { name: "Fujifilm Superia 400", desc: "(tintes verdes/rendimiento en sombras)" },
-                { name: "CineStill 800T", desc: "(estética cinematográfica nocturna/halos rojos)" },
-                { name: "Lomography Color 100/400/800", desc: "(contraste alto/colores vivos)" },
-                { name: "Fujifilm 200", desc: "(color natural/grano fino)" },
-                { name: "Fujifilm 400", desc: "(versión renovada/versátil)" },
-                { name: "Kodak Pro Image 100", desc: "(tonos cálidos)" },
-                { name: "CineStill 50D", desc: "(luz día/nitidez)" },
-                { name: "Wolfen NC500", desc: "(retro con verdes/rojos apagados)" },
-                { name: "Phoenix 200", desc: "(primera Harman /grano grueso)" },
-                { name: "Aerocolor IV", desc: "(tono vibrante/cielo limpio)" },
-                { name: "Candy 400", desc: "(color saturados/base película Kodak)" },
-                { name: "Amber D200", desc: "(look cálido/para luz diurna)" },
-                { name: "Santa Color 100", desc: "(color preciso/grano fino)" }
+            "Color Film (Negative)": [
+                { name: "Kodak Portra 160/400/800", desc: "(natural skin tones/wide latitude)" },
+                { name: "Kodak Ektar 100", desc: "(vibrant saturation/negligible grain)" },
+                { name: "Kodak Gold 200", desc: "(warm tones/vintage aesthetic)" },
+                { name: "Kodak ColorPlus 200", desc: "(nostalgic look/yellowish touch)" },
+                { name: "Kodak Ultramax 400", desc: "(saturated colors/great versatility)" },
+                { name: "Fujifilm Superia 400", desc: "(green tints/shadow performance)" },
+                { name: "CineStill 800T", desc: "(night cinematic aesthetic/red halos)" },
+                { name: "Lomography Color 100/400/800", desc: "(high contrast/vivid colors)" },
+                { name: "Fujifilm 200", desc: "(natural color/fine grain)" },
+                { name: "Fujifilm 400", desc: "(renewed version/versatile)" },
+                { name: "Kodak Pro Image 100", desc: "(warm tones)" },
+                { name: "CineStill 50D", desc: "(daylight/sharpness)" },
+                { name: "Wolfen NC500", desc: "(retro with muted greens/reds)" },
+                { name: "Phoenix 200", desc: "(first Harman / coarse grain)" },
+                { name: "Aerocolor IV", desc: "(vibrant tone/clean sky)" },
+                { name: "Candy 400", desc: "(saturated color/Kodak film base)" },
+                { name: "Amber D200", desc: "(warm look/for daylight)" },
+                { name: "Santa Color 100", desc: "(accurate color/fine grain)" }
             ],
-            "Películas de Blanco y Negro": [
-                { name: "Kodak Tri-X 400", desc: "(contraste marcado/grano definido)" },
-                { name: "Kodak T-MAX 100/400", desc: "(nitidez extrema/grano tabular fino)" },
-                { name: "Ilford HP5 Plus 400", desc: "(muy flexible/gama de grises amplia)" },
-                { name: "Ilford FP4 Plus 125", desc: "(grano muy fino/luz de día)" },
-                { name: "Ilford Delta 100/400/3200", desc: "(máxima definición)" },
-                { name: "Fomapan 100/200/400", desc: "(económica/look clásico europeo)" },
-                { name: "Rollei Retro 80s", desc: "(contraste profundo/sensibilidad infrarrojo)" }
+            "Black & White Film": [
+                { name: "Kodak Tri-X 400", desc: "(marked contrast/defined grain)" },
+                { name: "Kodak T-MAX 100/400", desc: "(extreme sharpness/fine tabular grain)" },
+                { name: "Ilford HP5 Plus 400", desc: "(very flexible/wide gray range)" },
+                { name: "Ilford FP4 Plus 125", desc: "(very fine grain/daylight)" },
+                { name: "Ilford Delta 100/400/3200", desc: "(maximum definition)" },
+                { name: "Fomapan 100/200/400", desc: "(affordable/classic European look)" },
+                { name: "Rollei Retro 80s", desc: "(deep contrast/infrared sensitivity)" }
             ],
-            "Películas de Diapositiva (Positivo)": [
-                { name: "Kodak Ektachrome E100", desc: "(tono azul limpio/grano finísimo)" },
-                { name: "Fujifilm Velvia 50/100", desc: "(saturación máxima/paisajes naturales)" },
-                { name: "Fujifilm Provia 100F", desc: "(color realista/gran fidelidad)" }
+            "Slide Film (Positive)": [
+                { name: "Kodak Ektachrome E100", desc: "(clean blue tone/ultrafine grain)" },
+                { name: "Fujifilm Velvia 50/100", desc: "(maximum saturation/natural landscapes)" },
+                { name: "Fujifilm Provia 100F", desc: "(realistic color/high fidelity)" }
             ],
-            "Películas de Efectos Especiales": [
-                { name: "LomoChrome Purple", desc: "(verdes a púrpuras)" },
-                { name: "LomoChrome Metropolis", desc: "(desaturada/negros muy profundos)" }
+            "Special Effects Film": [
+                { name: "LomoChrome Purple", desc: "(greens to purples)" },
+                { name: "LomoChrome Metropolis", desc: "(desaturated/very deep blacks)" }
             ]
         };
 
@@ -423,6 +419,7 @@
             const grnValue = parseFloat(document.getElementById('grain').value).toFixed(2);
             const vigValue = parseFloat(document.getElementById('vignette').value).toFixed(2);
             const lumaValue = parseInt(document.getElementById('skinLuma').value);
+            const contrastValue = parseInt(document.getElementById('contrast').value);
             const whiteValue = document.getElementById('whitePoint').value + "K";
 
             let semanticHints = [];
@@ -458,7 +455,7 @@
                     "white_balance": { "white_point": whiteValue },
                     "chroma": { "saturation": parseFloat(satValue) },
                     "lighting_ratios": {
-                        "contrast": document.getElementById('contrast').value + ':1',
+                        "contrast": contrastValue + ':1',
                         "skin_exposure": lumaValue + ' IRE'
                     },
                     "film_characteristics": {
@@ -491,7 +488,7 @@
                 document.execCommand('copy');
                 showToast();
             } catch (err) {
-                console.error('Error al copiar', err);
+                console.error('Error copying text', err);
             }
             document.body.removeChild(textArea);
         }
