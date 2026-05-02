@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPRFRAME - Cinematic Look Builder V1.9.2</title>
+    <title>HYPRFRAME - Cinematic Look Builder V1.9.3</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -38,7 +38,7 @@
             height: 14px;
             width: 14px;
             border-radius: 50%;
-            background: #d1d5db; /* Gray 300 */
+            background: #d1d5db; /* Light gray thumb */
             cursor: pointer;
             margin-top: -5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -99,18 +99,19 @@
         <!-- Configuration UI -->
         <div class="glass-panel p-6 rounded-2xl shadow-2xl overflow-y-auto max-h-[90vh]">
             <header class="mb-8 border-b border-white/10 pb-4">
-                <div class="flex items-center gap-3 mb-1">
-                    <a href="index.html" class="flex items-center justify-center p-2.5 bg-zinc-900 border border-zinc-700 rounded-lg text-zinc-400 hover:text-purple-400 transition-all" title="Volver a la landing page">
-            <i data-lucide="arrow-left" class="w-4 h-4"></i>
-        </a>
-         <div class="flex items-center gap-3"><i
-                    <i data-lucide="clapperboard" class="text-violet-300 w-6 h-6"></i>
-                    <h1 class="text-xl font-bold tracking-tight uppercase">
-                        Cinematic Look <span class="text-violet-300">Builder</span> 
-                        <span class="text-[10px] text-violet-200 font-medium ml-1 lowercase align-top bg-violet-400/10 px-1.5 py-0.5 rounded border border-violet-400/20">V1.9.2</span>
-                    </h1>
+                <div class="flex items-center gap-4 mb-1">
+                    <a href="index.html" class="flex items-center justify-center p-2.5 bg-zinc-900 border border-zinc-700 rounded-lg text-zinc-400 hover:text-purple-400 transition-all" title="Back to Landing Page">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    </a>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="clapperboard" class="text-violet-300 w-6 h-6"></i>
+                        <h1 class="text-xl font-bold tracking-tight uppercase">
+                            Cinematic Look <span class="text-violet-300">Builder</span> 
+                            <span class="text-[10px] text-violet-200 font-medium ml-1 lowercase align-top bg-violet-400/10 px-1.5 py-0.5 rounded border border-violet-400/20">V1.9.3</span>
+                        </h1>
+                    </div>
                 </div>
-                <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold ml-9">BY HYPRFRAME</p>
+                <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold ml-[3.25rem]">BY HYPRFRAME</p>
             </header>
 
             <div class="space-y-6">
@@ -303,7 +304,7 @@
                 <div class="flex-1 bg-black/40 rounded-xl p-4 border border-white/5 overflow-auto">
                     <pre id="resultado" class="code-font text-[#A9D12F] text-xs leading-relaxed whitespace-pre-wrap">{
   "status": "ready",
-  "optimization": "Professional Baseline Active (V1.9.2)"
+  "optimization": "Professional Baseline Active (V1.9.3)"
 }</pre>
                 </div>
 
@@ -315,7 +316,7 @@
             <div class="glass-panel p-4 rounded-2xl border-l-4 border-l-violet-400">
                 <p class="text-[10px] text-zinc-500 uppercase font-bold mb-1 tracking-tighter">Pro Tip:</p>
                 <p class="text-xs text-zinc-400 italic">
-                    "Halation above 4.50 creates a vintage dreamlike look. Grain at 2.00 is the standard for contemporary 35mm."
+                    "When using Black & White film stocks, HYPRFRAME now forces zero saturation and adds monochrome semantic reinforcement."
                 </p>
             </div>
         </div>
@@ -418,7 +419,10 @@
             const isAnamorphic = lensSelected.includes('Anamorphic') || lensSelected.includes('Todd-AO') || lensSelected.includes('Lomo') || lensSelected.includes('Hawk');
             const isVintage = lensSelected.includes('Vintage') || lensSelected.includes('Panchro') || lensSelected.includes('Baltar') || lensSelected.includes('Switar');
 
-            const satValue = parseFloat(document.getElementById('saturation').value).toFixed(2);
+            // Detect if selected stock is B&W
+            const isBW = stocksData["Black & White Film"].some(item => item.name === stockSelected);
+
+            let satValue = parseFloat(document.getElementById('saturation').value).toFixed(2);
             const halValue = parseFloat(document.getElementById('halation').value).toFixed(2);
             const grnValue = parseFloat(document.getElementById('grain').value).toFixed(2);
             const vigValue = parseFloat(document.getElementById('vignette').value).toFixed(2);
@@ -426,7 +430,15 @@
             const contrastValue = parseInt(document.getElementById('contrast').value);
             const whiteValue = document.getElementById('whitePoint').value + "K";
 
+            // If B&W, force saturation to 0 in JSON regardless of slider
+            if (isBW) {
+                satValue = "0.00";
+            }
+
             let semanticHints = [];
+            if (isBW) {
+                semanticHints.push("Strict black and white monochrome photography, zero saturation, high silver halide tonal range, no color data");
+            }
             if (lumaValue < 50) semanticHints.push("Low-key cinematography, deep shadows, underexposed skin tones");
             if (lumaValue > 75) semanticHints.push("High-key lighting, overexposed luminous highlights");
             if (parseFloat(halValue) > 4.5) semanticHints.push("Dreamy blooming highlights, heavy ethereal glow");
@@ -436,9 +448,10 @@
             const data = {
                 "metadata": {
                     "engine": "BY HYPRFRAME",
-                    "version": "1.9.2",
+                    "version": "1.9.3",
                     "timestamp": new Date().toISOString(),
-                    "workflow": isAnamorphic ? "Anamorphic De-squeeze 2.0x" : "Spherical"
+                    "workflow": isAnamorphic ? "Anamorphic De-squeeze 2.0x" : "Spherical",
+                    "color_mode": isBW ? "Monochrome / Grayscale" : "Full Color"
                 },
                 "camera_profile": {
                     "body": camBody,
@@ -447,7 +460,7 @@
                 },
                 "film_emulation": {
                     "stock": stockSelected,
-                    "profile": "Negative/Positive Scan Emulation",
+                    "profile": isBW ? "Black & White Negative Emulation" : "Negative/Positive Scan Emulation",
                     "color_response": isFilm ? `Faithful ${stockSelected} curve` : `Post-processed ${stockSelected} look`
                 },
                 "optics": {
@@ -456,7 +469,7 @@
                     "character": isAnamorphic ? "Oval bokeh, horizontal flares, lens breathing" : (isVintage ? "Lower contrast, warm roll-off" : "Sharp, high micro-contrast")
                 },
                 "look_parameters": {
-                    "white_balance": { "white_point": whiteValue },
+                    "white_balance": { "white_point": isBW ? "Balanced for B&W" : whiteValue },
                     "chroma": { "saturation": parseFloat(satValue) },
                     "lighting_ratios": {
                         "contrast": contrastValue + ':1',
@@ -471,7 +484,7 @@
                 "render_instructions": {
                     "lighting_style": semanticHints.join(", ") || "Natural cinematic lighting",
                     "shutter": isBolex ? "130-150 degree" : "180 degree",
-                    "texture_mapping": isFilm ? "Organic halide crystal" : "Procedural fine dither"
+                    "texture_mapping": isBW ? "Monochrome halide crystals" : (isFilm ? "Organic halide crystal" : "Procedural fine dither")
                 }
             };
             
