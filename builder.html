@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPRFRAME - Cinematic Look Builder V3.1.2</title>
+    <title>HYPRFRAME - Cinematic Look Builder V3.1.3</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -91,7 +91,7 @@
                     <div class="flex items-center gap-3">
                         <i data-lucide="clapperboard" class="text-violet-300 w-6 h-6"></i>
                         <h1 class="text-xl font-bold tracking-tight uppercase">
-                            Look Builder <span class="text-violet-300">V3.1.2</span>
+                            Look Builder <span class="text-violet-300">V3.1.3</span>
                         </h1>
                     </div>
                 </div>
@@ -262,9 +262,10 @@
                 </div>
 
                 <div class="space-y-4">
+                    <!-- BOTÓN SIMPLIFICADO: "GENERATE" -->
                     <button onclick="generarTodo()" class="w-full bg-violet-600 hover:bg-violet-500 text-white font-bold py-3 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 group">
                         <i data-lucide="refresh-cw" class="w-4 h-4 group-active:rotate-180 transition-transform"></i>
-                        GENERATE PIPELINE V3.1.2
+                        GENERATE
                     </button>
                     <p class="text-center text-[7px] text-zinc-500 uppercase tracking-widest opacity-60">© 2026 Hyprframe. All rights reserved.</p>
                 </div>
@@ -295,10 +296,9 @@
                     </h3>
                     <button onclick="copyToClipboard('promptResultado')" class="text-violet-300 hover:text-violet-200 text-[10px] font-bold uppercase">COPY PROMPT</button>
                 </div>
-                <!-- Bloqueo de tamaño vertical y scroll añadido aquí -->
                 <div class="prompt-container-fixed bg-zinc-900/80 rounded-xl p-6 border border-white/5">
                     <div id="promptResultado" class="text-zinc-300 text-sm leading-relaxed italic font-light">
-                        Click "GENERATE PIPELINE" to build your semantic look...
+                        Click "GENERATE" to build your semantic look...
                     </div>
                 </div>
                 <div class="mt-4 p-3 bg-violet-400/5 rounded-lg border border-violet-400/10">
@@ -459,7 +459,7 @@
             const skin = parseInt(document.getElementById('skinLuma').value);
 
             const json = {
-                "metadata": { "engine": "hyprframe.com", "version": "3.1.2" },
+                "metadata": { "engine": "hyprframe.com", "version": "3.1.3" },
                 "setup": { "camera": cam, "lens": lens, "focal": focal },
                 "mapping": { "profile": prof, "stock": stock },
                 "look": { "sat": sat, "hal": hal, "grain": grn, "vignette": vig, "white": white + "K", "contrast": con, "skin": skin }
