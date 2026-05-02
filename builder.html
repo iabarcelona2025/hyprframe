@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPRFRAME - Cinematic Look Builder V2.0.0</title>
+    <title>HYPRFRAME - Cinematic Look Builder V2.0.1</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -107,7 +107,7 @@
                         <i data-lucide="clapperboard" class="text-violet-300 w-6 h-6"></i>
                         <h1 class="text-xl font-bold tracking-tight uppercase">
                             Cinematic Look <span class="text-violet-300">Builder</span> 
-                            <span class="text-[10px] text-violet-200 font-medium ml-1 lowercase align-top bg-violet-400/10 px-1.5 py-0.5 rounded border border-violet-400/20">V2.0.0</span>
+                            <span class="text-[10px] text-violet-200 font-medium ml-1 lowercase align-top bg-violet-400/10 px-1.5 py-0.5 rounded border border-violet-400/20">V2.0.1</span>
                         </h1>
                     </div>
                 </div>
@@ -292,7 +292,7 @@
         </div>
 
         <!-- Pantalla de Resultados -->
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-4 max-h-[90vh]">
             <div class="glass-panel p-6 rounded-2xl flex-1 flex flex-col relative overflow-hidden">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-sm font-bold uppercase tracking-widest text-zinc-500">Metadata Output</h3>
@@ -304,7 +304,7 @@
                 <div class="flex-1 bg-black/40 rounded-xl p-4 border border-white/5 overflow-auto">
                     <pre id="resultado" class="code-font text-[#A9D12F] text-xs leading-relaxed whitespace-pre-wrap">{
   "status": "ready",
-  "optimization": "Professional Baseline Active (V2.0.0)"
+  "optimization": "Professional Baseline Active (V2.0.1)"
 }</pre>
                 </div>
 
@@ -560,7 +560,7 @@
             const data = {
                 "metadata": {
                     "engine": "BY HYPRFRAME",
-                    "version": "2.0.0",
+                    "version": "2.0.1",
                     "timestamp": new Date().toISOString(),
                     "workflow": isAnamorphic ? "Anamorphic De-squeeze 2.0x" : "Spherical",
                     "color_mode": isBW ? "Monochrome" : (isLomoPurple ? "Specialized Infrared-Mimic" : (isMetropolis ? "High Contrast Desaturated" : (isProvia ? "Professional Reversal Neutral" : (isEktachrome ? "Clean Neutral Reversal" : (isVelvia ? "Hyper-Saturated Reversal" : "Full Color")))))
