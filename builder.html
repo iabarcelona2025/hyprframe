@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPRFRAME - Cinematic Look Builder V2.0.3</title>
+    <title>HYPRFRAME - Cinematic Look Builder V2.1.2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -13,7 +13,7 @@
             font-family: 'Inter', sans-serif;
             background-color: #0a0a0a;
             color: #e5e7eb;
-            overflow: hidden; /* Prevent body scroll to keep app layout solid */
+            overflow: hidden; 
         }
         
         .glass-panel {
@@ -39,7 +39,7 @@
             height: 14px;
             width: 14px;
             border-radius: 50%;
-            background: #d1d5db; /* Light gray */
+            background: #d1d5db;
             cursor: pointer;
             margin-top: -5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -60,7 +60,7 @@
             width: 100%;
             height: 4px;
             cursor: pointer;
-            background: #27272a; /* Zinc 800 */
+            background: #27272a;
             border-radius: 2px;
         }
 
@@ -108,7 +108,7 @@
                         <i data-lucide="clapperboard" class="text-violet-300 w-6 h-6"></i>
                         <h1 class="text-xl font-bold tracking-tight uppercase">
                             Cinematic Look <span class="text-violet-300">Builder</span> 
-                            <span class="text-[10px] text-violet-200 font-medium ml-1 lowercase align-top bg-violet-400/10 px-1.5 py-0.5 rounded border border-violet-400/20">V2.0.3</span>
+                            <span class="text-[10px] text-violet-200 font-medium ml-1 lowercase align-top bg-violet-400/10 px-1.5 py-0.5 rounded border border-violet-400/20">V2.1.2</span>
                         </h1>
                     </div>
                 </div>
@@ -201,7 +201,7 @@
                         
                         <div id="custom-stock-wrapper" class="relative">
                             <button id="stock-button" onclick="toggleStockDropdown()" class="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2.5 text-sm text-left flex justify-between items-center focus:ring-2 focus:ring-violet-400/50 outline-none transition-all">
-                                <span id="stock-display">Kodak Portra 160/400/800 <span class="text-[11px] text-zinc-500 ml-1 font-normal">(natural skin tones/wide latitude)</span></span>
+                                <span id="stock-display">None <span class="text-[11px] text-zinc-500 ml-1 font-normal">(No film emulation / Digital neutral)</span></span>
                                 <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-500"></i>
                             </button>
                             
@@ -209,7 +209,7 @@
                                 <!-- Options injected via JS -->
                             </div>
                         </div>
-                        <input type="hidden" id="stock" value="Kodak Portra 160/400/800">
+                        <input type="hidden" id="stock" value="None">
                     </div>
                 </div>
 
@@ -231,27 +231,27 @@
                     <div class="space-y-2">
                         <div class="flex justify-between text-xs font-medium uppercase text-zinc-400">
                             <span>Halation (Red Glow)</span>
-                            <span id="halValue" class="text-violet-300 font-bold">1.20</span>
+                            <span id="halValue" class="text-violet-300 font-bold">0.00</span>
                         </div>
-                        <input type="range" id="halation" min="0" max="10" value="1.20" step="0.01" 
+                        <input type="range" id="halation" min="0" max="10" value="0.00" step="0.01" 
                                oninput="updateVal('halValue', parseFloat(this.value).toFixed(2))">
                     </div>
 
                     <div class="space-y-2">
                         <div class="flex justify-between text-xs font-medium uppercase text-zinc-400">
                             <span>Grain (Organic Texture)</span>
-                            <span id="grnValue" class="text-violet-300 font-bold">2.00</span>
+                            <span id="grnValue" class="text-violet-300 font-bold">0.00</span>
                         </div>
-                        <input type="range" id="grain" min="0" max="10" value="2.00" step="0.01" 
+                        <input type="range" id="grain" min="0" max="10" value="0.00" step="0.01" 
                                oninput="updateVal('grnValue', parseFloat(this.value).toFixed(2))">
                     </div>
 
                     <div class="space-y-2">
                         <div class="flex justify-between text-xs font-medium uppercase text-zinc-400">
                             <span>Vignette (Fall-off)</span>
-                            <span id="vigValue" class="text-violet-300 font-bold">1.00</span>
+                            <span id="vigValue" class="text-violet-300 font-bold">0.00</span>
                         </div>
-                        <input type="range" id="vignette" min="0" max="10" value="1.00" step="0.01" 
+                        <input type="range" id="vignette" min="0" max="10" value="0.00" step="0.01" 
                                oninput="updateVal('vigValue', parseFloat(this.value).toFixed(2))">
                     </div>
 
@@ -284,11 +284,14 @@
                     </div>
                 </div>
 
-                <button onclick="generarJson()" 
-                        class="w-full bg-violet-500 hover:bg-violet-400 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-violet-900/20 flex items-center justify-center gap-2 group">
-                    <i data-lucide="refresh-cw" class="w-5 h-5 group-active:rotate-180 transition-transform"></i>
-                    GENERATE CONFIGURATION
-                </button>
+                <div class="space-y-4">
+                    <button onclick="generarJson()" 
+                            class="w-full bg-violet-500 hover:bg-violet-400 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-violet-900/20 flex items-center justify-center gap-2 group">
+                        <i data-lucide="refresh-cw" class="w-5 h-5 group-active:rotate-180 transition-transform"></i>
+                        GENERATE CONFIGURATION
+                    </button>
+                    <p class="text-center text-[7px] text-zinc-500 uppercase tracking-widest opacity-60">© 2026 Hyprframe. All rights reserved.</p>
+                </div>
             </div>
         </div>
 
@@ -302,11 +305,10 @@
                     </button>
                 </div>
                 
-                <!-- Fixed size box for the output code -->
                 <div class="flex-1 bg-black/40 rounded-xl p-4 border border-white/5 overflow-auto custom-scrollbar">
                     <pre id="resultado" class="code-font text-[#A9D12F] text-xs leading-relaxed whitespace-pre-wrap">{
   "status": "ready",
-  "optimization": "Professional Baseline Active (V2.0.3)"
+  "optimization": "Professional Baseline Active (V2.1.2)"
 }</pre>
                 </div>
 
@@ -318,7 +320,7 @@
             <div class="glass-panel p-4 rounded-2xl border-l-4 border-l-violet-400">
                 <p class="text-[10px] text-zinc-500 uppercase font-bold mb-1 tracking-tighter">Pro Tip:</p>
                 <p class="text-xs text-zinc-400 italic">
-                    "When using Black & White film stocks, HYPRFRAME now forces zero saturation and adds monochrome semantic reinforcement."
+                    "Using 'None' disables film DNA, providing a clean digital base optimized for the selected camera sensor."
                 </p>
             </div>
         </div>
@@ -327,6 +329,9 @@
 
     <script>
         const stocksData = {
+            "Neutral / Bypass": [
+                { name: "None", desc: "(No film emulation / Digital neutral)" }
+            ],
             "Color Film (Negative)": [
                 { name: "Kodak Portra 160/400/800", desc: "(natural skin tones/wide latitude)" },
                 { name: "Kodak Ektar 100", desc: "(vibrant saturation/negligible grain)" },
@@ -417,8 +422,39 @@
             document.getElementById('stock').value = name;
             document.getElementById('stock-dropdown').classList.add('hidden');
 
-            // Lógica de auto-ajuste de parámetros según la emulsión
-            if (name === "LomoChrome Purple") {
+            if (name === "None") {
+                setSliderValues(5.00, 0.00, 0.00, 0.00, 5600, 32, 65);
+            } else if (name === "Kodak Portra 160/400/800") {
+                setSliderValues(4.80, 1.20, 1.80, 1.00, 5400, 30, 65);
+            } else if (name === "Kodak Ektar 100") {
+                setSliderValues(6.80, 0.80, 0.60, 1.00, 5600, 48, 62);
+            } else if (name === "Kodak Gold 200") {
+                setSliderValues(5.80, 1.50, 3.50, 1.30, 5900, 38, 64);
+            } else if (name === "Kodak ColorPlus 200") {
+                setSliderValues(5.20, 1.80, 4.00, 1.40, 6000, 40, 60);
+            } else if (name === "Kodak Ultramax 400") {
+                setSliderValues(6.20, 2.00, 3.80, 1.20, 5700, 45, 63);
+            } else if (name === "Fujifilm Superia 400") {
+                setSliderValues(5.00, 1.40, 3.20, 1.30, 5200, 36, 66);
+            } else if (name === "CineStill 800T") {
+                setSliderValues(5.50, 8.50, 4.50, 1.50, 3200, 42, 58);
+            } else if (name === "Lomography Color 100/400/800") {
+                setSliderValues(7.50, 2.20, 3.00, 1.50, 5600, 50, 62);
+            } else if (name === "Fujifilm 200" || name === "Fujifilm 400") {
+                setSliderValues(5.20, 1.00, 2.20, 1.00, 5400, 34, 65);
+            } else if (name === "Kodak Pro Image 100") {
+                setSliderValues(5.40, 1.20, 2.00, 1.10, 5800, 35, 65);
+            } else if (name === "CineStill 50D") {
+                setSliderValues(5.80, 1.20, 0.80, 1.00, 5600, 45, 65);
+            } else if (name === "Wolfen NC500") {
+                setSliderValues(4.20, 1.00, 4.80, 1.50, 5400, 35, 55);
+            } else if (name === "Phoenix 200") {
+                setSliderValues(6.00, 9.00, 7.50, 2.50, 5500, 70, 50);
+            } else if (name === "Aerocolor IV") {
+                setSliderValues(6.50, 0.50, 0.80, 1.00, 5800, 40, 68);
+            } else if (name === "Candy 400" || name === "Amber D200" || name === "Santa Color 100") {
+                setSliderValues(5.80, 1.20, 2.00, 1.00, 5600, 40, 65);
+            } else if (name === "LomoChrome Purple") {
                 setSliderValues(8.50, 2.50, 3.80, 1.50, 6500, 45, 55);
             } else if (name === "LomoChrome Metropolis") {
                 setSliderValues(2.20, 0.60, 4.20, 1.80, 5200, 65, 48);
@@ -428,9 +464,7 @@
                 setSliderValues(5.50, 1.00, 1.20, 1.10, 5500, 42, 68);
             } else if (name === "Fujifilm Velvia 50/100") {
                 setSliderValues(9.20, 1.50, 1.50, 1.40, 5400, 55, 60);
-            } 
-            // NUEVOS PERFILES B&W
-            else if (name === "Kodak Tri-X 400") {
+            } else if (name === "Kodak Tri-X 400") {
                 setSliderValues(0.00, 1.80, 6.50, 1.50, 5500, 75, 60);
             } else if (name === "Kodak T-MAX 100/400") {
                 setSliderValues(0.00, 0.50, 2.50, 1.00, 5600, 55, 65);
@@ -442,8 +476,7 @@
                 setSliderValues(0.00, 1.50, 5.50, 1.40, 5700, 40, 60);
             } else if (name === "Rollei Retro 80s") {
                 setSliderValues(0.00, 0.20, 1.00, 2.00, 5800, 95, 70);
-            }
-            else {
+            } else {
                 setSliderValues(5.00, 1.20, 2.00, 1.00, 5600, 32, 65);
             }
         }
@@ -474,7 +507,7 @@
             const isAnamorphic = lensSelected.includes('Anamorphic') || lensSelected.includes('Todd-AO') || lensSelected.includes('Lomo') || lensSelected.includes('Hawk');
             const isVintage = lensSelected.includes('Vintage') || lensSelected.includes('Panchro') || lensSelected.includes('Baltar') || lensSelected.includes('Switar');
 
-            // Advanced chromatic detection
+            const isNone = stockSelected === "None";
             const isBW = stocksData["Black & White Film"].some(item => item.name === stockSelected);
             const isLomoPurple = stockSelected.includes("LomoChrome Purple");
             const isMetropolis = stockSelected.includes("LomoChrome Metropolis");
@@ -482,13 +515,18 @@
             const isEktachrome = stockSelected.includes("Kodak Ektachrome E100");
             const isVelvia = stockSelected.includes("Fujifilm Velvia 50/100");
 
-            // B&W Specific Detection
-            const isTriX = stockSelected.includes("Kodak Tri-X 400");
-            const isTMax = stockSelected.includes("Kodak T-MAX 100/400");
-            const isFP4 = stockSelected.includes("Ilford FP4 Plus 125");
-            const isDelta = stockSelected.includes("Ilford Delta 100/400/3200");
-            const isFomapan = stockSelected.includes("Fomapan 100/200/400");
-            const isRollei = stockSelected.includes("Rollei Retro 80s");
+            const isPortra = stockSelected.includes("Portra");
+            const isEktar = stockSelected.includes("Ektar");
+            const isGold = stockSelected.includes("Gold");
+            const isColorPlus = stockSelected.includes("ColorPlus");
+            const isUltramax = stockSelected.includes("Ultramax");
+            const isSuperia = stockSelected.includes("Superia");
+            const is800T = stockSelected.includes("800T");
+            const is50D = stockSelected.includes("50D");
+            const isFujiNeg = stockSelected.includes("Fujifilm 200") || stockSelected.includes("Fujifilm 400");
+            const isWolfen = stockSelected.includes("Wolfen");
+            const isPhoenix = stockSelected.includes("Phoenix");
+            const isAerocolor = stockSelected.includes("Aerocolor");
 
             let satValue = parseFloat(document.getElementById('saturation').value).toFixed(2);
             const halValue = parseFloat(document.getElementById('halation').value).toFixed(2);
@@ -498,107 +536,109 @@
             const contrastValue = parseInt(document.getElementById('contrast').value);
             const whiteValue = document.getElementById('whitePoint').value + "K";
 
-            // Forced saturation for B&W
-            if (isBW) {
-                satValue = "0.00";
-            }
+            if (isBW) { satValue = "0.00"; }
 
-            // Semantic Reinforcement Logic (Aggressive V2.0.3)
             let semanticHints = [];
             
-            // COLOR STOCK REINFORCEMENTS
-            if (isLomoPurple) {
-                semanticHints.push("LomoChrome Purple aggressive infrared-mimic emulsion: complete color-swap mapping all chlorophyll and green-yellow foliage to a spectrum of deep violet, plum, and vibrant magenta. Preserved earthy skin tones with golden-bronze ochre undertones. Skies and water shifted toward deep emerald or teal-cyan. High micro-contrast with dense, purple-tinted shadows and luminous highlights with ethereal blooming. Tactile halide crystal film grain texture.");
+            if (isPortra) {
+                semanticHints.push("KODAK PORTRA legendary skin response: warm, organic bronze-pink skin tones with pastel-mapped highlights. Wide dynamic range with soft tonal roll-off in the shadows. Low contrast daylight aesthetic with slight warm-yellow bias and tight, fine grain structure.");
             }
-            if (isMetropolis) {
-                semanticHints.push("LomoChrome Metropolis signature look: highly desaturated 'urban-noir' palette with muted industrial colors. Suppression of green and yellow channels, shifting foliage toward grey-olive or metallic charcoal. High contrast with crushed, deep shadows and punchy, highlights. Gritty, tactile film grain with raw cinematic street texture. Colder metallic blue shifts in shadows and industrial sepia-bronze undertones. Minimal halation for sharp, edgy micro-contrast.");
+            if (isEktar) {
+                semanticHints.push("KODAK EKTAR high-chroma negative: saturated primary reds and deep blues, ultra-high micro-contrast, and the finest grain available in negative film. Sharp, punchy edges with professional landscape clarity and slightly cool, vivid shadow response.");
             }
-            if (isProvia) {
-                semanticHints.push("FUJICHROME Provia 100F (RDP III) professional reversal look: Exceptional color fidelity with a neutral, non-biased palette. Vibrant primary colors balanced with delicate pastels. High contrast with deep, rich D-max blacks and brilliant, clean highlights. Extremely fine, virtually invisible grain structure (RMS 8). Natural, smooth skin tones with highlight-to-shadow gradation linearity. Slight cool/blue bias in open shade. Exceptional edge sharpness and clarity.");
+            if (isGold) {
+                semanticHints.push("KODAK GOLD warm consumer aesthetic: distinct golden-yellow highlights, saturated warm tones, and nostalgic vintage grain. Saturated skin tones with earthy undertones and high density in yellow/orange channels.");
             }
-            if (isEktachrome) {
-                semanticHints.push("KODAK EKTACHROME E100 modern reversal aesthetic: Exceptional neutrality with clean, brilliant whites. Naturalistic but vibrant saturation, faithful color rendering without warming bias. Exceptionally fine T-GRAIN structure, smooth tonal transitions, and high resolved detail. Deep, neutral blacks. Professional 35mm slide film clarity with a slight cool/blue bias in shadows under daylight.");
+            if (isColorPlus) {
+                semanticHints.push("KODAK COLORPLUS retro look: warm, slightly yellowish-green bias, coarse organic grain, and limited shadow latitude. Nostalgic 90s consumer film feel with saturated yellows and muted blues.");
             }
-            if (isVelvia) {
-                semanticHints.push("FUJICHROME Velvia 50/100 legendary hyper-saturation: Exploding color vibrancy, iconic landscape aesthetic with high dynamic impact. Hyper-realistic emerald greens, deep punchy magentas and electric blues. High-contrast reversal film look with crushed ink-black shadows. Saturated, punchy skin tones. Extreme visual pop with exceptionally fine grain and high edge definition.");
+            if (isUltramax) {
+                semanticHints.push("KODAK ULTRAMAX punchy versatility: high-density blue and red channels, saturated consumer look with pronounced grain and high contrast. Vibrant primary colors with a reliable daylight balance.");
             }
-            
-            // B&W STOCK REINFORCEMENTS
-            if (isTriX) {
-                semanticHints.push("KODAK Tri-X 400 (400TX) legendary B&W aesthetic: Gritty, high-contrast monochrome with iconic organic grain structure. Deep, ink-black shadows and brilliant highlights with traditional silver-rich halation. Aggressive tonal response, dramatic street photography look, tactile metallic silver texture, no digital smoothness.");
+            if (isSuperia) {
+                semanticHints.push("FUJIFILM SUPERIA signature greens: Fuji's 4th color layer technology, emerald-green shadow shifts, and magenta-biased skin tones. Cool daylight balance with fine-grained texture and high contrast in urban settings.");
             }
-            if (isTMax) {
-                semanticHints.push("KODAK T-MAX 100/400 professional B&W: Tabular T-GRAIN technology for extreme sharpness and smooth tonal gradations. Clean highlights, extensive shadow detail, and very fine grain structure. Professional studio look with perfect clarity and high resolving power.");
+            if (is800T) {
+                semanticHints.push("CINESTILL 800T tungsten cinematic look: deep cool/blue bias under daylight, massive red halation (remjet-removed glow) around point light sources, and gritty cinematic grain. Tungsten-balanced color science with cinematic shadow density.");
             }
-            if (isFP4) {
-                semanticHints.push("ILFORD FP4 Plus 125 classic B&W: Medium contrast with wide exposure latitude. Traditional fine grain structure, crisp sharpness, and a nostalgic, reliable monochrome look with deep gray tones and silver-rich highlights.");
+            if (is50D) {
+                semanticHints.push("CINESTILL 50D daylight cinematic: clean daylight balance, ultra-fine grain, and distinct cinematic halation in extreme highlights. Balanced, realistic skin tones with professional film-print clarity.");
             }
-            if (isDelta) {
-                semanticHints.push("ILFORD Delta professional B&W: Core-shell crystal technology for exceptional sharpness and clarity. Modern B&W look with very fine grain, clean edges, and sophisticated tonal reproduction across the entire gray scale.");
+            if (isFujiNeg) {
+                semanticHints.push("FUJIFILM modern negative look: neutral but vivid color response, clean highlights, and refined grain structure. Faithful natural tones with a slight magenta-cool bias.");
             }
-            if (isFomapan) {
-                semanticHints.push("FOMAPAN traditional B&W: Classic 'old school' European aesthetic. Moderate contrast with soft, romantic highlights and visible, traditional grain structure. Moody, nostalgic monochrome with a raw, non-perfect silver-halide feel.");
+            if (isWolfen) {
+                semanticHints.push("WOLFEN NC500 urban-industrial look: limited color gamut, desaturated earthy tones, and gritty Agfa-heritage grain. Muted greens and dense charcoal shadows with a raw, non-commercial aesthetic.");
             }
-            if (isRollei) {
-                semanticHints.push("ROLLEI Retro 80s extreme B&W: Near-infrared sensitivity providing dramatic dark skies and glowing foliage. Exceptional sharpness, ultra-fine grain, and intense, punchy contrast. Deep blacks and brilliant white highlights for a stylized, edgy look.");
+            if (isPhoenix) {
+                semanticHints.push("HARMAN PHOENIX experimental emulsion: extreme contrast, glowing halation without remjet, and massive organic grain. High density in reds and golds with deep, crushed shadows. Unique non-standard color mapping.");
             }
-            
-            if (isBW && !isTriX && !isTMax && !isFP4 && !isDelta && !isFomapan && !isRollei) {
-                semanticHints.push("Strict black and white monochrome photography, zero saturation, high silver halide tonal range, no color data");
+            if (isAerocolor) {
+                semanticHints.push("AEROCOLOR aerial heritage: extreme clarity, vibrant sky blues, and warm terrestrial tones. Virtually zero halation, clean highlights, and exceptional resolving power with a signature vivid 'clean' look.");
             }
 
-            if (lumaValue < 50 && !isMetropolis && !isProvia && !isEktachrome && !isRollei) semanticHints.push("Low-key cinematography, deep shadows, underexposed skin tones");
-            if (lumaValue > 75) semanticHints.push("High-key lighting, overexposed luminous highlights");
-            if (parseFloat(halValue) > 4.5) semanticHints.push("Dreamy blooming highlights, heavy ethereal glow");
-            if (parseFloat(grnValue) > 5 && !isMetropolis && !isProvia && !isEktachrome && !isVelvia && !isTMax && !isDelta) semanticHints.push("Gritty texture, coarse organic film grain");
-            if (isAnamorphic) semanticHints.push("Cinematic aspect ratio, stretched oval bokeh, horizontal anamorphic flares");
+            if (isLomoPurple) {
+                semanticHints.push("LomoChrome Purple aggressive infrared-mimic emulsion: complete color-swap mapping greens to vibrant magentas. Preserved earthy skin tones with golden-bronze ochre undertones. Skies shifted to emerald. High micro-contrast.");
+            }
+            if (isMetropolis) {
+                semanticHints.push("LomoChrome Metropolis signature look: highly desaturated 'urban-noir' palette. Suppression of greens/yellows to grey-olive. High contrast street texture with industrial blue-sepia undertones.");
+            }
+            if (isProvia) {
+                semanticHints.push("FUJICHROME Provia 100F reversal fidelity: neutral palette, primary color accuracy, deep D-max blacks, and RMS 8 invisible grain.");
+            }
+            if (isEktachrome) {
+                semanticHints.push("KODAK EKTACHROME E100 modern reversal: brilliant neutral whites, natural vibrant saturation, ultra-fine T-GRAIN, and professional slide clarity.");
+            }
+            if (isVelvia) {
+                semanticHints.push("FUJICHROME Velvia landscape legend: hyper-saturation, emerald greens, high dynamic pop, and high-contrast reversal look with crushed blacks.");
+            }
+
+            if (stockSelected.includes("Tri-X")) semanticHints.push("KODAK Tri-X 400 gritty contrast, iconic organic grain, dramatic silver-halide texture.");
+            if (stockSelected.includes("T-MAX")) semanticHints.push("KODAK T-MAX ultra-sharp tabular T-GRAIN, perfect clarity, smooth gradations.");
+            if (stockSelected.includes("Rollei")) semanticHints.push("ROLLEI Retro intense IR-sensitivity, dark skies, glowing foliage, punchy contrast.");
+            
+            if (isBW && semanticHints.length === 0) semanticHints.push("Strict monochrome photography, zero saturation, high silver halide tonal range.");
+
+            if (lumaValue < 50 && !isMetropolis && !isWolfen && !isPhoenix && !isNone) semanticHints.push("Low-key cinematography, deep shadows, underexposed skin tones");
+            if (lumaValue > 75) semanticHints.push("High-key lighting, overexposed highlights");
+            if (parseFloat(halValue) > 4.5 && !is800T && !isPhoenix && !isNone) semanticHints.push("Dreamy blooming highlights, ethereal glow");
+            if (isAnamorphic) semanticHints.push("Cinematic aspect ratio, oval bokeh, horizontal flares");
 
             const data = {
                 "metadata": {
                     "engine": "BY HYPRFRAME",
-                    "version": "2.0.3",
+                    "version": "2.1.2",
                     "timestamp": new Date().toISOString(),
                     "workflow": isAnamorphic ? "Anamorphic De-squeeze 2.0x" : "Spherical",
-                    "color_mode": isBW ? "Monochrome" : (isLomoPurple ? "Specialized Infrared-Mimic" : (isMetropolis ? "High Contrast Desaturated" : (isProvia ? "Professional Reversal Neutral" : (isEktachrome ? "Clean Neutral Reversal" : (isVelvia ? "Hyper-Saturated Reversal" : "Full Color")))))
+                    "color_mode": isBW ? "Monochrome" : (isNone ? "Digital Neutral" : "Full Color Emulation")
                 },
                 "camera_profile": {
                     "body": camBody,
-                    "medium": isFilm ? (isBolex ? "16mm Reversal/Negative" : "Analog Emulsion") : "Digital CMOS Sensor",
-                    "color_science": isAlexa35 ? "ARRI REVEAL Color Science" : "Log-C/S-Log3 Pipeline"
+                    "color_science": isAlexa35 ? "ARRI REVEAL" : "Log-C Pipeline"
                 },
                 "film_emulation": {
                     "stock": stockSelected,
-                    "profile": isBW ? "B&W Negative" : (isLomoPurple ? "Faux-Infrared Spectrum" : (isMetropolis ? "Urban Negative Profile" : (isProvia || isEktachrome || isVelvia ? "Professional Slide Reversal" : "Negative/Positive Scan"))),
-                    "color_response": isFilm ? `Faithful ${stockSelected} curve` : `Post-processed ${stockSelected} look`
+                    "profile": isNone ? "Digital Bypass" : (isBW ? "B&W Negative" : (isProvia || isEktachrome || isVelvia ? "Slide Reversal" : "Color Negative")),
+                    "color_response": isNone ? "Linear Digital" : `Faithful ${stockSelected} chemical response`
                 },
                 "optics": {
                     "lens_series": lensSelected,
-                    "focal_length": document.getElementById('distance').value,
-                    "character": isAnamorphic ? "Oval bokeh, horizontal flares, lens breathing" : (isVintage ? "Lower contrast, warm roll-off" : "Sharp, high micro-contrast")
+                    "focal_length": document.getElementById('distance').value
                 },
                 "look_parameters": {
-                    "white_balance": { "white_point": (isBW || isLomoPurple || isMetropolis || isProvia || isEktachrome || isVelvia) ? "Balanced for specialized emulsion" : whiteValue },
+                    "white_balance": { "white_point": whiteValue },
                     "chroma": { "saturation": parseFloat(satValue) },
-                    "lighting_ratios": {
-                        "contrast": contrastValue + ':1',
-                        "skin_exposure": lumaValue + ' IRE'
-                    },
-                    "film_characteristics": {
-                        "halation": parseFloat(halValue),
-                        "grain_density": parseFloat(grnValue),
-                        "vignette_falloff": parseFloat(vigValue)
-                    }
+                    "lighting_ratios": { "contrast": contrastValue + ':1', "skin_exposure": lumaValue + ' IRE' },
+                    "film_characteristics": { "halation": parseFloat(halValue), "grain_density": parseFloat(grnValue), "vignette": parseFloat(vigValue) }
                 },
                 "render_instructions": {
-                    "lighting_style": semanticHints.join(", ") || "Natural cinematic lighting",
-                    "shutter": isBolex ? "130-150 degree" : "180 degree",
-                    "texture_mapping": isBW ? (isTMax || isDelta || isRollei ? "Ultrafine crystalline silver structure" : "Traditional silver-halide organic structure") : (isMetropolis ? "Industrial urban halide structure" : (isEktachrome || isProvia || isVelvia ? "Ultrafine RMS reversal structure" : (isFilm ? "Organic halide crystal" : "Procedural fine dither")))
+                    "lighting_style": isNone ? "" : (semanticHints.join(", ") || "Natural cinematic lighting"),
+                    "texture_mapping": isBW ? "Silver-halide organic structure" : (isFilm && !isNone ? "Halide crystal grain" : "Digital sensor dither")
                 }
             };
             
             const resultElement = document.getElementById('resultado');
             resultElement.innerText = JSON.stringify(data, null, 2);
-            
             resultElement.classList.add('opacity-50');
             setTimeout(() => resultElement.classList.remove('opacity-50'), 150);
         }
@@ -609,12 +649,7 @@
             textArea.value = text;
             document.body.appendChild(textArea);
             textArea.select();
-            try {
-                document.execCommand('copy');
-                showToast();
-            } catch (err) {
-                console.error('Error copying text', err);
-            }
+            try { document.execCommand('copy'); showToast(); } catch (err) {}
             document.body.removeChild(textArea);
         }
 
@@ -622,10 +657,7 @@
             const toast = document.getElementById('copyToast');
             toast.classList.remove('opacity-0');
             toast.classList.add('opacity-100');
-            setTimeout(() => {
-                toast.classList.remove('opacity-100');
-                toast.classList.add('opacity-0');
-            }, 2000);
+            setTimeout(() => { toast.classList.remove('opacity-100'); toast.classList.add('opacity-0'); }, 2000);
         }
     </script>
 </body>
