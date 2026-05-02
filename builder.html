@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPRFRAME - Cinematic Look Builder V2.0.1</title>
+    <title>HYPRFRAME - Cinematic Look Builder V2.0.3</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -13,6 +13,7 @@
             font-family: 'Inter', sans-serif;
             background-color: #0a0a0a;
             color: #e5e7eb;
+            overflow: hidden; /* Prevent body scroll to keep app layout solid */
         }
         
         .glass-panel {
@@ -25,7 +26,7 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Estilos de sliders técnicos con tiradores gris claro */
+        /* Technical slider styles with light gray thumbs */
         input[type="range"] {
             appearance: none;
             background: transparent;
@@ -38,7 +39,7 @@
             height: 14px;
             width: 14px;
             border-radius: 50%;
-            background: #d1d5db; /* Gris claro */
+            background: #d1d5db; /* Light gray */
             cursor: pointer;
             margin-top: -5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -71,7 +72,7 @@
             border-radius: 2px;
         }
 
-        /* Barra de desplazamiento personalizada */
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -86,7 +87,7 @@
             background: #444;
         }
 
-        /* Estilo para hover en opciones */
+        /* Dropdown custom styling */
         .stock-option:hover {
             background-color: rgba(196, 181, 253, 0.1); 
         }
@@ -94,10 +95,10 @@
 </head>
 <body class="min-h-screen p-4 md:p-8 flex items-center justify-center">
 
-    <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         
-        <!-- Interfaz de Configuración -->
-        <div class="glass-panel p-6 rounded-2xl shadow-2xl overflow-y-auto max-h-[90vh]">
+        <!-- Configuration UI -->
+        <div class="glass-panel p-6 rounded-2xl shadow-2xl overflow-y-auto h-[90vh]">
             <header class="mb-8 border-b border-white/10 pb-4">
                 <div class="flex items-center gap-4 mb-1">
                     <a href="index.html" class="flex items-center justify-center p-2.5 bg-zinc-900 border border-zinc-700 rounded-lg text-zinc-400 hover:text-purple-400 transition-all" title="Back to landing page">
@@ -107,7 +108,7 @@
                         <i data-lucide="clapperboard" class="text-violet-300 w-6 h-6"></i>
                         <h1 class="text-xl font-bold tracking-tight uppercase">
                             Cinematic Look <span class="text-violet-300">Builder</span> 
-                            <span class="text-[10px] text-violet-200 font-medium ml-1 lowercase align-top bg-violet-400/10 px-1.5 py-0.5 rounded border border-violet-400/20">V2.0.1</span>
+                            <span class="text-[10px] text-violet-200 font-medium ml-1 lowercase align-top bg-violet-400/10 px-1.5 py-0.5 rounded border border-violet-400/20">V2.0.3</span>
                         </h1>
                     </div>
                 </div>
@@ -115,7 +116,7 @@
             </header>
 
             <div class="space-y-6">
-                <!-- Cámara y Óptica -->
+                <!-- Camera & Optics -->
                 <div class="grid grid-cols-1 gap-4">
                     <div class="space-y-2">
                         <label class="text-xs font-bold text-zinc-500 uppercase flex items-center gap-2">
@@ -192,7 +193,7 @@
                         </div>
                     </div>
 
-                    <!-- Dropdown personalizado de EMULSIÓN -->
+                    <!-- Custom EMULSION Dropdown -->
                     <div class="space-y-2 pt-2 relative">
                         <label class="text-xs font-bold text-zinc-500 uppercase flex items-center gap-2">
                             <i data-lucide="film" class="w-3.5 h-3.5"></i> FILM STOCK / EMULSION
@@ -205,14 +206,14 @@
                             </button>
                             
                             <div id="stock-dropdown" class="hidden absolute z-50 w-full mt-1 bg-zinc-900 border border-zinc-700 rounded-lg shadow-2xl max-h-80 overflow-y-auto glass-panel border border-white/5">
-                                <!-- Opciones inyectadas vía JS -->
+                                <!-- Options injected via JS -->
                             </div>
                         </div>
                         <input type="hidden" id="stock" value="Kodak Portra 160/400/800">
                     </div>
                 </div>
 
-                <!-- Sliders Técnicos -->
+                <!-- Technical Sliders -->
                 <div class="space-y-5 pt-4 border-t border-white/5">
                     <h3 class="text-xs font-bold text-violet-300 uppercase tracking-widest flex items-center gap-2">
                         <i data-lucide="sliders-horizontal" class="w-4 h-4"></i> COLOR & TEXTURE (0.01 PRECISION)
@@ -291,8 +292,8 @@
             </div>
         </div>
 
-        <!-- Pantalla de Resultados -->
-        <div class="flex flex-col gap-4 max-h-[90vh]">
+        <!-- Result Screen -->
+        <div class="flex flex-col gap-4 h-[90vh]">
             <div class="glass-panel p-6 rounded-2xl flex-1 flex flex-col relative overflow-hidden">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-sm font-bold uppercase tracking-widest text-zinc-500">Metadata Output</h3>
@@ -301,10 +302,11 @@
                     </button>
                 </div>
                 
-                <div class="flex-1 bg-black/40 rounded-xl p-4 border border-white/5 overflow-auto">
+                <!-- Fixed size box for the output code -->
+                <div class="flex-1 bg-black/40 rounded-xl p-4 border border-white/5 overflow-auto custom-scrollbar">
                     <pre id="resultado" class="code-font text-[#A9D12F] text-xs leading-relaxed whitespace-pre-wrap">{
   "status": "ready",
-  "optimization": "Professional Baseline Active (V2.0.1)"
+  "optimization": "Professional Baseline Active (V2.0.3)"
 }</pre>
                 </div>
 
@@ -429,22 +431,16 @@
             } 
             // NUEVOS PERFILES B&W
             else if (name === "Kodak Tri-X 400") {
-                // Tri-X: Classic gritty contrast, traditional grain
                 setSliderValues(0.00, 1.80, 6.50, 1.50, 5500, 75, 60);
             } else if (name === "Kodak T-MAX 100/400") {
-                // T-MAX: Ultra sharp, smooth tabular grain
                 setSliderValues(0.00, 0.50, 2.50, 1.00, 5600, 55, 65);
             } else if (name === "Ilford FP4 Plus 125") {
-                // FP4: Classic fine grain, medium contrast
                 setSliderValues(0.00, 0.80, 2.00, 1.20, 5600, 45, 62);
             } else if (name === "Ilford Delta 100/400/3200") {
-                // Delta: High tech core-shell grain, crisp
                 setSliderValues(0.00, 0.40, 1.50, 0.80, 5600, 50, 65);
             } else if (name === "Fomapan 100/200/400") {
-                // Fomapan: Old school European look, visible grain
                 setSliderValues(0.00, 1.50, 5.50, 1.40, 5700, 40, 60);
             } else if (name === "Rollei Retro 80s") {
-                // Rollei: Super fine grain, intense contrast, near-IR look
                 setSliderValues(0.00, 0.20, 1.00, 2.00, 5800, 95, 70);
             }
             else {
@@ -507,7 +503,7 @@
                 satValue = "0.00";
             }
 
-            // Semantic Reinforcement Logic (Aggressive V2.0.0)
+            // Semantic Reinforcement Logic (Aggressive V2.0.3)
             let semanticHints = [];
             
             // COLOR STOCK REINFORCEMENTS
@@ -560,7 +556,7 @@
             const data = {
                 "metadata": {
                     "engine": "BY HYPRFRAME",
-                    "version": "2.0.1",
+                    "version": "2.0.3",
                     "timestamp": new Date().toISOString(),
                     "workflow": isAnamorphic ? "Anamorphic De-squeeze 2.0x" : "Spherical",
                     "color_mode": isBW ? "Monochrome" : (isLomoPurple ? "Specialized Infrared-Mimic" : (isMetropolis ? "High Contrast Desaturated" : (isProvia ? "Professional Reversal Neutral" : (isEktachrome ? "Clean Neutral Reversal" : (isVelvia ? "Hyper-Saturated Reversal" : "Full Color")))))
