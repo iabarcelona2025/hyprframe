@@ -93,12 +93,12 @@
         }
     </style>
 </head>
-<body class="min-h-screen p-4 md:p-8 flex items-center justify-center">
+<body class="min-h-screen p-4 md:p-8 flex items-start justify-center pt-6 md:pt-10">
 
     <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         
         <!-- Configuration UI -->
-        <div class="glass-panel p-6 rounded-2xl shadow-2xl overflow-y-auto h-[90vh]">
+        <div class="glass-panel p-6 rounded-2xl shadow-2xl overflow-y-auto h-[94vh]">
             <header class="mb-8 border-b border-white/10 pb-4">
                 <div class="flex items-center gap-4 mb-1">
                     <a href="index.html" class="flex items-center justify-center p-2.5 bg-zinc-900 border border-zinc-700 rounded-lg text-zinc-400 hover:text-purple-400 transition-all" title="Back to landing page">
@@ -108,7 +108,7 @@
                         <i data-lucide="clapperboard" class="text-violet-300 w-6 h-6"></i>
                         <h1 class="text-xl font-bold tracking-tight uppercase">
                             Cinematic Look <span class="text-violet-300">Builder</span> 
-                            <span class="text-[10px] text-violet-200 font-medium ml-1 lowercase align-top bg-violet-400/10 px-1.5 py-0.5 rounded border border-violet-400/20">V2.2.2</span>
+                            <span class="text-[10px] text-violet-200 font-medium ml-1 lowercase align-top bg-violet-400/10 px-1.5 py-0.5 rounded border border-violet-400/20">V2.2.3</span>
                         </h1>
                     </div>
                 </div>
@@ -311,7 +311,7 @@
         </div>
 
         <!-- Result Screen -->
-        <div class="flex flex-col gap-4 h-[90vh]">
+        <div class="flex flex-col gap-4 h-[94vh]">
             <div class="glass-panel p-6 rounded-2xl flex-1 flex flex-col relative overflow-hidden">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-sm font-bold uppercase tracking-widest text-zinc-500">Metadata Output</h3>
@@ -323,7 +323,7 @@
                 <div class="flex-1 bg-black/40 rounded-xl p-4 border border-white/5 overflow-auto custom-scrollbar">
                     <pre id="resultado" class="code-font text-[#A9D12F] text-xs leading-relaxed whitespace-pre-wrap">{
   "status": "ready",
-  "optimization": "Professional Baseline Active (V2.2.2)"
+  "optimization": "Professional Baseline Active (V2.2.3)"
 }</pre>
                 </div>
 
@@ -418,10 +418,35 @@
             dropdown.classList.toggle('hidden');
         }
 
+        function updateExclusionLocks() {
+            const profileValue = document.getElementById('camera-profile').value;
+            const stockValue = document.getElementById('stock').value;
+            const profileBtn = document.getElementById('profile-button');
+            const stockBtn = document.getElementById('stock-button');
+
+            if (profileValue !== "None") {
+                stockBtn.classList.add('opacity-40', 'pointer-events-none');
+            } else {
+                stockBtn.classList.remove('opacity-40', 'pointer-events-none');
+            }
+
+            if (stockValue !== "None") {
+                profileBtn.classList.add('opacity-40', 'pointer-events-none');
+            } else {
+                profileBtn.classList.remove('opacity-40', 'pointer-events-none');
+            }
+        }
+
         function selectProfile(name, desc) {
             document.getElementById('profile-display').innerHTML = `${name} <span class="text-[11px] text-zinc-500 ml-1 font-normal">${desc}</span>`;
             document.getElementById('camera-profile').value = name;
             document.getElementById('profile-dropdown').classList.add('hidden');
+            
+            if (name !== "None") {
+                document.getElementById('stock-display').innerHTML = `None <span class="text-[11px] text-zinc-500 ml-1 font-normal">(No film emulation / Digital neutral)</span>`;
+                document.getElementById('stock').value = "None";
+            }
+            updateExclusionLocks();
             
             // Neutralize sliders when selecting a profile
             setSliderValues(5.00, 0.00, 0.00, 0.00, 5600, 32, 65);
@@ -479,6 +504,12 @@
             document.getElementById('stock').value = name;
             document.getElementById('stock-dropdown').classList.add('hidden');
 
+            if (name !== "None") {
+                document.getElementById('profile-display').innerHTML = `None <span class="text-[11px] text-zinc-500 ml-1 font-normal">(No profile mapping)</span>`;
+                document.getElementById('camera-profile').value = "None";
+            }
+            updateExclusionLocks();
+
             if (name === "None") {
                 setSliderValues(5.00, 0.00, 0.00, 0.00, 5600, 32, 65);
             } else if (name === "Kodak Portra 160/400/800") {
@@ -511,6 +542,8 @@
                 setSliderValues(6.50, 0.50, 0.80, 1.00, 5800, 40, 68);
             } else if (name === "Candy 400" || name === "Amber D200" || name === "Santa Color 100") {
                 setSliderValues(5.80, 1.20, 2.00, 1.00, 5600, 40, 65);
+            } else if (name === "Lomography Color 100/400/800") {
+                 setSliderValues(7.50, 2.20, 3.00, 1.50, 5600, 50, 62);
             } else if (name === "LomoChrome Purple") {
                 setSliderValues(8.50, 2.50, 3.80, 1.50, 6500, 45, 55);
             } else if (name === "LomoChrome Metropolis") {
@@ -549,6 +582,7 @@
             initProfileDropdown();
             initStockDropdown();
             lucide.createIcons();
+            updateExclusionLocks();
         }
 
         function updateVal(id, val) {
@@ -692,7 +726,7 @@
             const data = {
                 "metadata": {
                     "engine": "BY HYPRFRAME",
-                    "version": "2.2.2",
+                    "version": "2.2.3",
                     "timestamp": new Date().toISOString(),
                     "workflow": isAnamorphic ? "Anamorphic De-squeeze 2.0x" : "Spherical",
                     "color_mode": isBW ? "Monochrome" : (isNone ? "Digital Neutral" : "Full Color Emulation")
