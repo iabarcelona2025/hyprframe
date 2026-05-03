@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPRFRAME - Cinematic Look Builder V3.1.5</title>
+    <title>HYPRFRAME - Cinematic Look Builder V3.1.7</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -13,7 +13,10 @@
             font-family: 'Inter', sans-serif;
             background-color: #0a0a0a;
             color: #e5e7eb;
-            overflow: hidden; 
+        }
+        
+        @media (min-width: 1024px) {
+            body { overflow: hidden; }
         }
         
         .glass-panel {
@@ -72,11 +75,15 @@
             background-color: rgba(196, 181, 253, 0.1); 
         }
 
-        /* Bloqueo de tamaño para el contenedor de prompt */
+        /* Responsive Fixed Container Logic */
         .prompt-container-fixed {
-            height: 0;
             flex-grow: 1;
             overflow-y: auto;
+            min-height: 350px;
+        }
+
+        @media (min-width: 1024px) {
+            .prompt-container-fixed { height: 0; min-height: 0; }
         }
     </style>
 </head>
@@ -85,16 +92,14 @@
     <div class="max-w-[1550px] w-full grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
         
         <!-- COLUMN 1: Full Technical Configuration -->
-        <div class="glass-panel p-6 rounded-2xl shadow-2xl overflow-y-auto h-[94vh]">
+        <div class="glass-panel p-6 rounded-2xl shadow-2xl overflow-y-auto h-auto lg:h-[94vh]">
             <header class="mb-6 border-b border-white/10 pb-4">
-                <!-- RETURN BUTTON & VERSION BOX RECOVERED FROM V2.2.3 -->
                 <div class="flex justify-between items-center mb-4">
                     <a href="https://hyprframe.com" class="flex items-center gap-1.5 text-[9px] font-bold text-zinc-500 hover:text-white transition-colors uppercase tracking-widest group">
                         <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Return to web
                     </a>
-                    <!-- RECUADRO SIMPLIFICADO: SE QUITA "BUILD" -->
                     <div class="bg-white/5 border border-white/10 px-2 py-0.5 rounded text-[9px] font-bold text-violet-300 uppercase tracking-tighter">
-                        V3.1.5
+                        V3.1.7
                     </div>
                 </div>
 
@@ -281,7 +286,7 @@
         </div>
 
         <!-- COLUMN 2: Metadata (JSON) -->
-        <div class="flex flex-col gap-4 h-[94vh]">
+        <div class="flex flex-col gap-4 h-auto lg:h-[94vh]">
             <div class="glass-panel p-6 rounded-2xl flex-1 flex flex-col relative overflow-hidden">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-xs font-bold uppercase tracking-widest text-zinc-500 flex items-center gap-2">
@@ -289,14 +294,14 @@
                     </h3>
                     <button onclick="copyToClipboard('resultado')" class="text-violet-300 hover:text-violet-200 text-[10px] font-bold uppercase">COPY</button>
                 </div>
-                <div class="flex-1 bg-black/40 rounded-xl p-4 border border-white/5 overflow-auto">
+                <div class="flex-1 bg-black/40 rounded-xl p-4 border border-white/5 overflow-auto min-h-[300px] lg:min-h-0">
                     <pre id="resultado" class="code-font text-[#A9D12F] text-[10px] leading-relaxed">{}</pre>
                 </div>
             </div>
         </div>
 
         <!-- COLUMN 3: Semantic Prompt -->
-        <div class="flex flex-col gap-4 h-[94vh]">
+        <div class="flex flex-col gap-4 h-auto lg:h-[94vh]">
             <div class="glass-panel p-6 rounded-2xl flex-1 flex flex-col relative border-l-2 border-violet-500/50">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-xs font-bold uppercase tracking-widest text-violet-300 flex items-center gap-2">
@@ -467,7 +472,7 @@
             const skin = parseInt(document.getElementById('skinLuma').value);
 
             const json = {
-                "metadata": { "engine": "hyprframe.com", "version": "3.1.5" },
+                "metadata": { "engine": "hyprframe.com", "version": "3.1.7" },
                 "setup": { "camera": cam, "lens": lens, "focal": focal },
                 "mapping": { "profile": prof, "stock": stock },
                 "look": { "sat": sat, "hal": hal, "grain": grn, "vignette": vig, "white": white + "K", "contrast": con, "skin": skin }
