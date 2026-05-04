@@ -612,7 +612,7 @@
             else lumaSem = "Severely overexposed skin, clipped highlights, washed out detail.";
             p.push(`Exposure: ${lumaSem}`);
 
-            document.getElementById('promptResultado').innerHTML = p.join("<br><br>");
+            typeWriterEffect('promptResultado', p.join("\n\n"), true);
         }
 
         function copyToClipboard(id) {
