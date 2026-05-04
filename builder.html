@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPRFRAME - Cinematic Look Builder V3.1.8</title>
+    <title>HYPRFRAME - Cinematic Look Builder V3.1.9</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -99,7 +99,7 @@
                         <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Return to web
                     </a>
                     <div class="bg-white/5 border border-white/10 px-2 py-0.5 rounded text-[9px] font-bold text-violet-300 uppercase tracking-tighter">
-                        V3.1.8
+                        V3.1.9
                     </div>
                 </div>
 
@@ -242,14 +242,14 @@
                                 <span>Saturation</span>
                                 <span id="satValue" class="text-violet-300 font-bold">5.00</span>
                             </div>
-                            <input type="range" id="saturation" min="0" max="10" value="5.00" step="0.01" oninput="updateVal('satValue', parseFloat(this.value).toFixed(2))">
+                            <input type="range" id="saturation" min="0" max="10" value="5.00" step="0.10" oninput="updateVal('satValue', parseFloat(this.value).toFixed(2))">
                         </div>
                         <div class="space-y-1">
                             <div class="flex justify-between text-[10px] uppercase text-zinc-400">
                                 <span>Halation</span>
                                 <span id="halValue" class="text-violet-300 font-bold">0.00</span>
                             </div>
-                            <input type="range" id="halation" min="0" max="10" value="0.00" step="0.01" oninput="updateVal('halValue', parseFloat(this.value).toFixed(2))">
+                            <input type="range" id="halation" min="0" max="10" value="0.00" step="0.10" oninput="updateVal('halValue', parseFloat(this.value).toFixed(2))">
                         </div>
                     </div>
 
@@ -478,6 +478,26 @@
             else setSliderValues(5.00, 1.20, 2.00, 1.00, 5600, 32, 65);
         }
 
+        function typeWriterEffect(elementId, text, isHTML) {
+            const el = document.getElementById(elementId);
+            if (el.twInterval) clearInterval(el.twInterval);
+            let i = 0;
+            el.twInterval = setInterval(() => {
+                i += 4; 
+                let current = text.substring(0, i);
+                if (isHTML) {
+                    el.innerHTML = current.replace(/\n/g, '<br>') + '<span class="opacity-50 animate-pulse">|</span>';
+                } else {
+                    el.innerText = current + '|';
+                }
+                if (i >= text.length) {
+                    clearInterval(el.twInterval);
+                    if (isHTML) el.innerHTML = text.replace(/\n/g, '<br>');
+                    else el.innerText = text;
+                }
+            }, 5);
+        }
+
         function generarTodo() {
             const cam = document.getElementById('camera').value;
             const lens = document.getElementById('lens').value;
@@ -494,7 +514,7 @@
             const skin = parseInt(document.getElementById('skinLuma').value);
 
             const json = {
-                "metadata": { "engine": "hyprframe.com", "version": "3.1.8" },
+                "metadata": { "engine": "hyprframe.com", "version": "3.1.9" },
                 "setup": { "camera": cam, "lens": lens, "focal": focal },
                 "mapping": { "profile": prof, "stock": stock },
                 "look": { "sat": sat, "hal": hal, "grain": grn, "vignette": vig, "white": white + "K", "contrast": con, "skin": skin }
@@ -503,7 +523,7 @@
             // JSON Logic for Aperture
             if(ap !== "None") json.setup.aperture = ap;
             
-            document.getElementById('resultado').innerText = JSON.stringify(json, null, 2);
+            typeWriterEffect('resultado', JSON.stringify(json, null, 2), false);
 
             let p = [];
             p.push(`[MASTER CINEMATOGRAPHY DATA]: Physical camera simulation parameters. Cinematographic capture system: ${cam}.`);
@@ -612,6 +632,7 @@
             else lumaSem = "Severely overexposed skin, clipped highlights, washed out detail.";
             p.push(`Exposure: ${lumaSem}`);
 
+            // Cambiado a join(\n\n) para que el TypeWriter lo convierta a <br> dinámicamente
             typeWriterEffect('promptResultado', p.join("\n\n"), true);
         }
 
