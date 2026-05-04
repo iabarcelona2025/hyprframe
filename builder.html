@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HYPRFRAME - Cinematic Look Builder V3.1.7</title>
+    <title>HYPRFRAME - Cinematic Look Builder V3.1.8</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -99,7 +99,7 @@
                         <i data-lucide="arrow-left" class="w-3 h-3 group-hover:-translate-x-0.5 transition-transform"></i> Return to web
                     </a>
                     <div class="bg-white/5 border border-white/10 px-2 py-0.5 rounded text-[9px] font-bold text-violet-300 uppercase tracking-tighter">
-                        V3.1.7
+                        V3.1.8
                     </div>
                 </div>
 
@@ -186,6 +186,27 @@
                             <option value="85mm">85mm</option>
                             <option value="135mm">135mm</option>
                             <option value="200mm">200mm</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Aperture Selector (Added below Focal) -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="col-start-2 space-y-2">
+                        <label class="text-[10px] font-bold text-zinc-500 uppercase">APERTURE</label>
+                        <select id="aperture" class="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2.5 text-xs outline-none">
+                            <option value="None">None</option>
+                            <option value="f/1">f/1</option>
+                            <option value="f/1.4">f/1.4</option>
+                            <option value="f/2">f/2</option>
+                            <option value="f/2.8">f/2.8</option>
+                            <option value="f/4">f/4</option>
+                            <option value="f/5.6" selected>f/5.6</option>
+                            <option value="f/8">f/8</option>
+                            <option value="f/11">f/11</option>
+                            <option value="f/16">f/16</option>
+                            <option value="f/22">f/22</option>
+                            <option value="f/32">f/32</option>
                         </select>
                     </div>
                 </div>
@@ -461,6 +482,7 @@
             const cam = document.getElementById('camera').value;
             const lens = document.getElementById('lens').value;
             const focal = document.getElementById('distance').value;
+            const ap = document.getElementById('aperture').value; // New: Aperture value
             const prof = document.getElementById('camera-profile').value;
             const stock = document.getElementById('stock').value;
             const sat = parseFloat(document.getElementById('saturation').value);
@@ -472,11 +494,15 @@
             const skin = parseInt(document.getElementById('skinLuma').value);
 
             const json = {
-                "metadata": { "engine": "hyprframe.com", "version": "3.1.7" },
+                "metadata": { "engine": "hyprframe.com", "version": "3.1.8" },
                 "setup": { "camera": cam, "lens": lens, "focal": focal },
                 "mapping": { "profile": prof, "stock": stock },
                 "look": { "sat": sat, "hal": hal, "grain": grn, "vignette": vig, "white": white + "K", "contrast": con, "skin": skin }
             };
+            
+            // JSON Logic for Aperture
+            if(ap !== "None") json.setup.aperture = ap;
+            
             document.getElementById('resultado').innerText = JSON.stringify(json, null, 2);
 
             let p = [];
@@ -488,6 +514,17 @@
             if(parseInt(focal) <= 18) lensDesc += "Ultra-wide expansive field of view, deep spherical focus. ";
             if(parseInt(focal) >= 85) lensDesc += "Telephoto optical compression, intimate close-up detail, creamy shallow bokeh. ";
             p.push(lensDesc);
+
+            // SEMANTIC PROMPT LOGIC FOR APERTURE
+            if(ap !== "None") {
+                let apDesc = `[Aperture Dynamics: ${ap}]. `;
+                if(ap === "f/1" || ap === "f/1.4") apDesc += "Ultra-fast aperture simulation: critical focus with razor-thin depth of field. Soft organic background melting, pronounced circular bokeh balls, slight optical blooming in high-contrast edges, and ethereal dreamlike subject separation.";
+                else if(ap === "f/2" || ap === "f/2.8") apDesc += "Fast cinematic aperture: shallow depth of field providing clear subject isolation. Smooth out-of-focus background textures and classic cinematic dimensionality with soft-edge bokeh.";
+                else if(ap === "f/4" || ap === "f/5.6") apDesc += "Standard cinematic aperture: balanced focus with moderate depth of field. Optimal lens MTF performance, maximum resolving power, and realistic spatial perspective with controlled background presence.";
+                else if(ap === "f/8" || ap === "f/11") apDesc += "Closed aperture: deep focus range. Extended sharpness from foreground to background, rendering fine textures across the entire frame. Ideal for high-detail architectural or landscape captures.";
+                else if(ap === "f/16" || ap === "f/22" || ap === "f/32") apDesc += "Narrow aperture: maximum depth of field. Near-infinite focus depth, rendering everything in sharp relief from the immediate foreground to the horizon. Minimal background blur.";
+                p.push(apDesc);
+            }
 
             if(prof !== "None") {
                 p.push(`[SENSOR RAW DATA: ${prof} LOG CURVE]. Professional ultra-flat image response, milky washed-out shadows, extreme low contrast, desaturated neutral color science, preserved highlights, raw digital negative aesthetic.`);
