@@ -307,7 +307,7 @@
                 </div>
 
                 <div class="space-y-4">
-                    <button onclick="generarTodo()" class="w-full bg-violet-600 hover:bg-violet-500 text-white font-bold py-3 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 group">
+                    <button onclick="generarTodo(); gtag('event', 'click_generate', {'event_category': 'engagement', 'event_label': 'Builder Generate'});" class="w-full bg-violet-600 hover:bg-violet-500 text-white font-bold py-3 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 group">
                         <i data-lucide="refresh-cw" class="w-4 h-4 group-active:rotate-180 transition-transform"></i>
                         GENERATE
                     </button>
