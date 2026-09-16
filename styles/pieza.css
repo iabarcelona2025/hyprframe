@@ -609,6 +609,7 @@ main {
     overflow: hidden;
     border-radius: 0px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    background-color: #000000 !important; /* <--- AÑADE ESTA LÍNEA */
 }
 
 /* 🎥 aquí la magia: adapta la proporción al video original */
@@ -618,6 +619,7 @@ main {
     aspect-ratio: 16 / 9; /* valor por defecto */
     display: block;
     border: none;
+    background-color: #000000 !important; /* <--- AÑADE ESTA LÍNEA */
 }
 
 /* 🔸 Si quieres permitir distintos formatos dinámicos */
