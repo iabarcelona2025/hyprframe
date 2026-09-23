@@ -619,7 +619,7 @@ main {
     aspect-ratio: 16 / 9; /* valor por defecto */
     display: block;
     border: none;
-    background-color: #000000 !important; /* <--- AÑADE ESTA LÍNEA */
+    background-color: #0a0a0a !important; /* <--- AÑADE ESTA LÍNEA */
 }
 
 /* 🔸 Si quieres permitir distintos formatos dinámicos */
